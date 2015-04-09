@@ -8,9 +8,11 @@ class IndexController extends Controller {
     }
     
     public function test(){
-    	$url='http://lolbox.duowan.com/api/record/championRankData.php?rank=0';
-    	$html=file_get_contents($url);
-    	dump(json_decode($html));
-    	
+//     	$url='http://lolbox.duowan.com/api/record/championRankData.php?rank=0';
+//     	$html=file_get_contents($url);
+//     	dump(json_decode($html));
+		echo session('admin');
     }
+    
+    
 }

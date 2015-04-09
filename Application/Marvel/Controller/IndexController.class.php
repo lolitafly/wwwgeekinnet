@@ -13,14 +13,14 @@ class IndexController extends Controller {
     public function login(){
     	if($_POST['phone']){
     		$phone=$_POST['phone'];
-    		session('phone',$phone);
+    		session('marvel_phone',$phone);
     		echo 1;
     	}
     }
     
     public function submitScore(){
-    	if($_POST['score']&&session('phone')){
-    		$data['phone']=session('phone');
+    	if($_POST['score']&&session('marvel_phone')){
+    		$data['phone']=session('marvel_phone');
 	    	$data['score']=$_POST['score'];
 	    	$data['ip']=get_client_ip();
     		M('user')->add($data);

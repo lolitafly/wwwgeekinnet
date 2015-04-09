@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>格映科技项目管理系统</title>
+    <title>超级英雄连连看排名</title>
 
     <!-- Bootstrap -->
     <link href="/Public/Marvel/system/css/bootstrap.css" rel="stylesheet">

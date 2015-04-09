@@ -7,7 +7,7 @@ class SystemController extends Controller {
     }
     
     public function show(){
-    	if(!session('admin')) $this->redirect('index');
+    	if(!session('marvel_admin')) $this->redirect('index');
     	$this->display();
     }
     
@@ -16,7 +16,7 @@ class SystemController extends Controller {
     	$cdt['password']=md5($cdt['password']);
     	$r=M('admin')->where($cdt)->find();
     	if($r){
-    		session('admin',$r['username']);
+    		session('marvel_admin',$r['username']);
     		echo 1;
     	}else{
     		echo 0;
