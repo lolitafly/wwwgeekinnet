@@ -1,0 +1,1 @@
+a:7:{i:0;s:3:"oid";i:1;s:3:"pid";i:2;s:7:"operate";i:3;s:8:"createBy";i:4;s:10:"createDate";s:3:"_pk";s:3:"oid";s:5:"_type";a:5:{s:3:"oid";s:7:"int(11)";s:3:"pid";s:8:"int(101)";s:7:"operate";s:4:"text";s:8:"createBy";s:11:"varchar(10)";s:10:"createDate";s:9:"timestamp";}}
