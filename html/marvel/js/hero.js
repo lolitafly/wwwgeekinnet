@@ -68,14 +68,15 @@ function gameReset(){
 	        if(matrix[row][col] > 0)
 	        {
 	            // html += "<img src=\"images/"+ matrix[row][col] +".png\" onclick=\"checkPath(this, " + row + ", " + col + ")\">\n";
-	            html += "<img src=\"images/"+ matrix[row][col] +".png\" row="+row+" col="+col+">\n";
+	            html += "<img src=\"images/"+ matrix[row][col] +".png\" row="+row+" col="+col+" class=\"icon\">\n";
+	            html +="<img src=\"images/wrap.png\" class=\"wrap\">\n";
 	        }
 	        html += "</td>\n";
 	    }
 	}
 	// 输出
 	document.getElementById("main").innerHTML = html;
-	$("#main img").bind("tap",function(){
+	$("#main img.icon").bind("tap",function(){
 		var temprow=Number($(this).attr("row"));
 		var tempcol=Number($(this).attr("col"));
 		checkPath(this,temprow,tempcol);
@@ -107,7 +108,8 @@ function checkPath(o, x, y)
         {
             tempO = o;
             // 改变选中的图片单元格背景色
-            tempO.parentNode.style.background = "#f1a165";
+            // tempO.parentNode.style.background = "#f1a165";
+            $(tempO).next('img.wrap').show();
             // 记录选中的图片位置
             pathInfo[0].x = x;
             pathInfo[0].y = y;
@@ -116,7 +118,8 @@ function checkPath(o, x, y)
         else if(o != tempO)
         {
             // 清除背景颜色
-            tempO.parentNode.style.background = "";
+            // tempO.parentNode.style.background = "";
+            $("img.wrap").hide();
 
              // 记录选中的图片位置
             pathInfo[1].x = x;
@@ -158,7 +161,8 @@ function checkPath(o, x, y)
     {
         tempO = null;
        	//清除背景色
-       	$("#main td").css("background","");
+       	// $("#main td").css("background","");
+       	$("img.wrap").hide();
     }
 }
 

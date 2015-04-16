@@ -1,18 +1,51 @@
-var totaltime = 20;
+var totaltime = 5;
+var temptime=0;
 var score = 0;
 var mytimer;
+var jumpTimer;
 //倒计时对象
 $(document).ready(function() {
 	// $.mobile.hidePageLoadingMsg();
-	$("#shareBtn").bind("tap", function() {
+	
+	$("#rule_btn").bind("tap", function() {
+		setTimeout(function() {
+			$(".rule-mask").show();
+		}, 100);
+	});
+	
+	$("#rule_close_btn").bind("tap", function() {
+		setTimeout(function() {
+			$(".rule-mask").hide();
+		}, 200);
+	});
+	
+	$("#restart_btn").bind("tap", function() {
+		$("#result-mask").hide();
+		setTimeout(function() {
+			initial();
+			gameReset();
+			scoreReset();
+			gogogo();
+		}, 200);
+	});
+	
+	$("#share_btn").bind("tap", function() {
 		setTimeout(function() {
 			$("#shareMask").show();
-		}, 400)
+			if(!jumpTimer){
+				jumpTimer=setTimeout(function() {
+					$.mobile.changePage("#prize2", {
+						transition : "flip"
+					});
+				}, 5000);
+			}
+		}, 100);
 	});
+	
 	$("#shareMask").bind("tap", function() {
 		setTimeout(function() {
 			$("#shareMask").hide();
-		}, 400)
+		}, 100);
 	});
 });
 
@@ -28,6 +61,7 @@ function loadImg() {
 	}
 }
 
+
 //离开游戏页时
 $(document).on("pagehide", "#game", function() {
 	$(".meter span").stop();
@@ -38,62 +72,110 @@ $(document).on("pagehide", "#game", function() {
 
 //游戏页面进入时
 $(document).on("pagebeforeshow", "#game", function() {
+	$("#result-mask").hide();
 	initial();
 	gameReset();
 	scoreReset();
 	gogogo();
 });
 
-//进入分数页时
-$(document).on("pagebeforeshow", "#showScore", function() {
+//进入领奖页1时
+$(document).on("pagebeforeshow", "#prize1", function() {
 	document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
-
 });
 
-//离开分数页时
-$(document).on("pagehide", "#showScore", function() {
+//离开领奖页1时
+$(document).on("pagehide", "#prize1", function() {
 	document.title = '超级英雄连连看';
+});
+
+//进入领奖页2时
+$(document).on("pagebeforeshow", "#prize2", function() {
+	jumpTimer=null;
 });
 
 function initial() {
 	// 倒计时条
-	$(".meter span").css("width", "100%");
+	$(".meterBar span").css("width", "100%");
 	//倒计时时间
-	$("#time").text(totaltime);
+	temptime=totaltime;
+	setTime(totaltime);
 	//游戏中图片数量重置
 	imageTotal = rowImageNum * colImageNum;
 }
 
 function scoreReset() {
 	score = 0;
-	$("#score").text(score);
 }
 
 function gogogo() {
 	mytimer = setInterval("timer()", 1000);
-	$(".meter span").animate({
+	$(".meterBar span").animate({
 		width : "0%"
 	}, (totaltime + 1) * 1000);
 }
 
+//设置数字时间
+function setTime(t){
+	var temp=String(t);
+	var html="";
+	for(var i=0;i<temp.length;i++){
+		html+="<img src=\"images/number/"+temp.charAt(i)+".png\" />";
+	}
+	$("#timer").html(html);
+}
+
 //倒计时函数
 function timer() {
-	var temp = $("#time").text();
-	if (temp == 0) {
+	if (temptime == 0) {
 		timeup();
 	} else {
-		$("#time").text(temp - 1);
+		temptime-=1;
+		setTime(temptime);
 	}
 }
 
 //时间到函数
 function timeup() {
 	$("#main img").unbind();
-	$(".meter span").stop();
 	//动画停止
 	clearInterval(mytimer);
 	//倒计时停止
-	initial();
-	$.mobile.changePage("#showScore", "pop");
 	$("#scoreText").text("游戏成绩为" + score + "分");
+	$("#result-mask").show();
 }
+
+//调整样式
+var w = $(window).width();
+var h = $(window).height();
+$(document).ready(function() {
+	console.log("widht:" + w + ";height:" + h);
+	if(w>900){
+		console.log("桌面");
+		console.log($("div[data-role='page']"));
+		$("body").width(700);
+		$("body").css("margin","0 auto");
+	}
+	
+	// page1
+	$("div.startBtn-group").css("margin-top",w*1.25 + "px");
+	if(h<500){
+		$(".rule-mask h1").css("margin-top",8 + "px");
+		$(".rule-mask ol").css("margin-top",8 + "px");
+		$(".rule-mask img").css("margin-top",10 + "px");
+	}
+	//page2
+	$("#game-head div.top").height(h*0.07);
+	var meterw=w*0.85;
+	var th=meterw*5/533;
+	var top=meterw*14/533;
+	$("div.meterBar").height(th);
+	$("div.meterBar").css("top",top+"px");
+	// page3
+	$(".prize-box").css("margin-top",w*120/350+"px");
+	
+});
+
+
+
+
