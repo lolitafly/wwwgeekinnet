@@ -1,4 +1,4 @@
-var totaltime = 5;
+var totaltime = 20;
 var temptime=0;
 var score = 0;
 var mytimer;
@@ -29,6 +29,7 @@ $(document).ready(function() {
 			gogogo();
 		}, 200);
 	});
+	
 	
 	//page3
 	$("#share_btn").bind("tap", function() {
@@ -124,7 +125,7 @@ function setTime(t){
 	var temp=String(t);
 	var html="";
 	for(var i=0;i<temp.length;i++){
-		html+="<img src=\"images/number/"+temp.charAt(i)+".png\" />";
+		html+="<img src=\"Public/Marvel2/images/number/"+temp.charAt(i)+".png\" />";
 	}
 	$("#timer").html(html);
 }
@@ -146,13 +147,21 @@ function timeup() {
 	clearInterval(mytimer);
 	//倒计时停止
 	$("#scoreText").text("游戏成绩为" + score + "分");
+	setTimeUpContent();
 	$("#result-mask").show();
 }
 
-//动态交互
-$(document).ready(function() {
-	
-});
+//设置游戏结束弹出框内容
+function setTimeUpContent(){
+	if(score>=minScore){
+		$("#inputForm").show();
+		$("#hint").hide();
+	}else{
+		$("#inputForm").hide();
+		$("#hint").show();
+	}
+}
+
 
 //调整样式
 var w = $(window).width();
