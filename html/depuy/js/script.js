@@ -65,25 +65,28 @@ $(document).on("pagebeforeshow", "#page1", function() {
 	
 });
 
+//过渡页
 var page2_timer;
-$(document).on("pagebeforeshow", "#page2", function() {
-	$('#p2_title').css("visibility","hidden");
-	$('#p2_title').removeClass("animated slideInLeft");
+$(document).on("pagebeforeshow", "#page2,#page4,#page6", function(e) {
+	$('.p2_title').css("visibility","hidden");
+	$('.p2_title').removeClass("animated slideInLeft");
 	
-	$("#p2_bgimg").addClass('animated rotateIn');
+	$(".p2_bgimg").addClass('animated rotateIn');
 	setTimeout(function(){
-		$('#p2_title').css("visibility","visible");
-		$('#p2_title').addClass('animated slideInLeft');
+		$('.p2_title').css("visibility","visible");
+		$('.p2_title').addClass('animated slideInLeft');
 	},1000);
+	var nextPageId=$(e.target).next("div").attr("id");
+	console.log(nextPageId);
 	page2_timer=setTimeout(function(){
-		$.mobile.changePage("#page3", {
+		$.mobile.changePage("#"+nextPageId, {
 			transition : "slideup"
 		});
 	},2800);
 });
 
-//离开page2时
-$(document).on("pagehide", "#page2", function() {
+//离开过渡页时
+$(document).on("pagehide", "#page2,#page4,#page6", function() {
 	clearTimeout(page2_timer);
 });
 
@@ -99,7 +102,7 @@ $(document).on("pagebeforeshow", "#page3", function() {
 	$('#p3_t3').css("visibility","hidden");
 	
 	//重置动画
-	$('#p3_logo1').removeClass("animated fadeInLeft");
+	$('#p3_logo1').removeClass("animated fadeInRight");
 	$('#p3_p1').removeClass("animated fadeInRight");
 	$('#p3_logo2').removeClass("animated fadeInLeft");
 	$('#p3_t1').removeClass("animated fadeInLeft");
@@ -113,7 +116,7 @@ $(document).on("pagebeforeshow", "#page3", function() {
 	$('#p3_title').addClass('animated zoomIn');
 	setTimeout(function(){
 		$('#p3_logo1').css("visibility","visible");
-		$('#p3_logo1').addClass('animated fadeInLeft');
+		$('#p3_logo1').addClass('animated fadeInRight');
 	},700);
 	setTimeout(function(){
 		// $('#p3_p1').css("visibility","visible");
@@ -153,7 +156,7 @@ $(document).ready(function() {
 		w=tw;
 	}
 	//page2
-	$("#p2_title").css("padding-top",w*0.55+"px");
+	$(".p2_title").css("padding-top",w*0.55+"px");
 });
 
 //动态交互
@@ -189,7 +192,9 @@ $(function() {
 	$("#page3").swipe({
 		swipe : function(event, direction, distance, duration, fingerCount) {
 			if (direction == "up") {
-				
+				$.mobile.changePage("#page4", {
+					transition : "slideup"
+				});
 			} else if (direction == "down") {
 				$.mobile.changePage("#page2", {
 					transition : "slidedown"
@@ -197,55 +202,55 @@ $(function() {
 			}
 		},
 	});
-	// $("#page4").swipe({
-		// swipe : function(event, direction, distance, duration, fingerCount) {
-			// if (direction == "up") {
-				// $.mobile.changePage("#page5", {
-					// transition : "slideup"
-				// });
-			// } else if (direction == "down") {
-				// $.mobile.changePage("#page3", {
-					// transition : "slidedown"
-				// });
-			// }
-		// },
-	// });
-	// $("#page5").swipe({
-		// swipe : function(event, direction, distance, duration, fingerCount) {
-			// if (direction == "up") {
-				// $.mobile.changePage("#page6", {
-					// transition : "slideup"
-				// });
-			// } else if (direction == "down") {
-				// $.mobile.changePage("#page4", {
-					// transition : "slidedown"
-				// });
-			// }
-		// },
-	// });
-	// $("#page6").swipe({
-		// swipe : function(event, direction, distance, duration, fingerCount) {
-			// if (direction == "up") {
-				// $.mobile.changePage("#page7", {
-					// transition : "slideup"
-				// });
-			// } else if (direction == "down") {
-				// $.mobile.changePage("#page5", {
-					// transition : "slidedown"
-				// });
-			// }
-		// },
-	// });
-	// $("#page7").swipe({
-		// swipe : function(event, direction, distance, duration, fingerCount) {
-			// if (direction == "up") {
-// 
-			// } else if (direction == "down") {
-				// $.mobile.changePage("#page6", {
-					// transition : "slidedown"
-				// });
-			// }
-		// },
-	// });
+	$("#page4").swipe({
+		swipe : function(event, direction, distance, duration, fingerCount) {
+			if (direction == "up") {
+				$.mobile.changePage("#page5", {
+					transition : "slideup"
+				});
+			} else if (direction == "down") {
+				$.mobile.changePage("#page3", {
+					transition : "slidedown"
+				});
+			}
+		},
+	});
+	$("#page5").swipe({
+		swipe : function(event, direction, distance, duration, fingerCount) {
+			if (direction == "up") {
+				$.mobile.changePage("#page6", {
+					transition : "slideup"
+				});
+			} else if (direction == "down") {
+				$.mobile.changePage("#page4", {
+					transition : "slidedown"
+				});
+			}
+		},
+	});
+	$("#page6").swipe({
+		swipe : function(event, direction, distance, duration, fingerCount) {
+			if (direction == "up") {
+				$.mobile.changePage("#page7", {
+					transition : "slideup"
+				});
+			} else if (direction == "down") {
+				$.mobile.changePage("#page5", {
+					transition : "slidedown"
+				});
+			}
+		},
+	});
+	$("#page7").swipe({
+		swipe : function(event, direction, distance, duration, fingerCount) {
+			if (direction == "up") {
+
+			} else if (direction == "down") {
+				$.mobile.changePage("#page6", {
+					transition : "slidedown"
+				});
+			}
+		},
+	});
 });
 
