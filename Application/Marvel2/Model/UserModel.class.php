@@ -34,6 +34,19 @@ class UserModel extends Model {
 		$today=date('Y-m-d',time());
     	$cdt['createDate']=array('egt',$today);
 		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->order('max(score) desc,createDate desc')->limit(30)->select();
+		for($i=0;$i<count($list);$i++){
+			$list[$i]['phone']=substr_replace($list[$i]['phone'],'****',3,4);
+		}
+		//冒泡排序
+		for($i=0;$i<count($list);$i++){
+			for($j=$i+1;$j<count($list);$j++){
+				if($list[$i]['max(score)']<$list[$j]['max(score)']){
+					$temp=$list[$i];
+					$list[$i]=$list[$j];
+					$list[$j]=$temp;
+				}
+			}
+		}
 		return $list;
 	}
 	

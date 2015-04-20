@@ -32,37 +32,36 @@ $(document).ready(function() {
 	
 	
 	//page3
-	$("#share_btn").bind("tap", function() {
-		setTimeout(function() {
-			$("#shareMask").show();
-			if(!jumpTimer){
-				jumpTimer=setTimeout(function() {
-					$.mobile.changePage("#prize2", {
-						transition : "flip"
-					});
-				}, 5000);
-			}
-		}, 100);
+	$("#share_btn").bind("click", function(e) {
+		e.stopPropagation();
+		$("#shareMask").show();
+		if(!jumpTimer){
+			jumpTimer=setTimeout(function() {
+				$.mobile.changePage("#prize2", {
+					transition : "flip"
+				});
+			}, 5000);
+		}
 	});
-	$("#shareMask").bind("tap", function() {
-		setTimeout(function() {
-			$("#shareMask").hide();
-		}, 100);
+	$("#shareMask").bind("click", function() {
+		$("#shareMask").hide();
 	});
 });
 
 $(document).on("pagebeforecreate", function() {
-	loadImg();
-	$.mobile.showPageLoadingMsg('a', "Please wait...");
+	
 });
 
 function loadImg() {
 	for (var i = 1; i <= imageTypeNum; i++) {
-		var temp = "<img src=\"images/" + i + ".png\" />";
+		var temp = "<img src=\"Public/Marvel2/images/" + i + ".png\" />";
+		$("div.imgstore").append(temp);
+	}
+	for (var i=0;i<10;i++){
+		var temp = "<img src=\"Public/Marvel2/images/number/" + i + ".png\" />";
 		$("div.imgstore").append(temp);
 	}
 }
-
 
 //离开游戏页时
 $(document).on("pagehide", "#game", function() {
@@ -125,7 +124,7 @@ function setTime(t){
 	var temp=String(t);
 	var html="";
 	for(var i=0;i<temp.length;i++){
-		html+="<img src=\"Public/Marvel2/images/number/"+temp.charAt(i)+".png\" />";
+		html+="<img src=\"/Public/Marvel2/images/number/"+temp.charAt(i)+".png\" />";
 	}
 	$("#timer").html(html);
 }

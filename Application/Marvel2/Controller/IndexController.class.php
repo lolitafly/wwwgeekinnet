@@ -5,9 +5,11 @@ class IndexController extends Controller {
     public function index(){
     	//可获奖最低分
     	$this->assign('minScore',D('User')->getScore());
+    	//快的打车券
+    	$tickt=D('Kuaidiquan')->getCode();
     	//奖品顺序随机
     	$prize1="恭喜！获得商城购物券一份！代码为：000001";
-    	$prize2="恭喜！获得快的打车券一份！代码为：XXXXXX";
+    	$prize2="恭喜！获得快的".$tickt['price']."元专车券一张！代码为：".$tickt['code'];
     	if(rand(1,2)==1){
     		$this->assign('prize1',$prize1);
     		$this->assign('prize2',$prize2);
@@ -16,6 +18,8 @@ class IndexController extends Controller {
     		$this->assign('prize2',$prize1);
     	}
     	
+    	
+    	
     	$this->display();
     }
     
@@ -23,6 +27,7 @@ class IndexController extends Controller {
     	$list=D('User')->getRank();
     	$this->assign('list',$list);
     	$this->display();
+// 		dump($list);
     }
     
     public function submit(){
@@ -36,11 +41,8 @@ class IndexController extends Controller {
     }
     
     public function test(){
-    	dump(D('User')->getScore());
-    	$today=date('Y-m-d',time());
-    	$cdt['createDate']=array('egt',$today);
-    	$list=M('User')->field('phone,max(score)')->where($cdt)->group('phone')->order('score desc,createDate desc')->limit(30)->select();
-    	dump($list);
+    	dump(D('Kuaidiquan')->getCode());
+    	echo 1;
     }
     
     public function add(){

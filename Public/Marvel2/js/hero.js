@@ -68,8 +68,8 @@ function gameReset(){
 	        if(matrix[row][col] > 0)
 	        {
 	            // html += "<img src=\"images/"+ matrix[row][col] +".png\" onclick=\"checkPath(this, " + row + ", " + col + ")\">\n";
-	            html += "<img src=\"Public/Marvel2/images/"+ matrix[row][col] +".png\" row="+row+" col="+col+" class=\"icon\">\n";
-	            html +="<img src=\"Public/Marvel2/images/wrap.png\" class=\"wrap\">\n";
+	            html += "<img src=\"/Public/Marvel2/images/"+ matrix[row][col] +".png\" row="+row+" col="+col+" class=\"icon\">\n";
+	            html +="<img src=\"/Public/Marvel2/images/wrap.png\" class=\"wrap\">\n";
 	        }
 	        html += "</td>\n";
 	    }
@@ -135,8 +135,8 @@ function checkPath(o, x, y)
                     matrix[pathInfo[0].x][pathInfo[0].y] = 0;
                     matrix[pathInfo[1].x][pathInfo[1].y] = 0;
                     // 删除图片
-                    $(tempO).attr("src","Public/Marvel2/images/tm.png");
-                    $(o).attr("src","Public/Marvel2/images/tm.png");
+                    $(tempO).attr("src","/Public/Marvel2/images/tm.png");
+                    $(o).attr("src","/Public/Marvel2/images/tm.png");
                     //加分
                     score=score+20;
                     $("#score").text(score);
