@@ -48,11 +48,12 @@ img.bottom{position:absolute;width:100%;bottom:0;z-index: 1;}
 /*page3*/
 #prize1{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}
 img.prize-title{width:60%;padding-top:25%;margin:0 auto;display: block;}
-img.ticket{width:35%;padding-top:4%;margin:0 auto;display: block;}
-div.ticket-block{width:35%;margin:4% auto 0;display: block;background-color: #f1601d;border-radius: 5px;padding:10px;text-align:center;width:80%;}
-div.ticket-block h1{font-size: 18px;font-family: "宋体";letter-spacing: 3px;font-weight: normal;}
-div.ticket-block h2{font-size: 16px;font-family: "宋体";letter-spacing: 3px;padding-top:8px;font-weight: normal;}
-img.discount{width:90%;padding-top:4%;margin:0 auto;display: block;}
+img.ticket{width:35%;padding-top:10%;margin:0 auto;display: block;}
+/*div.ticket-block{width:35%;margin:4% auto 0;display: block;background-color: #f1601d;border-radius: 5px;padding:10px;text-align:center;width:80%;}*/
+div.ticket-block{width:35%;margin:3% auto 0;display: block;border-radius: 5px;padding:10px;text-align:center;width:80%;}
+div.ticket-block h1{font-size: 18px;font-family: "宋体";letter-spacing: 3px;}
+div.ticket-block h2{font-size: 16px;font-family: "宋体";letter-spacing: 3px;padding-top:8px;}
+img.discount{width:90%;padding-top:2%;margin:0 auto;display: block;}
 img.share_btn{display: block;position:absolute;width:64%;top:60%;left:18%;}
 
 #shareMask{position:fixed;width:90%;height:2000px;top:0;left:0;text-align:right;padding-right:10%;background:rgba(0, 0, 0, 0.38)!important;z-index: 100;display: none;}
