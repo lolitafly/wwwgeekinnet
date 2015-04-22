@@ -17,6 +17,7 @@ class KuaidiquanModel extends Model {
 		
 		unset($cdt);
 		//查找新的
+		$cdt['state']=1;
 		if(rand(1,2)==1){
 			$cdt['id']=array('gt',100000);
 			$cdt['id']=array('elt',200000);

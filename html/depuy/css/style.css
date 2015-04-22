@@ -7,10 +7,12 @@
 .whitebg{background-color: #fff;}
 .tmbg{background-color: rgba(255,255,255, 0.38)!important;;}
 
-.arrow{animation:up 1.5s ease-in infinite;-webkit-animation:up 1.5s ease-in infinite}
-@keyframes up{0%{transform:translateY(0);opacity:0}50%{transform:translateY(20px);opacity:1}100%{transform:translateY(40px);opacity:0}}
-@-webkit-keyframes up{0%{-webkit-transform:translateY(0);opacity:0}50%{-webkit-transform:translateY(20px);opacity:1}100%{-webkit-transform:translateY(40px);opacity:0}}
-.arrow{position:absolute;width:10%;bottom:40px;left:45%;}
+.arrow{animation:down 1.5s ease-in infinite;-webkit-animation:down 1.5s ease-in infinite}
+@keyframes up{0%{transform:translateY(40);opacity:0}50%{transform:translateY(20px);opacity:1}100%{transform:translateY(0px);opacity:0}}
+@-webkit-keyframes up{0%{-webkit-transform:translateY(40);opacity:0}50%{-webkit-transform:translateY(20px);opacity:1}100%{-webkit-transform:translateY(0px);opacity:0}}
+@keyframes down{0%{transform:translateY(0);opacity:0}50%{transform:translateY(-20px);opacity:1}100%{transform:translateY(-40px);opacity:0}}
+@-webkit-keyframes down{0%{-webkit-transform:translateY(0);opacity:0}50%{-webkit-transform:translateY(-20px);opacity:1}100%{-webkit-transform:translateY(-40px);opacity:0}}
+.arrow{position:absolute;width:10%;bottom:5px;left:45%;}
 /*page1*/
 #page1{background:url(../images/p1_bg.png) 50% 0 no-repeat;background-size:cover;background-position:bottom;text-align:center;position:relative;}
 #page1 div.main{width:90%;margin:0 auto 0;padding-top:5%;position:relative;z-index: 10;}
@@ -31,10 +33,10 @@
 /*page2 过渡页*/
 #page2{background:#fff;background-size:cover;background-position:top;text-align:center;position:relative;}
 #page2 img{display:block;}
-.p2_logo{width:85%;margin:0 auto;padding-top:8%;z-index: 100;}
+.p2_logo{width:88%;margin:0 0 0 6%;padding-top:8%;z-index: 100;}
 div.content-block{width:100%;margin-top:25px;position:relative;}
 .p2_bgimg{width:155%;margin-left:-47%;}
-.p2_title{width:35.6%;z-index: 10;position: absolute;top:0;left:12.5%;}
+.p2_title{width:35.4%;z-index: 10;position: absolute;top:0;left:12.7%;}
 /*#p2_title{width:21.6%;padding-top:50%;padding-left:18%;}*/
 
 /*page3*/

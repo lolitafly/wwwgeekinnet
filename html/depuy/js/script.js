@@ -93,22 +93,18 @@ $(document).on("pagebeforeshow", "#page3", function() {
 	//隐藏
 	$('#p3_title').css("visibility","hidden");
 	$('#p3_logo1').css("visibility","hidden");
-	// $('#p3_p1').css("visibility","hidden");
 	$('#p3_logo2').css("visibility","hidden");
-	// $('#p3_p2').css("visibility","hidden");
 	$('#p3_t1').css("visibility","hidden");
 	$('#p3_t2').css("visibility","hidden");
 	$('#p3_t3').css("visibility","hidden");
-	
+	$('#page3 img.arrow').hide();
 	//重置动画
+	$('#p3_title').removeClass("animated zoomIn");
 	$('#p3_logo1').removeClass("animated fadeInRight");
-	$('#p3_p1').removeClass("animated fadeInRight");
 	$('#p3_logo2').removeClass("animated fadeInLeft");
 	$('#p3_t1').removeClass("animated fadeInLeft");
 	$('#p3_t2').removeClass("animated fadeInLeft");
 	$('#p3_t3').removeClass("animated fadeInLeft");
-	$('#p3_p2').removeClass("animated fadeInRight");
-	$('#p3_title').removeClass("animated zoomIn");
 	
 	//动画时间轴
 	$('#p3_title').css("visibility","visible");
@@ -117,10 +113,6 @@ $(document).on("pagebeforeshow", "#page3", function() {
 		$('#p3_logo1').css("visibility","visible");
 		$('#p3_logo1').addClass('animated fadeInRight');
 	},700);
-	setTimeout(function(){
-		// $('#p3_p1').css("visibility","visible");
-		// $('#p3_p1').addClass('animated fadeInRight');
-	},1200);
 	setTimeout(function(){
 		$('#p3_logo2').css("visibility","visible");
 		$('#p3_logo2').addClass('animated fadeInLeft');
@@ -138,9 +130,8 @@ $(document).on("pagebeforeshow", "#page3", function() {
 		$('#p3_t3').addClass('animated fadeInLeft');
 	},3800);
 	setTimeout(function(){
-		// $('#p3_p2').css("visibility","visible");
-		// $('#p3_p2').addClass('animated fadeInRight');
-	},5000);
+		$('#page3 img.arrow').show();
+	},4400);
 	
 });
 
@@ -151,7 +142,7 @@ $(document).on("pagebeforeshow", "#page5", function() {
 	$('#p5_t1').css("visibility","hidden");
 	$('#p5_t2').css("visibility","hidden");
 	$('#p5_t3').css("visibility","hidden");
-	
+	$('#page5 img.arrow').hide();
 	//重置动画
 	$('#p5_title').removeClass("animated zoomIn");
 	$('#p5_logo').removeClass("animated fadeInRight");
@@ -178,6 +169,9 @@ $(document).on("pagebeforeshow", "#page5", function() {
 		$('#p5_t3').css("visibility","visible");
 		$('#p5_t3').addClass('animated fadeInUp');
 	},2600);
+	setTimeout(function(){
+		$('#page5 img.arrow').show();
+	},3200);
 });
 
 $(document).on("pagebeforeshow", "#page7", function() {
@@ -188,7 +182,7 @@ $(document).on("pagebeforeshow", "#page7", function() {
 	$('#p7_t1').css("visibility","hidden");
 	$('#p7_t2').css("visibility","hidden");
 	$('#p7_t3').css("visibility","hidden");
-	
+	$('#page7 img.arrow').hide();
 	//重置动画
 	$('#p7_title').removeClass("animated zoomIn");
 	$('#p7_sub').removeClass("animated fadeInRight");
@@ -220,6 +214,9 @@ $(document).on("pagebeforeshow", "#page7", function() {
 		$('#p7_t3').css("visibility","visible");
 		$('#p7_t3').addClass('animated fadeInUp');
 	},2600);
+	setTimeout(function(){
+		$('#page7 img.arrow').show();
+	},3200);
 });
 
 $(document).on("pagebeforeshow", "#page9", function() {
@@ -230,7 +227,7 @@ $(document).on("pagebeforeshow", "#page9", function() {
 	$('#p9_t2').css("visibility","hidden");
 	$('#p9_t3').css("visibility","hidden");
 	$('#p9_t4').css("visibility","hidden");
-	
+	$('#page9 img.arrow').hide();
 	//重置动画
 	$('#p9_title').removeClass("animated zoomIn");
 	$('#p9_logo').removeClass("animated fadeInLeft");
@@ -262,6 +259,9 @@ $(document).on("pagebeforeshow", "#page9", function() {
 		$('#p9_t4').css("visibility","visible");
 		$('#p9_t4').addClass('animated fadeInUp');
 	},3200);
+	setTimeout(function(){
+		$('#page9 img.arrow').show();
+	},3600);
 });
 
 $(document).on("pagebeforeshow", "#page11", function() {
@@ -274,7 +274,7 @@ $(document).on("pagebeforeshow", "#page11", function() {
 	$('#p11_t3').css("visibility","hidden");
 	$('#p11_t4').css("visibility","hidden");
 	$('#p11_t5').css("visibility","hidden");
-	
+	$('#page11 img.arrow').hide();
 	//重置动画
 	$('#p11_title').removeClass("animated zoomIn");
 	$('#p11_logo1').removeClass("animated fadeInRight");
@@ -316,6 +316,9 @@ $(document).on("pagebeforeshow", "#page11", function() {
 		$('#p11_t3').css("visibility","visible");
 		$('#p11_t3').addClass('animated fadeInUp');
 	},2600);
+	setTimeout(function(){
+		$('#page11 img.arrow').show();
+	},3200);
 });
 
 $(document).on("pagebeforeshow", "#page13", function() {
@@ -330,7 +333,7 @@ $(document).on("pagebeforeshow", "#page13", function() {
 	$('#p13_t4').css("visibility","hidden");
 	$('#p13_t5').css("visibility","hidden");
 	$('#p13_t6').css("visibility","hidden");
-	
+	$('#page13 img.arrow').hide();
 	//重置动画
 	$('#p13_title').removeClass("animated zoomIn");
 	$('#p13_sub').removeClass("animated fadeInRight");
@@ -382,6 +385,9 @@ $(document).on("pagebeforeshow", "#page13", function() {
 		$('#p13_t6').css("visibility","visible");
 		$('#p13_t6').addClass('animated fadeInUp');
 	},3100);
+	setTimeout(function(){
+		$('#page13 img.arrow').show();
+	},3700);
 });
 
 $(document).on("pagebeforeshow", "#page15", function() {
@@ -391,7 +397,7 @@ $(document).on("pagebeforeshow", "#page15", function() {
 	$('#p15_logo2').css("visibility","hidden");
 	$('#p15_logo3').css("visibility","hidden");
 	$('#p15_logo4').css("visibility","hidden");
-	
+	$('#page15 img.arrow').hide();
 	//重置动画
 	$('#p15_title').removeClass("animated zoomIn");
 	$('#p15_logo1').removeClass("animated fadeInRight");
@@ -418,6 +424,9 @@ $(document).on("pagebeforeshow", "#page15", function() {
 		$('#p15_logo4').css("visibility","visible");
 		$('#p15_logo4').addClass('animated fadeInUp');
 	},2000);
+	setTimeout(function(){
+		$('#page15 img.arrow').show();
+	},2600);
 });
 
 $(document).on("pagebeforeshow", "#page17", function() {
@@ -431,7 +440,7 @@ $(document).on("pagebeforeshow", "#page17", function() {
 	$('#p17_logo5').css("visibility","hidden");
 	$('#p17_logo6').css("visibility","hidden");
 	$('#p17_logo7').css("visibility","hidden");
-	
+	$('#page17 img.arrow').hide();
 	//重置动画
 	$('#p17_title').removeClass("animated zoomIn");
 	$('#p17_sub').removeClass("animated fadeInLeft");
@@ -478,6 +487,9 @@ $(document).on("pagebeforeshow", "#page17", function() {
 		$('#p17_logo7').css("visibility","visible");
 		$('#p17_logo7').addClass('animated fadeInRight');
 	},5600);
+	setTimeout(function(){
+		$('#page17 img.arrow').show();
+	},6200);
 });
 
 $(document).on("pagebeforeshow", "#page19", function() {
@@ -485,7 +497,7 @@ $(document).on("pagebeforeshow", "#page19", function() {
 	$('#p19_title').css("visibility","hidden");
 	$('#p19_logo1').css("visibility","hidden");
 	$('#p19_logo2').css("visibility","hidden");
-	
+	$('#page19 img.arrow').hide();
 	//重置动画
 	$('#p19_title').removeClass("animated zoomIn");
 	$('#p19_logo1').removeClass("animated fadeInRight");
@@ -502,6 +514,9 @@ $(document).on("pagebeforeshow", "#page19", function() {
 		$('#p19_logo2').css("visibility","visible");
 		$('#p19_logo2').addClass('animated fadeInLeft');
 	},700);
+	setTimeout(function(){
+		$('#page19 img.arrow').show();
+	},1300);
 });
 
 $(document).on("pagebeforeshow", "#page21", function() {
@@ -569,7 +584,7 @@ $(document).ready(function() {
 		w=tw;
 	}
 	//page2
-	$(".p2_title").css("padding-top",w*0.55+"px");
+	$(".p2_title").css("padding-top",w*0.51+"px");
 });
 
 //动态交互
