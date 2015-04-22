@@ -4,6 +4,13 @@ use Think\Model;
 class KuaidiquanModel extends Model {
 	
 	public function getCode(){
+		$rr=$this->field('id,code,price')->find();
+	
+		return $rr;
+	}
+	
+	
+	public function getCode1(){
 		//查找发过的
 		$now=time();
 		$hourBefore=$now-1*60*60;//同一IP一小时只能领取一张

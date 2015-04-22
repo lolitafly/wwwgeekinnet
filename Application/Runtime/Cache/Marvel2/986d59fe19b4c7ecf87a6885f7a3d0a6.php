@@ -85,7 +85,6 @@
                 "/Public/Marvel2/images/3.png",
                 "/Public/Marvel2/images/4.png",
                 "/Public/Marvel2/images/5.png",
-                "/Public/Marvel2/images/6.png",
                 "/Public/Marvel2/images/number/0.png",
                 "/Public/Marvel2/images/number/1.png",
                 "/Public/Marvel2/images/number/2.png",

@@ -9,7 +9,7 @@ var rowImageNum = 5;
 // 每列图片数量
 var colImageNum = 6;
 // 图片类型数量
-var imageTypeNum = 6;
+var imageTypeNum = 5;
 
 // 行数
 var rowNum = rowImageNum + 2;
