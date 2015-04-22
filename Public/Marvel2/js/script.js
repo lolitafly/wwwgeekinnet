@@ -168,16 +168,18 @@ var h = $(window).height();
 $(document).ready(function() {
 	console.log("widht:" + w + ";height:" + h);
 	if(w>900){
-		console.log("桌面");
-		console.log($("div[data-role='page']"));
 		$("body").width(700);
 		$("body").css("margin","0 auto");
 	}
 	
 	// page1
 	$("div.startBtn-group").css("margin-top",w*1.25 + "px");
-	if(h<500){
-		$(".rule-mask h1").css("margin-top",8 + "px");
+	if(h<490){//iphone4
+		$("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
+		$("div.startBtn-group").css("margin-top",w*1.12 + "px");
+		$(".rule-mask h1").css("margin-top",15 + "px");
+		$(".rule-mask h1").css("font-size",22 + "px");
+		$(".rule-mask ol li").css("font-size",18 + "px");
 		$(".rule-mask ol").css("margin-top",8 + "px");
 		$(".rule-mask img").css("margin-top",10 + "px");
 	}
@@ -188,6 +190,11 @@ $(document).ready(function() {
 	var top=meterw*14/533;
 	$("div.meterBar").height(th);
 	$("div.meterBar").css("top",top+"px");
+	if(h<490){//iphone4
+		$("#main").css('width',"90%");
+		$("#main").css('margin',"12px auto 0");
+	}
+	
 	// page3
 	$(".prize-box").css("margin-top",w*120/350+"px");
 	
