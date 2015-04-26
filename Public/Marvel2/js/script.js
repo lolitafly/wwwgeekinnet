@@ -1,8 +1,21 @@
-var totaltime = 20;
+var totaltime = 30;
 var temptime=0;
 var score = 0;
 var mytimer;
 var jumpTimer;
+
+var shareCounter=0;
+
+function isFirstLoad(){
+	shareCounter++;
+	if(shareCounter==1){
+		$.mobile.changePage("#start", {
+			transition : "none"
+		});
+		shareCounter++;
+	}
+}
+
 //倒计时对象
 $(document).ready(function() {
 	// $.mobile.hidePageLoadingMsg();
@@ -32,20 +45,20 @@ $(document).ready(function() {
 	
 	
 	//page3
-	$("#share_btn").bind("click", function(e) {
-		e.stopPropagation();
-		$("#shareMask").show();
-		if(!jumpTimer){
-			jumpTimer=setTimeout(function() {
-				$.mobile.changePage("#prize2", {
-					transition : "flip"
-				});
-			}, 5000);
-		}
-	});
-	$("#shareMask").bind("click", function() {
-		$("#shareMask").hide();
-	});
+	// $("#share_btn").bind("click", function(e) {
+		// e.stopPropagation();
+		// $("#shareMask").show();
+		// if(!jumpTimer){
+			// jumpTimer=setTimeout(function() {
+				// $.mobile.changePage("#prize2", {
+					// transition : "flip"
+				// });
+			// }, 5000);
+		// }
+	// });
+	// $("#shareMask").bind("click", function() {
+		// $("#shareMask").hide();
+	// });
 });
 
 $(document).on("pagebeforecreate", function() {
@@ -63,6 +76,10 @@ function loadImg() {
 	}
 }
 
+$(document).on("pagebeforeshow", "#start", function() {
+	shareCounter=2;
+});
+
 //离开游戏页时
 $(document).on("pagehide", "#game", function() {
 	$(".meter span").stop();
@@ -73,6 +90,7 @@ $(document).on("pagehide", "#game", function() {
 
 //游戏页面进入时
 $(document).on("pagebeforeshow", "#game", function() {
+	isFirstLoad();
 	$("#result-mask").hide();
 	initial();
 	gameReset();
@@ -82,20 +100,21 @@ $(document).on("pagebeforeshow", "#game", function() {
 
 //进入领奖页1时
 $(document).on("pagebeforeshow", "#prize1", function() {
+	isFirstLoad();
 	$("#shareMask").hide();
-	document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
+	//document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
 });
 
 //离开领奖页1时
 $(document).on("pagehide", "#prize1", function() {
-	document.title = '超级英雄连连看';
+	//document.title = '超级英雄连连看';
 	clearTimeout(jumpTimer);
 	jumpTimer=null;
 });
 
 //进入领奖页2时
 $(document).on("pagebeforeshow", "#prize2", function() {
-	
+	isFirstLoad();	
 });
 
 function initial() {
@@ -158,6 +177,7 @@ function setTimeUpContent(){
 	}else{
 		$("#inputForm").hide();
 		$("#hint").show();
+		$("#getprize_btn").attr("src","/Public/Marvel2/images/game_btn2.png");
 	}
 }
 
@@ -167,22 +187,24 @@ var w = $(window).width();
 var h = $(window).height();
 $(document).ready(function() {
 	console.log("widht:" + w + ";height:" + h);
-	if(w>900){
-		$("body").width(700);
-		$("body").css("margin","0 auto");
-	}
+	// if(w>900){
+		// $("body").width(700);
+		// $("body").css("margin","0 auto");
+	// }
+	$("#start").height(w/640*1136+"px");
+	$("#prize1").height(w/640*1136+"px");
 	
 	// page1
 	$("div.startBtn-group").css("margin-top",w*1.25 + "px");
-	if(h<490){//iphone4
-		$("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
-		$("div.startBtn-group").css("margin-top",w*1.12 + "px");
-		$(".rule-mask h1").css("margin-top",15 + "px");
-		$(".rule-mask h1").css("font-size",22 + "px");
-		$(".rule-mask ol li").css("font-size",18 + "px");
-		$(".rule-mask ol").css("margin-top",8 + "px");
-		$(".rule-mask img").css("margin-top",10 + "px");
-	}
+	// if(h<490){//iphone4
+		// $("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
+		// $("div.startBtn-group").css("margin-top",w*1.12 + "px");
+		// $(".rule-mask h1").css("margin-top",15 + "px");
+		// $(".rule-mask h1").css("font-size",22 + "px");
+		// $(".rule-mask ol li").css("font-size",18 + "px");
+		// $(".rule-mask ol").css("margin-top",8 + "px");
+		// $(".rule-mask img").css("margin-top",10 + "px");
+	// }
 	//page2
 	$("#game-head div.top").height(h*0.07);
 	var meterw=w*0.85;
@@ -193,10 +215,11 @@ $(document).ready(function() {
 	if(h<490){//iphone4
 		$("#main").css('width',"90%");
 		$("#main").css('margin',"12px auto 0");
+		$("#result-mask").css("top","0");
 	}
 	
 	// page3
-	$(".prize-box").css("margin-top",w*120/350+"px");
+	// $(".prize-box").css("margin-top",w*120/350+"px");
 	
 });
 

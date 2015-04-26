@@ -27,9 +27,7 @@ class KuaidiquanModel extends Model {
 		$cdt['state']=1;
 		if(rand(1,2)==1){
 			$cdt['id']=array('gt',100000);
-			$cdt['id']=array('elt',200000);
 		}else{
-			$cdt['id']=array('egt',1);
 			$cdt['id']=array('elt',100000);
 		}
 		$rr=$this->field('id,code,price')->where($cdt)->find();

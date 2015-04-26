@@ -23,8 +23,8 @@ class UserModel extends Model {
 	public function getScore(){
 		$today=date('Y-m-d',time());
     	$cdt['createDate']=array('egt',$today);
-		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->order('max(score),createDate desc')->limit(30)->select();
-		$score=count($list)>29?$list[0]['max(score)']:0;
+		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->order('max(score),createDate desc')->limit(500)->select();
+		$score=count($list)>499?$list[0]['max(score)']:0;
 		if($score==0)$score=10;
 		return $score;
 	}

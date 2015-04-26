@@ -1,8 +1,21 @@
-var totaltime = 20;
+var totaltime = 30;
 var temptime=0;
 var score = 0;
 var mytimer;
 var jumpTimer;
+
+var shareCounter=0;
+
+function isFirstLoad(){
+	shareCounter++;
+	if(shareCounter==1){
+		$.mobile.changePage("#start", {
+			transition : "none"
+		});
+		shareCounter++;
+	}
+}
+
 //倒计时对象
 $(document).ready(function() {
 	// $.mobile.hidePageLoadingMsg();
@@ -62,6 +75,9 @@ function loadImg() {
 	}
 }
 
+$(document).on("pagebeforeshow", "#start", function() {
+	shareCounter=2;
+});
 
 //离开游戏页时
 $(document).on("pagehide", "#game", function() {
@@ -73,6 +89,7 @@ $(document).on("pagehide", "#game", function() {
 
 //游戏页面进入时
 $(document).on("pagebeforeshow", "#game", function() {
+	isFirstLoad();
 	$("#result-mask").hide();
 	initial();
 	gameReset();
@@ -82,20 +99,21 @@ $(document).on("pagebeforeshow", "#game", function() {
 
 //进入领奖页1时
 $(document).on("pagebeforeshow", "#prize1", function() {
+	isFirstLoad();
 	$("#shareMask").hide();
-	document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
+	//document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
 });
 
 //离开领奖页1时
 $(document).on("pagehide", "#prize1", function() {
-	document.title = '超级英雄连连看';
+	//document.title = '超级英雄连连看';
 	clearTimeout(jumpTimer);
 	jumpTimer=null;
 });
 
 //进入领奖页2时
 $(document).on("pagebeforeshow", "#prize2", function() {
-	
+	isFirstLoad();
 });
 
 function initial() {
@@ -159,24 +177,28 @@ var w = $(window).width();
 var h = $(window).height();
 $(document).ready(function() {
 	console.log("widht:" + w + ";height:" + h);
-	if(w>h){
-		var tw=h*0.56;
-		$("body").width(tw);
-		$("body").css("margin","0 auto");
-		w=tw;
-	}
+	// if(w>h){
+		// var tw=h*0.56;
+		// $("body").width(tw);
+		// $("body").css("margin","0 auto");
+		// w=tw;
+	// }
+	
+	$("#start").height(w/640*1135+"px");
+	// $("#prize1").height(w/640*1135+"px");
+	// $("#prize2").height(w/640*1135+"px");
 	
 	// page1
 	$("div.startBtn-group").css("margin-top",w*1.25 + "px");
-	if(h<490){
-		// $("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
-		$("div.startBtn-group").css("margin-top",w*1.1 + "px");
-		$(".rule-mask h1").css("margin-top",15 + "px");
-		$(".rule-mask h1").css("font-size",22 + "px");
-		$(".rule-mask ol li").css("font-size",18 + "px");
-		$(".rule-mask ol").css("margin-top",8 + "px");
-		$(".rule-mask img").css("margin-top",10 + "px");
-	}
+	// if(h<490){
+		// // $("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
+		// $("div.startBtn-group").css("margin-top",w*1.1 + "px");
+		// $(".rule-mask h1").css("margin-top",15 + "px");
+		// $(".rule-mask h1").css("font-size",22 + "px");
+		// $(".rule-mask ol li").css("font-size",18 + "px");
+		// $(".rule-mask ol").css("margin-top",8 + "px");
+		// $(".rule-mask img").css("margin-top",10 + "px");
+	// }
 	//page2
 	$("#game-head div.top").height(h*0.07);
 	var meterw=w*0.85;
@@ -188,8 +210,8 @@ $(document).ready(function() {
 		$("#main").css('width',"90%");
 		$("#main").css('margin',"12px auto 0");
 	}
-	// page3
-	$("#share_btn").css("top",w*1.093+"px");
+	// // page3
+	// $("#share_btn").css("top",w*1.093+"px");
 });
 
 

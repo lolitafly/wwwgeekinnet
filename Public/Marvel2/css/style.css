@@ -15,6 +15,7 @@
 .rule-mask ol li{text-align:left;font-size: 20px;padding:3px 0;text-align: justify;letter-spacing:2px;}
 .rule-mask img{width:50%;margin-top:30px;}
 #start div.imgstore{display:none;}
+img.logo2{position:absolute;width:15%;top:70.5%;left:5%;}
 
 /*page2*/
 #game{position:relative;background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;}
@@ -37,7 +38,8 @@
 #game img.bar{width:100%;display: block;height:5px;}
 img.bottom{position:absolute;width:100%;bottom:0;z-index: 1;}
 
-.result-mask{position:absolute;top:30%;left:0;background:rgba(0, 0, 0, 0.68)!important;width:100%;z-index: 100;padding:40px 0;display:none;}
+.result-mask{position:absolute;top:5%;left:0;background:rgba(0, 0, 0, 0.68)!important;width:100%;z-index: 100;padding:10px 0 30px;display:none;}
+.result-mask img.package{width:80%;padding-left:10%;}
 .result-mask h1{margin:0 auto;width:80%;font-size:28px;text-align:center;}
 .result-mask div.inputForm{width:80%;margin:15px auto 0;}
 .result-mask div.inputForm p{font-size:16px;}
@@ -47,17 +49,24 @@ img.bottom{position:absolute;width:100%;bottom:0;z-index: 1;}
 
 
 /*page3*/
-#prize1{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}
-.prize-box{width:80%;margin:30px auto 0;}
-.prize-box h1{font-size:20px;font-weight: normal;text-align: justify;}
-.prize-box img.share_btn{width:100%;margin-top:20px;}
+/*#prize1{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}*/
+#prize1{position:relative;}
+.bg{width:100%;display:block}
+img.logo1{position:absolute;width:15%;top:2%;left:5%;}
+
+.prize-box{position:absolute;width:80%;top:15%;left:10%;}
+.prize-box h1{font-size:16px;font-weight: normal;text-align: justify;line-height: 1.5em;}
+.prize-box img.usage{width:100%;margin-top:10px;}
+.prize-box img.share_btn{width:100%;margin-top:10px;}
+
 
 #shareMask{position:fixed;width:90%;height:2000px;top:0;left:0;text-align:right;padding-right:10%;background:rgba(0, 0, 0, 0.38)!important;z-index: 100;display: none;}
 #shareMask img{display: inline-block;width:25%;}
 #shareMask p{text-align:right;margin:0;}
 
 /*page4*/
-#prize2{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}
+/*#prize2{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}*/
+#prize2{position:relative;}
 .twoBtns{overflow:hidden;width:100%;margin:20px auto 0;}
 .twoBtns img{width:45%;}
 

@@ -8,12 +8,14 @@ class IndexController extends Controller {
     	//快的打车券
     	$tickt=D('Kuaidiquan')->getCode();
     	//奖品顺序随机
-    	$prize1="恭喜！获得商城购物券一份！代码为：000001";
-    	$prize2="恭喜！获得快的".$tickt['price']."元专车券一张！代码为：".$tickt['code'];
+    	$prize1="恭喜英雄！获得吉列天猫商城优惠券一份！长按复制编码<br/>编码为：000001";
+    	$prize2="恭喜英雄！获得一号专车".$tickt['price']."元专车券一张！长按复制编码<br/>编码为：".$tickt['code'];
     	if(rand(1,2)==1){
+    		$this->assign('flag',"1");
     		$this->assign('prize1',$prize1);
     		$this->assign('prize2',$prize2);
     	}else{
+    		$this->assign('flag',"2");
     		$this->assign('prize1',$prize2);
     		$this->assign('prize2',$prize1);
     	}
