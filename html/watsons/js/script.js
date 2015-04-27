@@ -4,17 +4,6 @@ var score = 0;
 var mytimer;
 var jumpTimer;
 
-var shareCounter=0;
-
-function isFirstLoad(){
-	shareCounter++;
-	if(shareCounter==1){
-		$.mobile.changePage("#start", {
-			transition : "none"
-		});
-		shareCounter++;
-	}
-}
 
 //倒计时对象
 $(document).ready(function() {
@@ -76,7 +65,7 @@ function loadImg() {
 }
 
 $(document).on("pagebeforeshow", "#start", function() {
-	shareCounter=2;
+
 });
 
 //离开游戏页时
@@ -89,7 +78,6 @@ $(document).on("pagehide", "#game", function() {
 
 //游戏页面进入时
 $(document).on("pagebeforeshow", "#game", function() {
-	isFirstLoad();
 	$("#result-mask").hide();
 	initial();
 	gameReset();
@@ -99,21 +87,18 @@ $(document).on("pagebeforeshow", "#game", function() {
 
 //进入领奖页1时
 $(document).on("pagebeforeshow", "#prize1", function() {
-	isFirstLoad();
 	$("#shareMask").hide();
-	//document.title = '超级英雄连连看我的分数为' + score + ",求超越！";
 });
 
 //离开领奖页1时
 $(document).on("pagehide", "#prize1", function() {
-	//document.title = '超级英雄连连看';
 	clearTimeout(jumpTimer);
 	jumpTimer=null;
 });
 
 //进入领奖页2时
 $(document).on("pagebeforeshow", "#prize2", function() {
-	isFirstLoad();
+
 });
 
 function initial() {

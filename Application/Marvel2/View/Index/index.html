@@ -19,6 +19,10 @@
 				    // event.preventDefault();
 				// });
 				
+				$.mobile.changePage("#start", {
+					transition : "none"
+				});
+				
 				$.mobile.showPageLoadingMsg('a', "加载中...");
 				preload();
 				$.mobile.hidePageLoadingMsg();
