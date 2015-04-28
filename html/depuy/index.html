@@ -14,9 +14,32 @@
 		<script src="js/jquery.color.min.js"></script>
 		<script src="js/jquery.animateNumber.min.js"></script>
 		<script src="js/script.js"></script>
+		<script>
+			var musicState=1;
+			$(document).ready(function(){
+				var musicHtml="<img src=\"images/music.png\" class=\"musicicon musicplay\"/>";
+				// $("div[data-role='page']").append(musicHtml);
+				
+				var audio = document.getElementById('music'); 
+				$(".musicicon").bind("tap",function(){
+					if(musicState==1){
+						audio.pause();
+						$(".musicicon").removeClass("musicplay");
+						musicState=0;
+					}else{
+						audio.play();
+						$(".musicicon").addClass("musicplay");
+						musicState=1;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
+		<!-- <audio id="music" src="music.mp3" autoplay="autoplay" loop="loop"></audio>  -->
+		<!-- <embed id="m_bg_music"  loop=true  volume="60" autostart=true hidden=true src="music.mp3" style="width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;"/> -->
 		<div data-role="page" id="page1">
+			<!-- <img src="images/music.png" class="musicicon musicplay"/> -->
 			<div class="main">
 				<img src="images/p1_logo.png" id="p1_logo"/>
 				<div class="content">
