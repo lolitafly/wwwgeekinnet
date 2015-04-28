@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>配致顺装备，与复联同战！打游戏，得吉列复仇者联盟英雄珍藏版套装</title>
+		<title>Gillette吉列英雄季，免费抽取复仇者联盟神系剃须刀，各种红包拿到手软！</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<link rel="stylesheet" href="/Public/Marvel2/css/jquery.mobile-1.3.2.min.css">
@@ -17,6 +17,10 @@
 			$(document).ready(function() {
 				// $('body').on('touchmove', function (event) {
 				    // event.preventDefault();
+				// });
+				
+				// $.mobile.changePage("#start", {
+					// transition : "none"
 				// });
 				
 				$.mobile.showPageLoadingMsg('a', "加载中...");
@@ -111,8 +115,10 @@
 				<ol>
 					<li>活动时间：5月1日-5月31日</li>
 					<li>游戏规则：30秒内找相同的盾牌，两个一组消除；</li>
-					<li>游戏结束后可获得10元或15元一号专车抵扣券及吉列天猫商城优惠券；</li>
-					<li>每天前100名有机会赢取吉列限量版英雄套装及《复仇者联盟2》观影礼票。</li>
+					<li>游戏结束后可获得10元或15元一号专车抵扣券及吉列京东商城优惠券；</li>
+					<li>每天前100名有机会赢取吉列限量版英雄套装，限量500套；</li>
+					<li>5月7日至5月11日每日游戏前一百名有机会获得《复仇者联盟2》观影礼票，仅限北上广地区；</li>
+					<li>同一IP地址下24小时内只能领取一份，请尽量不要使用多人共享WIFI进入游戏。</li>
 				</ol>
 				<img src="/Public/Marvel2/images/rule_close_btn.png" id="rule_close_btn"/>
 			</div>
@@ -158,10 +164,11 @@
 		<div data-role="page" id="prize1">
 			<img src="/Public/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"15%"); ?>">
-				<h1><?php echo ($prize1); ?></h1>
+			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"12%"); ?>">
+				<img src="/Public/Marvel2/images/prize_text<?php echo ($ticket["price"]); ?>.png" class="prize_text">
+				<h1>长按复制编码：<?php echo ($ticket["code"]); ?></h1>
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="1"?"none":"block"); ?>;"/>
-				<a href="#prize2" data-transition="flip"><img src="/Public/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/></a>
+				<img src="/Public/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/>
 			</div>
 			<div id="shareMask" class="shareMask">
 				<img src="/Public/Marvel2/images/shareImg.png" />
@@ -172,9 +179,10 @@
 		<div data-role="page" id="prize2">
 			<img src="/Public/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"15%"); ?>">
-				<h1><?php echo ($prize2); ?></h1>
-				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="1"?"none":"block"); ?>;"/>
+			<div class="prize-box" style="top:<?php echo ($flag=="2"?"13%":"15%"); ?>">
+				<img src="/Public/Marvel2/images/prize_text.png" class="prize_text">
+				<a href="http://app.jd.com/"><img src="/Public/Marvel2/images/jd_btn.png" class="jd_btn"/></a>
+				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="2"?"none":"block"); ?>;"/>
 				<div class="twoBtns">
 					<a href="#game" data-transition="flip"><img src="/Public/Marvel2/images/game_btn1.png" class="left" /></a>
 					<a href="/marvel2.php/Index/rank" data-ajax='false'><img src="/Public/Marvel2/images/rank_btn.png" class="right" /></a>

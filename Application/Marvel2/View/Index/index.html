@@ -115,8 +115,10 @@
 				<ol>
 					<li>活动时间：5月1日-5月31日</li>
 					<li>游戏规则：30秒内找相同的盾牌，两个一组消除；</li>
-					<li>游戏结束后可获得10元或15元一号专车抵扣券及吉列天猫商城优惠券；</li>
-					<li>每天前100名有机会赢取吉列限量版英雄套装及《复仇者联盟2》观影礼票。</li>
+					<li>游戏结束后可获得10元或15元一号专车抵扣券及吉列京东商城优惠券；</li>
+					<li>每天前100名有机会赢取吉列限量版英雄套装，限量500套；</li>
+					<li>5月7日至5月11日每日游戏前一百名有机会获得《复仇者联盟2》观影礼票，仅限北上广地区；</li>
+					<li>同一IP地址下24小时内只能领取一份，请尽量不要使用多人共享WIFI进入游戏。</li>
 				</ol>
 				<img src="__PUBLIC__/Marvel2/images/rule_close_btn.png" id="rule_close_btn"/>
 			</div>
@@ -162,10 +164,11 @@
 		<div data-role="page" id="prize1">
 			<img src="__PUBLIC__/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="__PUBLIC__/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:{$flag=="1"?"20%":"15%"}">
-				<h1>{$prize1}</h1>
+			<div class="prize-box" style="top:{$flag=="1"?"20%":"12%"}">
+				<img src="__PUBLIC__/Marvel2/images/prize_text{$ticket.price}.png" class="prize_text">
+				<h1>长按复制编码：{$ticket.code}</h1>
 				<img src="__PUBLIC__/Marvel2/images/usage.png" class="usage" style="display:{$flag=="1"?"none":"block"};"/>
-				<a href="#prize2" data-transition="flip"><img src="__PUBLIC__/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/></a>
+				<img src="__PUBLIC__/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/>
 			</div>
 			<div id="shareMask" class="shareMask">
 				<img src="__PUBLIC__/Marvel2/images/shareImg.png" />
@@ -176,9 +179,10 @@
 		<div data-role="page" id="prize2">
 			<img src="__PUBLIC__/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="__PUBLIC__/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:{$flag=="1"?"20%":"15%"}">
-				<h1>{$prize2}</h1>
-				<img src="__PUBLIC__/Marvel2/images/usage.png" class="usage" style="display:{$flag=="1"?"none":"block"};"/>
+			<div class="prize-box" style="top:{$flag=="2"?"13%":"15%"}">
+				<img src="__PUBLIC__/Marvel2/images/prize_text.png" class="prize_text">
+				<a href="http://app.jd.com/"><img src="__PUBLIC__/Marvel2/images/jd_btn.png" class="jd_btn"/></a>
+				<img src="__PUBLIC__/Marvel2/images/usage.png" class="usage" style="display:{$flag=="2"?"none":"block"};"/>
 				<div class="twoBtns">
 					<a href="#game" data-transition="flip"><img src="__PUBLIC__/Marvel2/images/game_btn1.png" class="left" /></a>
 					<a href="__URL__/rank" data-ajax='false'><img src="__PUBLIC__/Marvel2/images/rank_btn.png" class="right" /></a>

@@ -18,7 +18,7 @@ class KuaidiquanModel extends Model {
 	public function getCode1(){
 		//查找发过的
 		$now=time();
-		$hourBefore=$now-3*60*60;//同一IP一小时只能领取一张
+		$hourBefore=$now-24*60*60;//同一IP一小时只能领取一张
 		$cdt['ip']=get_client_ip();
 		$cdt['sendDate']=array('gt',$hourBefore);
 		$cdt['state']=0;
@@ -53,7 +53,7 @@ class KuaidiquanModel extends Model {
 	public function watsonsCode(){
 		//查找发过的
 		$now=time();
-		$hourBefore=$now-3*60*60;//同一IP一小时只能领取一张
+		$hourBefore=$now-24*60*60;//同一IP一小时只能领取一张
 		$cdt['ip']=get_client_ip();
 		$cdt['sendDate']=array('gt',$hourBefore);
 		$cdt['state']=0;

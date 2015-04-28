@@ -10,9 +10,9 @@
 .startBtn-group img.start_btn{width:100%;}
 .startBtn-group img.rule_btn{width:50%;}
 .rule-mask{position:absolute;top:0;left:0;background:rgba(0, 0, 0, 0.68)!important;width:100%;height:100%;text-align: center;display: none;}
-.rule-mask h1{font-size:24px;margin-top:30px;}
+.rule-mask h1{font-size:22px;margin-top:30px;}
 .rule-mask ol{width:80%;margin:20px 5% 0 15%;}
-.rule-mask ol li{text-align:left;font-size: 20px;padding:3px 0;text-align: justify;letter-spacing:2px;}
+.rule-mask ol li{text-align:left;font-size: 16px;padding:3px 0;text-align: justify;letter-spacing:2px;}
 .rule-mask img{width:50%;margin-top:30px;}
 #start div.imgstore{display:none;}
 img.logo2{position:absolute;width:15%;top:70.5%;left:5%;}
@@ -54,11 +54,12 @@ img.bottom{position:absolute;width:100%;bottom:0;z-index: 1;}
 .bg{width:100%;display:block}
 img.logo1{position:absolute;width:15%;top:2%;left:5%;}
 
-.prize-box{position:absolute;width:80%;top:15%;left:10%;}
-.prize-box h1{font-size:16px;font-weight: normal;text-align: justify;line-height: 1.5em;}
-.prize-box img.usage{width:100%;margin-top:10px;}
-.prize-box img.share_btn{width:100%;margin-top:10px;}
-
+.prize-box{position:absolute;width:80%;top:15%;left:10%;text-align: center;}
+.prize-box h1{font-size:16px;font-weight: normal;text-align: center;line-height: 1.5em;vertical-align: bottom;}
+.prize-box img.usage{width:100%;margin-top:4px;}
+.prize-box img.share_btn{width:100%;margin-top:4px;}
+.prize-box img.jd_btn{width:80%;margin:0 auto;}
+.prize-box img.prize_text{width:100%;margin:0 auto;}
 
 #shareMask{position:fixed;width:90%;height:2000px;top:0;left:0;text-align:right;padding-right:10%;background:rgba(0, 0, 0, 0.38)!important;z-index: 100;display: none;}
 #shareMask img{display: inline-block;width:25%;}
