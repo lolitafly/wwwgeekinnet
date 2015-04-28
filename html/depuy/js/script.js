@@ -529,6 +529,7 @@ $(document).on("pagebeforeshow", "#page21", function() {
 	$('#p21_p2').css("visibility","hidden");
 	$('#p21_p3').css("visibility","hidden");
 	$('#p21_p4').css("visibility","hidden");
+	$('#page21 img.arrow').hide();
 	
 	//重置动画
 	$('#p21_title').removeClass("animated zoomIn");
@@ -571,6 +572,9 @@ $(document).on("pagebeforeshow", "#page21", function() {
 		$('#p21_p4').css("visibility","visible");
 		$('#p21_p4').addClass('animated fadeIn');
 	},3200);
+	setTimeout(function(){
+		$('#page21 img.arrow').show();
+	},3800);
 });
 
 //调整样式
@@ -596,6 +600,11 @@ $(document).ready(function() {
 $(function() {
 	$("div[data-role='page']").swipe({
 		swipe : function(event, direction, distance, duration, fingerCount) {
+			if(direction == "up" && this.attr("id")=="page21"){
+				$.mobile.changePage("#page1", {
+					transition : "slideup"
+				});
+			}
 			var prevPageId=this.prev("div").attr("id");
 			var nextPageId=this.next("div").attr("id");
 			if (direction == "up") {
