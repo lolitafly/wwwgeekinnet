@@ -22,6 +22,20 @@
 					transition : "none"
 				});
 				
+				var param="watsons";
+				$.ajax({
+					url:'http://www.geek-in.net/marvel2.php/Index/watsons',
+					type:'post',
+					dataType:'json',
+					data:param,
+					cache:true,
+					success:function(r){
+						$("#code2").text("优惠编码："+r.code);
+					},
+					error:function(){
+					}
+				});
+				
 				$.mobile.showPageLoadingMsg('a', "加载中...");
 				preload();
 				$.mobile.hidePageLoadingMsg();
@@ -129,7 +143,7 @@
 		
 		<div data-role="page" id="prize2">
 			<img src="images/prize2_bg.jpg" class="bg"/>
-			<h1 class="code2">优惠编码：XXXXX</h1>
+			<h1 class="code2" id="code2">优惠编码：bk7zf6c67z</h1>
 			<div class="ticket-block2">
 				<img src="images/copy.png" class="copy_text"/>
 			</div>
