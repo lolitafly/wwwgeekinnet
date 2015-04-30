@@ -49,9 +49,24 @@
 	-webkit-animation-delay:1s;
 }
 
+.delay1p25{
+	animation-delay:1.25s;
+	-webkit-animation-delay:1.25s;
+}
+
+.delay1p5{
+	animation-delay:1.5s;
+	-webkit-animation-delay:1.5s;
+}
+
 .delay2{
 	animation-delay:2s;
 	-webkit-animation-delay:2s;
+}
+
+.delay2p5{
+	animation-delay:2.5s;
+	-webkit-animation-delay:2.5s;
 }
 
 .delay3{
@@ -59,9 +74,19 @@
 	-webkit-animation-delay:3s;
 }
 
+.delay3p5{
+	animation-delay:3.5s;
+	-webkit-animation-delay:3.5s;
+}
+
 .delay4{
 	animation-delay:4s;
 	-webkit-animation-delay:4s;
+}
+
+.delay4p5{
+	animation-delay:4.5s;
+	-webkit-animation-delay:4.5s;
 }
 
 .delay5{
@@ -69,9 +94,19 @@
 	-webkit-animation-delay:5s;
 }
 
+.delay5p5{
+	animation-delay:5.5s;
+	-webkit-animation-delay:5.5s;
+}
+
 .delay6{
 	animation-delay:6s;
 	-webkit-animation-delay:6s;
+}
+
+.delay6p5{
+	animation-delay:6.5s;
+	-webkit-animation-delay:6.5s;
 }
 
 .delay7{
@@ -79,14 +114,29 @@
 	-webkit-animation-delay:7s;
 }
 
+.delay7p5{
+	animation-delay:7.5s;
+	-webkit-animation-delay:7.5s;
+}
+
 .delay8{
 	animation-delay:8s;
 	-webkit-animation-delay:8s;
 }
 
+.delay8p5{
+	animation-delay:8.5s;
+	-webkit-animation-delay:8.5s;
+}
+
 .delay9{
 	animation-delay:9s;
 	-webkit-animation-delay:9s;
+}
+
+.delay9p5{
+	animation-delay:9.5s;
+	-webkit-animation-delay:9.5s;
 }
 
 /*

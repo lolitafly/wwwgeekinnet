@@ -63,7 +63,7 @@ div.bottom{position:absolute;bottom:0;left:0;width:100%;z-index: 0;}
 
 /*page4*/
 .p4_top{position:absolute;left:0;top:0;width:70%;}
-.p4_right{position:absolute;right:0;top:0;height:100%;}
+.p4_right{position:absolute;right:0;bottom:0;height:100%;}
 .p4_bottom{position:absolute;left:0;bottom:0;width:45%;}
 .p4_bottom img.p4_t3{position:absolute;top:25%;left:10%;width:63%;}
 .p4_content{position:absolute;top:13%;left:8%;width:50%;}
@@ -76,7 +76,7 @@ div.bottom{position:absolute;bottom:0;left:0;width:100%;z-index: 0;}
 .p5_top{position:absolute;left:0;top:0;width:30%;}
 .p5_right{position:absolute;right:0;top:30%;height:40%;}
 .p5_bottom{position:absolute;right:0;bottom:0;height:23%;}
-.p5_logo{position:absolute;left:5%;bottom:2%;width:27%;}
+.p5_logo{position:absolute;left:2%;bottom:2%;width:38%;}
 
 .p5_block{position:absolute;right:5%;top:6%;width:72%;;}
 .p5_title{width:72%;margin-left:28%;position:relative;}
@@ -98,7 +98,7 @@ div.bottom{position:absolute;bottom:0;left:0;width:100%;z-index: 0;}
 .p6_content img.text{width:85%;}
 .p6_content img.btn{width:100%;padding-top:15%;}
 .p6_content img.dept{width:90%;padding-top:5%;}
-.p6_content img.logo{width:90%;padding-top:15%;}
+.p6_content img.logo{width:140%;padding-top:15%;margin-left:-20%;}
 
 
 /*翻页提示*/
