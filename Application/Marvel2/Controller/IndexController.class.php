@@ -54,12 +54,15 @@ class IndexController extends Controller {
     }
     
     public function showInventory(){
-    	$cdt['id']=array('gt',100000);
+    	$cdt['price']=15;
     	$cdt['state']=1;
     	$rest15=M('kuaidiquan')->where($cdt)->count();
-    	$cdt['id']=array('lt',100000);
+    	$rest215=M('fifteen')->where($cdt)->count();
+    	$cdt['price']=10;
     	$rest10=M('kuaidiquan')->where($cdt)->count();
-    	echo "10元券剩余".$rest10."张\n"."15元券剩余".$rest15."张";
+    	$rest210=M('fifteen')->where($cdt)->count();
+    	echo "第一批券》》》》10元券剩余".$rest10."张\n"."15元券剩余".$rest15."张<br/>";
+    	echo "第二批券》》》》10元券剩余".$rest210."张\n"."15元券剩余".$rest215."张";
     }
     
 }
