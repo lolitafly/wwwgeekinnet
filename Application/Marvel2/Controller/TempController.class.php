@@ -2,7 +2,7 @@
 namespace Marvel2\Controller;
 use Think\Controller;
 header("Content-type: text/html; charset=utf-8");
-class IndexController extends Controller {
+class TempController extends Controller {
     public function index(){
     	//可获奖最低分
     	$this->assign('minScore',D('User')->getScore());
@@ -25,7 +25,6 @@ class IndexController extends Controller {
 //     		$this->assign('prize2',$prize1);
 //     	}
     	
-//     	$this->redirect('Temp/index');
     	$this->display();
     }
     

@@ -38,7 +38,7 @@
 					if(score>=minScore&&param.phone!=""){
 						if(check(param)){
 							$.ajax({
-								url:'/marvel2.php/Index/submit',
+								url:'/marvel2.php/Temp/submit',
 								type:'post',
 								dataType:'json',
 								data:param,
@@ -189,7 +189,7 @@
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="2"?"none":"block"); ?>;"/>
 				<div class="twoBtns">
 					<a href="#game" data-transition="flip"><img src="/Public/Marvel2/images/game_btn1.png" class="left" /></a>
-					<a href="/marvel2.php/Index/rank" data-ajax='false'><img src="/Public/Marvel2/images/rank_btn.png" class="right" /></a>
+					<a href="/marvel2.php/Temp/rank" data-ajax='false'><img src="/Public/Marvel2/images/rank_btn.png" class="right" /></a>
 				</div>
 			</div>
 		</div>
