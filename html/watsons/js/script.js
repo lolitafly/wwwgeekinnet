@@ -13,12 +13,12 @@ $(document).ready(function() {
 	$("#rule_btn").bind("tap", function() {
 		setTimeout(function() {
 			$(".rule-mask").show();
-		}, 100);
+		}, 500);
 	});
 	$("#rule_close_btn").bind("tap", function() {
 		setTimeout(function() {
 			$(".rule-mask").hide();
-		}, 200);
+		}, 500);
 	});
 	
 	//page2
