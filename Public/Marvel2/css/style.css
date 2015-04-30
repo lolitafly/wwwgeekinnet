@@ -18,7 +18,10 @@
 img.logo2{position:absolute;width:15%;top:70.5%;left:5%;}
 
 /*page2*/
-#game{position:relative;background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;}
+/*#game{position:relative;background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;}*/
+#game{position:relative;}
+#game div.game_content{position:absolute;top:0;left:0;}
+
 #game-head{background: url(../images/game_top_bg.png);padding-bottom:1%;}
 #game-head div.top{height:50px;overflow: hidden;width:83%;padding:2% 2% 0 15%;}
 #game-head div.top img{height:100%;display: inline-block;border: 0;}
@@ -54,12 +57,13 @@ img.bottom{position:absolute;width:100%;bottom:0;z-index: 1;}
 .bg{width:100%;display:block}
 img.logo1{position:absolute;width:15%;top:2%;left:5%;}
 
-.prize-box{position:absolute;width:80%;top:15%;left:10%;text-align: center;}
+.prize-box{position:absolute;width:80%;top:50%;left:10%;text-align: center;}
 .prize-box h1{font-size:16px;font-weight: normal;text-align: center;line-height: 1.5em;vertical-align: bottom;}
 .prize-box img.usage{width:100%;margin-top:4px;}
 .prize-box img.share_btn{width:100%;margin-top:4px;}
-.prize-box img.jd_btn{width:80%;margin:0 auto;}
-.prize-box img.prize_text{width:100%;margin:0 auto;}
+.prize-box img.jd_btn{width:70%;margin:0 auto;}
+.prize-box img.share_hint{width:100%;margin:0px auto;}
+.prize-box img.prize_text{width:90%;margin:0 auto;}
 
 #shareMask{position:fixed;width:90%;height:2000px;top:0;left:0;text-align:right;padding-right:10%;background:rgba(0, 0, 0, 0.38)!important;z-index: 100;display: none;}
 #shareMask img{display: inline-block;width:25%;}
@@ -68,7 +72,7 @@ img.logo1{position:absolute;width:15%;top:2%;left:5%;}
 /*page4*/
 /*#prize2{background:url(../images/prize_bg.jpg) 50% 0 no-repeat;background-size:cover;}*/
 #prize2{position:relative;}
-.twoBtns{overflow:hidden;width:100%;margin:20px auto 0;}
+.twoBtns{overflow:hidden;width:100%;margin:2px auto 0;}
 .twoBtns img{width:45%;}
 
 #showScore{background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;text-align:center;}

@@ -18,7 +18,10 @@
 #start img.logo{position:absolute;left:3%;top:10px;width:24%;}
 
 /*page2*/
-#game{position:relative;background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;}
+/*#game{position:relative;background:url(../images/game_bg.png) 50% 0 no-repeat;background-size:cover;}*/
+#game{position:relative;}
+#game div.game_content{position:absolute;top:0;left:0;}
+
 #game-head{background: url(../images/game_top_bg.png);padding-bottom:1%;}
 #game-head div.top{height:50px;overflow: hidden;width:83%;padding:2% 2% 0 15%;}
 #game-head div.top img{height:100%;display: inline-block;border: 0;}

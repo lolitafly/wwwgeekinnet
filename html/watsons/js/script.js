@@ -33,18 +33,18 @@ $(document).ready(function() {
 	});
 	
 	//page3
-	$("#share_btn").bind("click", function() {
-		setTimeout(function() {
-			$("#shareMask").show();
-			if(!jumpTimer){
-				jumpTimer=setTimeout(function() {
-					$.mobile.changePage("#prize2", {
-						transition : "flip"
-					});
-				}, 5000);
-			}
-		}, 100);
-	});
+	// $("#share_btn").bind("click", function() {
+		// setTimeout(function() {
+			// $("#shareMask").show();
+			// if(!jumpTimer){
+				// jumpTimer=setTimeout(function() {
+					// $.mobile.changePage("#prize2", {
+						// transition : "flip"
+					// });
+				// }, 5000);
+			// }
+		// }, 100);
+	// });
 	$("#shareMask").bind("click", function() {
 		setTimeout(function() {
 			$("#shareMask").hide();
@@ -175,6 +175,7 @@ $(document).ready(function() {
 	
 	// page1
 	$("div.startBtn-group").css("margin-top",w*1.25 + "px");
+	
 	// if(h<490){
 		// // $("#start").css("background-image","url(/Public/marvel2/images/start_bg1.jpg)");
 		// $("div.startBtn-group").css("margin-top",w*1.1 + "px");

@@ -47,8 +47,8 @@ class IndexController extends Controller {
     
     //watsons获得代码
     public function watsons(){
-//     	$code=D('Kuaidiquan')->watsonsCode();
-    	$code=D('Kuaidiquan')->getCode();
+    	$code=D('Kuaidiquan')->watsonsCode();
+//     	$code=D('Kuaidiquan')->getCode();
     	$this->ajaxReturn($code);
     }
     

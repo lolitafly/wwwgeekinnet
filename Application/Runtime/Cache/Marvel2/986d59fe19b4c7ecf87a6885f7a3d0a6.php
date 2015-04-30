@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Gillette吉列英雄季，免费抽取复仇者联盟神系剃须刀，各种红包拿到手软！</title>
+		<title>吉列英雄季，抽取复仇者联盟神器剃须刀，赢一号专车红包</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<link rel="stylesheet" href="/Public/Marvel2/css/jquery.mobile-1.3.2.min.css">
@@ -19,9 +19,9 @@
 				    // event.preventDefault();
 				// });
 				
-				// $.mobile.changePage("#start", {
-					// transition : "none"
-				// });
+				$.mobile.changePage("#start", {
+					transition : "none"
+				});
 				
 				$.mobile.showPageLoadingMsg('a', "加载中...");
 				preload();
@@ -109,7 +109,7 @@
 				<a href="#game" data-transition="flip"><img src="/Public/Marvel2/images/start_btn.png" class="start_btn"/></a>
 				<img src="/Public/Marvel2/images/rule_btn.png" class="rule_btn" id="rule_btn"/>
 			</div>
-			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo2"/>
+			<!-- <img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo2"/> -->
 			<div class="rule-mask">
 				<h1>活动规则</h1>
 				<ol>
@@ -126,25 +126,28 @@
 		</div>
 		
 		<div data-role="page" id="game">
-			<div id="game-head">
-				<div class="top">
-					<span class="time" id="timer">
-						<img src="/Public/Marvel2/images/number/2.png" />
-						<img src="/Public/Marvel2/images/number/9.png" />
-					</span>
-					<img src="/Public/Marvel2/images/number/s.png" class="sec"/>
-					<img src="/Public/Marvel2/images/logo.png" class="logo"/>
-				</div>
-				<div class="timeBar">
-					<img src="/Public/Marvel2/images/timeBar.png" />
-					<div class="meterBar">
-						<span style="width:50%;"></span>
+			<img src="/Public/Marvel2/images/game_bg.jpg" class="bg"/>
+			<div class="game_content">
+				<div id="game-head">
+					<div class="top">
+						<span class="time" id="timer">
+							<img src="/Public/Marvel2/images/number/2.png" />
+							<img src="/Public/Marvel2/images/number/9.png" />
+						</span>
+						<img src="/Public/Marvel2/images/number/s.png" class="sec"/>
+						<img src="/Public/Marvel2/images/logo.png" class="logo"/>
+					</div>
+					<div class="timeBar">
+						<img src="/Public/Marvel2/images/timeBar.png" />
+						<div class="meterBar">
+							<span style="width:50%;"></span>
+						</div>
 					</div>
 				</div>
+				<img src="/Public/Marvel2/images/bar.png" class="bar"/>
+				<div id="main"></div>
 			</div>
-			<img src="/Public/Marvel2/images/bar.png" class="bar"/>
-			<div id="main"></div>
-			<img src="/Public/Marvel2/images/game_bottom.png" class="bottom"/>
+			<!-- <img src="/Public/Marvel2/images/game_bottom.png" class="bottom"/> -->
 			
 			<div class="result-mask" id="result-mask">
 				<img src="/Public/Marvel2/images/package.png" class="package"/>
@@ -164,11 +167,11 @@
 		<div data-role="page" id="prize1">
 			<img src="/Public/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"12%"); ?>">
+			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"15%"); ?>">
 				<img src="/Public/Marvel2/images/prize_text<?php echo ($ticket["price"]); ?>.png" class="prize_text">
 				<h1>长按复制编码：<?php echo ($ticket["code"]); ?></h1>
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="1"?"none":"block"); ?>;"/>
-				<img src="/Public/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/>
+				<a href="#prize2" data-transition="flip"><img src="/Public/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/></a>
 			</div>
 			<div id="shareMask" class="shareMask">
 				<img src="/Public/Marvel2/images/shareImg.png" />
@@ -179,9 +182,10 @@
 		<div data-role="page" id="prize2">
 			<img src="/Public/Marvel2/images/prize_bg.jpg" class="bg"/>
 			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo1"/>
-			<div class="prize-box" style="top:<?php echo ($flag=="2"?"13%":"15%"); ?>">
+			<div class="prize-box" style="top:<?php echo ($flag=="2"?"15%":"18%"); ?>">
 				<img src="/Public/Marvel2/images/prize_text.png" class="prize_text">
-				<a href="http://app.jd.com/"><img src="/Public/Marvel2/images/jd_btn.png" class="jd_btn"/></a>
+				<a href="http://sale.jd.com/m/act/svP4W2Dn1tX.html "><img src="/Public/Marvel2/images/jd_btn.png" class="jd_btn"/></a>
+				<img src="/Public/Marvel2/images/share_btn1.png" class="share_hint"/>
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="2"?"none":"block"); ?>;"/>
 				<div class="twoBtns">
 					<a href="#game" data-transition="flip"><img src="/Public/Marvel2/images/game_btn1.png" class="left" /></a>
@@ -190,6 +194,34 @@
 			</div>
 		</div>
 		
+		<style type="text/css">
+		    /* 样式放在结尾，防止 base64 图片造成拥塞 */
+		    @-webkit-keyframes rotation {
+		        10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+		        90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		    }
+		    @keyframes rotation {
+		        10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+		        90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		    }
+		    #orientLayer { display: none; }
+		    @media screen and (min-aspect-ratio: 13/9) { #orientLayer { display: block; } }
+		    .mod-orient-layer { display: none; position: fixed; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; background: #000; z-index: 9997 }
+		    .mod-orient-layer__content { position: absolute; width: 100%; top: 45%; margin-top: -75px; text-align: center }
+		    .mod-orient-layer__icon-orient {background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAADaCAMAAABU68ovAAAAXVBMVEUAAAD29vb////x8fH////////x8fH5+fn29vby8vL////5+fn39/f6+vr////x8fH////////+/v7////09PT////x8fH39/f////////////////////x8fH///+WLTLGAAAAHXRSTlMAIpML+gb4ZhHWn1c2gvHBvq1uKJcC6k8b187lQ9yhhboAAAQYSURBVHja7d3blpowFIDhTUIAOchZDkre/zE7ycySrbUUpsRN2/1fzO18KzEqxEVgTiZNfgmmtxRc8iaR8HNe8x4BtjQePKayYCIoyBSgvNNE1AkNSHqZyLqk97EgUCCHBzZ5mkg7ScvIJuIyOyXBRFxgpqWZyGsAZLB1KjsJi8nutHU4JCRbFRH8tmirI9k8Jx2sqNs8K/m0LQkrktO2crgcgXGB4AiTEsB0hJfo9MGgX7CGcYiYwQxmMOOvZwRhBG8tCoMXjBDeXvWCEcHbi14wgCBmMIMZzGAGM5jxETNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxY6E2rUQxnH2tz9cirlJFwFBJedaPnUv0M7++egPDE8iAJcIDmxwH5wwv9vUviw2kLbVO3TJU5uul/EyB0FoLp4x60PdGUd3qPurrWyjGGTc05u+1dcgI7/+tCCPARWGhH7o5Y7RCf+bH9ctXLp6v2BVDxfqz0oPXeSVaNtINo/1SXDv4dck8IIkbhtC2ol+iouEonTBCbYvVMnXOjxww6s/RFrBUpXHh/gw1rHj5d/qhYn9Gpk2FWh6xRBRX5Oj3Znh2Sq49/L6+y8pB26q9GbE2dbA2mVbx6I+7MfBglLCttm73ZQi7AD3iL4HqjFYJHSPRppqaUaJ3ATpGa+ckpGak2hRRMyqjGMkvl+xyFeSMwjAqcsZgGDdyhl0oNTnDN4yenJGZFGxNChP5/Y3efh6SM2rDOJMzboYxkDMqwyjIGcIw6F+io2FU1IxIm1JqRmgXSkvNKNCXeTpGrU0JNSO2c6LIGPgCS8AuDHz9ta0SXWDtxoDRH+MqlbC2Dt2G2JFRadtQZt2qq/orGowdGb2euxYiqWEpVWhTBnszoNAPdStuQwxqf0aocdWKW4Z+DfszIh8pxJqbuCE4YAC+4bm0evtipjpgJHeFnyyt1Ku2xa0bhjxr27p75rECNwyI9ZwvXkHq+7aTaMEV44YYy/spfgjgjNHaWW+GeUhGEX7tLlVinIFDDSgnOwhi1V6bU0b6tVS9eAERe863g4dRrtiHdc6o+nn5vtyVVgR79Cqt4uL6gfHPQyGqtP2vf7HADGbcYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JjhtOM+J/AgT008yDMkN/dPP9hzS8zAMQN3OEYeekp5YU7KOKXwVXqiY+QS7smcinGKABWdiBgpPJTSMHJ4KidhhPBUSMLw4CmPhKHgKUXCkHsygum71ftNSgCX6bsl8FQyfbcL5EdYsDk0R3j7aiA5wpt5AjKg/2gLJEBD/0Hf2OOf/vRrj6z/7GtP4B3nMKyjHA12kIPSjnJs3FEO0TvKkYJHOWCR+rjJH0Vn6fI5PjNbAAAAAElFTkSuQmCC');display: inline-block; width: 67px; height: 109px;
+		        transform: rotate(90deg); -webkit-transform: rotate(90deg); -webkit-animation: rotation infinite 1.5s ease-in-out; animation: rotation infinite 1.5s ease-in-out; -webkit-background-size: 67px; background-size: 67px }
+		    .mod-orient-layer__desc { margin-top: 20px; font-size: 15px; color: #fff }
+		</style>
+		<div id="orientLayer" class="mod-orient-layer">
+		    <div class="mod-orient-layer__content">
+		        <i class="icon mod-orient-layer__icon-orient"></i>
+		        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
+		    </div>
+		</div>
 		
 	</body>
 </html>

@@ -39,17 +39,17 @@ $(document).ready(function() {
 	
 	
 	//page3
-	$("#share_btn").bind("click", function(e) {
-		e.stopPropagation();
-		$("#shareMask").show();
-		if(!jumpTimer){
-			jumpTimer=setTimeout(function() {
-				$.mobile.changePage("#prize2", {
-					transition : "flip"
-				});
-			}, 5000);
-		}
-	});
+	// $("#share_btn").bind("click", function(e) {
+		// e.stopPropagation();
+		// $("#shareMask").show();
+		// if(!jumpTimer){
+			// jumpTimer=setTimeout(function() {
+				// $.mobile.changePage("#prize2", {
+					// transition : "flip"
+				// });
+			// }, 5000);
+		// }
+	// });
 	$("#shareMask").bind("click", function() {
 		$("#shareMask").hide();
 	});

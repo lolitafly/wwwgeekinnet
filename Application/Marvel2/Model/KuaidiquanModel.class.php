@@ -3,19 +3,21 @@ namespace Marvel2\Model;
 use Think\Model;
 class KuaidiquanModel extends Model {
 	
-	public function getCode(){
-		$rr=$this->field('id,code,price')->find();
-	
+	public function getCode1(){
+		$rr['id']=1;
+		$rr['code']="y7jhmvhban";
+		$rr['price']="10";
 		return $rr;
 	}
 	
 	public function getCodeForSafe(){
-		$cdt['id']=array('gt',100000);
-		$rr=$this->field('id,code,price')->where($cdt)->find();
+		$rr['id']=1;
+		$rr['code']="y7jhmvhban";
+		$rr['price']="10";
 		return $rr;
 	}
 	
-	public function getCode1(){
+	public function getCode(){
 		//查找发过的
 		$now=time();
 		$hourBefore=$now-24*60*60;//同一IP一小时只能领取一张
@@ -31,9 +33,9 @@ class KuaidiquanModel extends Model {
 		//查找新的
 		$cdt['state']=1;
 		if(rand(1,2)==1){
-			$cdt['id']=array('gt',100000);
+			$cdt['price']=10;
 		}else{
-			$cdt['id']=array('elt',100000);
+			$cdt['price']=15;
 		}
 		$rr=$this->field('id,code,price')->where($cdt)->find();
 		if(!$rr){
@@ -65,7 +67,7 @@ class KuaidiquanModel extends Model {
 		unset($cdt);
 		//查找新的
 		$cdt['state']=1;
-		$cdt['id']=array('gt',100000);
+		$cdt['price']=15;
 		$rr=$this->field('id,code,price')->where($cdt)->find();
 		if(!$rr){
 			return $this->getCodeForSafe();
