@@ -19,21 +19,34 @@ class UserModel extends Model {
 	}
 	
 	
+	public $getRankNum=500;
+	
 	//获取今日当前可领奖的分数
 	public function getScore(){
 		$today=date('Y-m-d',time());
     	$cdt['createDate']=array('egt',$today);
-		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->order('max(score),createDate desc')->limit(500)->select();
-		$score=count($list)>499?$list[0]['max(score)']:0;
-		if($score==0)$score=10;
+		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->select();
+		//冒泡排序
+		for($i=0;$i<count($list);$i++){
+			for($j=$i+1;$j<count($list);$j++){
+				if($list[$i]['max(score)']<$list[$j]['max(score)']){
+					$temp=$list[$i];
+					$list[$i]=$list[$j];
+					$list[$j]=$temp;
+				}
+			}
+		}
+		$score=count($list)>$this->getRankNum?$list[$this->getRankNum-1]['max(score)']:0;
+		if($score==0) $score=10;
 		return $score;
 	}
+	
 	
 	//获取排名
 	public function getRank(){
 		$today=date('Y-m-d',time());
     	$cdt['createDate']=array('egt',$today);
-		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->order('max(score) desc,createDate desc')->limit(30)->select();
+		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->select();
 		for($i=0;$i<count($list);$i++){
 			$list[$i]['phone']=substr_replace($list[$i]['phone'],'****',3,4);
 		}
@@ -47,6 +60,7 @@ class UserModel extends Model {
 				}
 			}
 		}
+		if(count($list)>30) $list=array_slice($list,0,30);
 		return $list;
 	}
 	
