@@ -9,20 +9,31 @@
 .arrow{position:absolute;width:10%;bottom:5px;left:45%;}
 
 /*public*/
-*{margin:0;padding:0;}
+*{margin:0;padding:0;color:#fff;}
 img{display:block;}
 html{height:100%;}
-body{height:100%;background-color: #fff;}
+body{height:100%;background-color: #0d060c;}
 .swiper-container {width: 100%;height: 100%;}
-.swiper-slide {height:100%;position:relative;text-align:center;background:url(../images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;}
+.swiper-slide {height:100%;position:relative;text-align:center;background:url(../images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;overflow:hidden;}
 .music_icon{position:absolute;top:3%;right:5%;width:9%;}
 .adv{position:absolute;bottom:5%;right:2%;width:5%;}
 
 
-.hide{visibility: hidden;}
+.hide{display: none;}
 .show{display: block;}
 .baselay{width:100%;}
 .overlay{position:absolute;top:0;left:0;width:100%;}
+
+
+/*#page1,#page2,#page3,#page4,#page5,#page6,#page7{display:none;}*/
+.swiper-container{display:none;}
+
+/*loading*/
+.loading-container{width:100%:height:100%;}
+.loading-wrap{width:70px;height:70px;text-align:center;margin:60% auto 0;position: relative;}
+.loading_icon{position:absolute;top:0;left:0;width:100%;}
+#loading_inner{position:relative;line-height:70px;font-size:20px;z-index: 10;}
+
 
 /*page1*/
 #page1{background:url(../images/p1_bg.png) 50% 0 no-repeat;background-size:cover;background-position:bottom;}
@@ -40,7 +51,7 @@ body{height:100%;background-color: #fff;}
 .p2_p2{position:absolute;top:2%;left:0;width:65%;}
 
 .p2_slogan{position:absolute;width:40%;bottom:30%;right:2%;}
-.p2_slogan img.p2_p1{position:absolute;top:-70%;right:-10%;width:70%;}
+.p2_star{position:absolute;top:-70%;right:-10%;width:70%;}
 
 .p2_main{position:absolute;bottom:0;left:5%;width:65%;}
 .p2_main div.top{width:120%;position: absolute;bottom:65%;left:42%;}
@@ -49,12 +60,51 @@ body{height:100%;background-color: #fff;}
 .p3_top{position:absolute;top:2%;left:5%;width:90%;}
 .p3_p1{width:100%;}
 .p3_slogan{position:absolute;top:25%;left:35%;width:34%;}
-.p3_slogan img.p3_p4{position: absolute;left:-52%;top:-43%;width:86%;}
+.p3_star{position: absolute;left:-52%;top:-43%;width:86%;}
 .p3_t2{position:absolute;bottom:27%;left:12%;width:80%;}
 
 .p3_main{position:absolute;bottom:5%;left:5%;width:90%;}
 .p3_p3{width:100%;}
 .p3_p2{width:50%;margin:0 auto 0;}
+
+/*page4*/
+.p4_p1{position:absolute;top:2%;left:0;width:50%;}
+.p4_slogan{position:absolute;top:60%;left:10%;width:40%;}
+.p4_star{position:absolute;top:-70%;left:-35%;width:90%;}
+
+.p4_top{position:absolute;top:0;right:0;width:50%;}
+.p4_text{position:absolute;top:5%;left:35%;width:25%;}
+.p4_main{position:absolute;top:45%;right:0;width:46%;}
+
+.hint_shake{position:absolute;top:70%;right:27%;width:27%;}
+
+/*page5*/
+.p5_p1{position:absolute;bottom:0;left:0;width:80%;}
+.p5_slogan{position:absolute;top:10%;right:10%;width:60%;}
+.p5_star{position:absolute;top:-130%;left:-35%;width:70%;}
+
+.p5_text{position:absolute;top:25%;right:10%;width:60%;}
+.p5_main{position:absolute;bottom:0;right:0;width:60%;}
+.p5_p2{position: relative;z-index: 10;}
+
+/*page6*/
+.p6_center{position:absolute;top:30%;left:36%;width:26%;}
+
+.p6_intro_bg{position:absolute;left:0;top:0;width:100%;height:100%;}
+.p6_intro_main{position:absolute;top:0;left:0;width:100%;}
+.p6_intro_img{width:60%;margin:0 auto;}
+
+.p6_subject_block{width:87%;margin:0 auto;position:relative;}
+.p6_subject{width:80%;margin:0 auto;position:relative;z-index: 10;}
+.p6_subject_left{position:absolute;top:2%;left:0;width:80%;}
+.p6_subject_right{position:absolute;top:2%;right:0;width:80%;}
+
+/*page7*/
+.p7_title{margin:8% auto 0;width:80%;}
+.p7_block{position:absolute;bottom:5%;left:20%;width:60%;}
+.p7_block img.btn{width:80%;margin:0 auto;}
+.p7_block img.pic{width:100%;margin:5% auto;}
+
 
 /*翻页提示*/
 .points1{animation:points1 1s ease-in infinite;-webkit-animation:points1 1s ease-in infinite;}
@@ -97,6 +147,49 @@ body{height:100%;background-color: #fff;}
     transform: scale3d(0.25, 0.25, 0.25);
   }
 }
+
+/*腾讯视频模块样式重写*/
+.tvp_controls{display: none!important;}
+.tvp_overlay_play,.tvp_button_play{
+	background: none!important;
+	border: none!important;
+}
+.tvp_containers,video{
+	background-image: url(../images/video.png)!important;
+	background-position:center center!important;
+	background-size:cover!important;
+}
+.tvp_shadow{
+	background-image: url(../images/video.png)!important;
+	background-position:center!important;
+	background-size:cover!important;
+}
+.mod_player_off .tvp_containers,.mod_player_off video{
+	background:none!important;
+}
+/*自定义样式*/
+.video-wrap{
+	position: absolute;
+	top: 15%;
+	left: 50%;
+}
+.video-box{
+	margin-bottom: 15px;
+}
+.video-control{
+	background-image: url("http://wximg.gtimg.com/tmt/_events/20150311-promo-infiniti/dist/img/control_pause.png");
+	background-position: center;
+	background-size: 28px;
+	width: 28px;
+	height: 28px;
+	margin:0 auto;
+	opacity: 0;
+}
+.video-control_play{
+	background-image: url("http://wximg.gtimg.com/tmt/_events/20150311-promo-infiniti/dist/img/control_play.png");
+}
+
+
 
 
 
