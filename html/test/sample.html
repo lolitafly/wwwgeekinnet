@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+<link rel="stylesheet" href="css/swiper.min.css">
+<!--Swiper3.0.4-->
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+html{height:100%;}
+body{height:100%;}
+.swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+.blue-slide {
+	background: #4390EE;
+}
+.red-slide {
+	background: #CA4040;
+}
+.orange-slide {
+	background: #FF8604;
+}
+.swiper-slide {
+	height:100%;
+	color: #fff;
+	font-size: 36px;
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide blue-slide">
+    	<h1 style="position:absolute;top:40%;">123</h1>
+	</div>
+    <div class="swiper-slide red-slide ">
+    	<h1 style="position:absolute;top:40%;" id="btn">123</h1>
+    	<img src="images/1-2_05.png" id="imgBtn"/>
+    </div>
+    <div class="swiper-slide orange-slide">slider3</div>
+  </div>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript">
+  var mySwiper = new Swiper('.swiper-container',{
+  	direction : 'vertical',
+  	setWrapperSize :true,
+  	noSwiping : true,
+  	
+  	onSlideChangeEnd: function(swiper){
+      if(swiper.activeIndex==1){
+      	
+      }
+   },
+    onTap: function(swiper){
+     	// console.log(swiper);
+    }
+  });
+  
+  $(document).ready(function(){
+  	$("#imgBtn").click(function(){
+  		alert(12)
+  	});
+  });
+  
+</script>
+</body>
+</html>
