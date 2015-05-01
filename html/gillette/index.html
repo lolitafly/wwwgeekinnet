@@ -1,105 +1,78 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
-<link rel="stylesheet" href="css/swiper.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<!--Swiper3.0.4-->
-<style>
-* {
-	margin: 0;
-	padding: 0;
-}
-html{height:100%;}
-body{height:100%;}
-.swiper-container {
-        width: 100%;
-        height: 100%;
-    }
-.blue-slide {
-	background: #4390EE;
-}
-.red-slide {
-	background: #CA4040;
-}
-.orange-slide {
-	background: #FF8604;
-}
-.swiper-slide {
-	height:100%;
-	color: #fff;
-	font-size: 36px;
-	text-align: center;
-}
-#page2{background:url(images/1-3_03.jpg) 50% 0 no-repeat;background-size:cover;background-position:top;text-align:center;position:relative;}
-#move{position:absolute;width:50%;bottom:0;left:25%;z-index: 10;}
-</style>
-</head>
-<body>
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide blue-slide">
-    	<h1 style="position:absolute;top:40%;">123</h1>
-	</div>
-    <div class="swiper-slide red-slide" id="page2">
-    	<h1 style="position:absolute;top:40%;" id="btn">123</h1>
-    	<img src="images/1-2_05.png" id="imgBtn"/>
-    	<img src="images/move.jpg" id="move"/>
-    </div>
-    <div class="swiper-slide orange-slide">slider3</div>
-  </div>
-</div>
-<script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/swiper.min.js"></script>
-<script type="text/javascript">
-  var mySwiper = new Swiper('.swiper-container',{
-  	direction : 'vertical',
-  	setWrapperSize :true,
-  	
-  	onSlideChangeStart: function(swiper){
-  		console.log(123);
-      if(swiper.activeIndex==1){
-      	$('#btn').addClass('animated fadeInLeft');
-      		// alert(123);
-      		// mySwiper.lockSwipes();
-      }
-   },
-    onTap: function(swiper,event){
-     	console.log(event);
-     	if($(event.target).attr("id")=="imgBtn"){
-     		// alert(123);
-     		
-     	}
-    },
-    onTouchStart: function(swiper,e){
-     		console.log(e);
-    	if($(e.target).attr("id")=="move"){
-     		// alert(123);
-     		mySwiper.lockSwipes();
-     	}
-    },
-    onTouchEnd: function(swiper,e){
-    	if($(e.target).attr("id")=="move"){
-     		// alert(123);
-     		mySwiper.lockSwipes();
-     		$('#btn').addClass('animated fadeInLeft');
-     		setTimeout(function(){
-     			$('#btn').removeClass('animated fadeInLeft');
-     		},1100);
-     		mySwiper.unlockSwipes();
-     	}
-    	// console.log(e.target);
-    }
-  });
-  
-  $(document).ready(function(){
-  	// $("#imgBtn").click(function(){
-  		// $('#btn').addClass('animated fadeInLeft');
-  	// });
-  });
-  
-</script>
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>Gillette</title>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!-- page1 -->
+				<div class="swiper-slide" id="page1">
+					<img src="images/music_icon.png" class="music_icon musicplay"/>
+					<div class="p1_main">
+						<div class="pic">
+							<img src="images/p1_p1.png" class="p1_p1"/>
+							<img src="images/p1_p2.png" class="p1_p2"/>
+						</div>
+						<div class="text">
+							<img src="images/p1_t1.png" class="p1_t1"/>
+							<img src="images/p1_t2.png" class="p1_t2"/>
+						</div>
+					</div>
+					<img src="images/p1_bottom.png" class="p1_bottom"/>
+				</div>
+				
+				<!-- page2 -->
+				<div class="swiper-slide" id="page2">
+					<img src="images/adv.png" class="adv"/>
+					<img src="images/p2_p2.png" class="p2_p2"/>
+					<div class="p2_slogan">
+						<img src="images/p2_t1.png" class="baselay"/>
+						<img src="images/star.png" class="p2_p1"/>
+					</div>
+					<div class="p2_main">
+						<img src="images/p2_p4.png" class="baselay"/>
+						<img src="images/p2_p5.png" class="overlay"/>
+						<div class="top">
+							<img src="images/p2_t2.png" class="baselay"/>
+							<img src="images/p2_t3.png" class="overlay"/>
+							<img src="images/p2_p3.png" class="overlay"/>
+						</div>
+					</div>
+				</div>
+				
+				<!-- page3 -->
+				<div class="swiper-slide" id="page3">
+					<img src="images/adv.png" class="adv"/>
+					<div class="p3_top">
+						<img src="images/p3_p1.png" class="p3_p1"/>
+						<div class="p3_slogan">
+							<img src="images/p3_t1.png" class="baselay" />
+							<img src="images/star.png" class="p3_p4" />
+						</div>
+						<img src="images/p3_t2.png" class="p3_t2"/>
+					</div>
+					<div class="p3_main">
+						<img src="images/p3_p3.png" class="p3_p3"/>
+						<img src="images/p3_p2.png" class="p3_p2"/>
+					</div>
+				</div>
+				
+				<!-- page4 -->
+				<div class="swiper-slide" id="page4">
+					<img src="images/adv.png" class="adv"/>
+					
+				</div>
+				
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
 </html>
