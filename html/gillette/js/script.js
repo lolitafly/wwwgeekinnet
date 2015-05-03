@@ -8,6 +8,8 @@ var page2_flag=0;
 var page3_flag=0;
 var page4_flag=0;
 var page5_flag=0;
+var press_start_time=0;
+var page3_timer;
 function Initial(){
 	//初始化重力感应
 	if (window.DeviceMotionEvent) {
@@ -41,21 +43,24 @@ function Initial(){
 			switch($(e.target).attr("id")){
 				case "p2_tapImg":tap_page2();break;
 				case "p2_hint":tap_page2();break;
-				case "p3_hint":tap_page3();break;
 				case "hint_shake":shake_page4();break;
 				default:break;
 			}
 		},
 		onTouchStart : function(swiper, e) {
-			if($(e.target).attr("id") == "p3_tapImg"){
-				tap_page3();
+			console.log($(e.target).attr("id"));
+			if($(e.target).attr("id") == "press_mask"){
+				press_start_time=new Date().getTime();
+				page3_timer=setTimeout(function(){
+					tap_page3();
+				},1500);
 			}
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
 			}
 		},
 		onTouchEnd : function(swiper, e) {
-			console.log($(e.target).attr("id"));
+			clearTimeout(page3_timer);
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
 				touchMove_page5();
@@ -70,7 +75,9 @@ function animate_page1(){
 	$("#logo").addClass("animated delay2p5 fadeInUp");
 	$("#p1_title1").addClass("animated delay3 fadeInLeftBig");
 	$("#p1_title2").addClass("animated delay3 fadeInRightBig");
-	
+	setTimeout(function(){
+		$("#page1 img.arrow").show();
+	},4000);
 }
 
 function animate_page2(){
@@ -82,13 +89,16 @@ function tap_page2(){
 	if(page2_flag==0){
 		page2_flag=1;
 		$("#p2_lightSource").addClass("animated lightSource");
-		$("#p2_light").addClass("animated2 delay1 flyOutUpRight");
+		$("#p2_light").addClass("animatedp5 delay1 flyOutUpRight");
 		$("#p2_t1").addClass("animated2 delay1p5 fadeIn");
 		
 		$("#p2_hint").fadeOut();
 		setTimeout(function(){
 			sound1.play();
 		},1000);
+		setTimeout(function(){
+			$("#page2 img.arrow").show();
+		},3500);
 	}
 }
 
@@ -100,18 +110,19 @@ function animate_page3(){
 function tap_page3(){
 	if(page3_flag==0){
 		page3_flag=1;
+		$("#p3_tapImg").addClass("animated2 fadeOutUp");
+		$("#p3_subject").addClass("animated2 delay1 zoomIn");
+		$("#p3_t").addClass("animated2 delay2 fadeInUp");
+		
+		$("#p3_hint").fadeOut();
+		$("#p3_presson").fadeOut();
 		setTimeout(function(){
-			$("#p3_tapImg").addClass("animated2 fadeOutUp");
-			$("#p3_subject").addClass("animated2 delay1 zoomIn");
-			$("#p3_t").addClass("animated2 delay2 fadeInUp");
-			
-			$("#p3_hint").fadeOut();
-			setTimeout(function(){
-				sound2.play();
-			},1000);
-		},2000);
+			sound2.play();
+		},1000);
+		setTimeout(function(){
+			$("#page3 img.arrow").show();
+		},4000);
 	}
-	
 }
 
 function animate_page4(){
@@ -122,15 +133,19 @@ function animate_page4(){
 function shake_page4(){
 	if(page4_flag==0){
 		page4_flag=1;
-		$("#p4_lightSource").addClass("animated3 lightSource");
-		$("#p4_light").addClass("animatedp2 delay3 fadeIn");
-		$("#p4_t1").addClass("animated6 delay4 fadeIn");
-		$("#p4_t2").addClass("animated6 delay4 fadeIn");
+		$("#p4_lightSource").addClass("animated lightSource");
+		$("#p4_light_bg").addClass("animated delay1 expandUp");
+		$("#p4_light").addClass("animatedp3 delay2 fadeIn");
+		$("#p4_t1").addClass("animated2 delay2 fadeIn");
+		$("#p4_t2").addClass("animated2 delay2 fadeIn");
 		
 		$("#hint_shake").fadeOut();
 		setTimeout(function(){
 			sound3.play();
-		},3000);
+		},1000);
+		setTimeout(function(){
+			$("#page4 img.arrow").show();
+		},4000);
 	}
 }
 
@@ -154,6 +169,9 @@ function touchMove_page5(){
 		setTimeout(function(){
 			sound4.play();
 		},200);
+		setTimeout(function(){
+			$("#page5 img.arrow").show();
+		},1500);
 	}
 }
 
@@ -170,12 +188,15 @@ function animate_page6(){
 	$("#p6_intro3").addClass("animated delay6p5 fadeIn");
 	$("#p6_left").addClass("animated delay8 fadeIn");
 	$("#p6_right").addClass("animated delay9 fadeIn");
-	
+	setTimeout(function(){
+		$("#page6 img.arrow").show();
+	},10000);
 }
 
 function animate_page7(){
 }
 
+//page4 摇动触发
 var SHAKE_THRESHOLD = 500;
 var last_update = 0;
 var x;
@@ -205,12 +226,7 @@ function deviceMotionHandler(eventData) {
 }
 
 
-//调整样式
-var w = $(window).width();
-var h = $(window).height();
-$(document).ready(function() {
 
-});
 
 
 //腾讯视频

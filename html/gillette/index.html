@@ -12,7 +12,16 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/pxloader-all.min.js"></script>
-		
+		<script>
+			//调整样式
+			var w = $(window).width();
+			var h = $(window).height();
+			$(document).ready(function() {
+				if(h/w<1.45){
+					
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<div class="loading-container">
@@ -99,7 +108,9 @@
 							<img src="images/p1_t2.png" class="p1_t2" id="p1_title2"/>
 						</div>
 					</div>
+					<img src="images/p1_bg.png" class="p1_bottom"/>
 					<img src="images/p1_bottom.png" class="p1_bottom" id="logo"/>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page2 -->
@@ -120,6 +131,7 @@
 							<img src="images/p2_p3.png" class="overlay hide" id="p2_light"/>
 						</div>
 					</div>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page3 -->
@@ -131,16 +143,19 @@
 							<img src="images/p3_t1.png" class="baselay hide" id="p3_slogan"/>
 							<img src="images/star.png" class="p3_star hide" id="p3_star"/>
 						</div>
-						<img src="images/p3_t2.png" class="p3_t2 hide" id="p3_t"/>
 					</div>
+					
 					<div class="p3_main">
 						<img src="images/p3_p3.png" class="p3_p3 hide" id="p3_subject"/>
 						<div class="p3_p2_block">
+							<img src="images/p3_t2.png" class="p3_t2 hide" id="p3_t"/>
 							<img src="images/p3_p2.png" class="p3_p2" id="p3_tapImg"/>
 							<img src="images/touch_hint.png" class="p3_hint hint_tap" id="p3_hint"/>
 							<img src="images/presson.png" class="p3_presson" id="p3_presson"/>
+							<div class="press_mask" id="press_mask"></div>
 						</div>
 					</div>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page4 -->
@@ -153,6 +168,7 @@
 					</div>
 					<div class="p4_top">
 						<img src="images/p4_p4.png" class="baselay hide" id="p4_light"/>
+						<img src="images/p4_p5.png" class="p4_p5 hide" id="p4_light_bg"/>
 						<div class="p4_text">
 							<img src="images/p4_t2.png" class="baselay hide" id="p4_t1"/>
 							<img src="images/p4_t3.png" class="overlay hide" id="p4_t2"/>
@@ -163,6 +179,7 @@
 						<img src="images/p4_p3.png" class="overlay hide" id="p4_lightSource"/>
 					</div>
 					<img src="images/p4_hint_shake.png" class="hint_shake" id="hint_shake"/>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page5 -->
@@ -182,6 +199,7 @@
 						<img src="images/p5_p3.png" class="overlay" id="p5_shield"/>
 						<img src="images/touch_hint.png" class="p5_hint hint_touchMove" id="p5_hint"/>
 					</div>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page6 -->
@@ -205,6 +223,7 @@
 							<img src="images/p6_p7.png" class="p6_subject_right hide" id="p6_right"/>
 						</div>
 					</div>
+					<img src="images/arrow.png" class="arrow" />
 				</div>
 				
 				<!-- page7 -->
