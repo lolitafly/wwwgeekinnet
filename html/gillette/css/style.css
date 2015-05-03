@@ -19,7 +19,8 @@ body{height:100%;background-color: #0d060c;}
 .adv{position:absolute;bottom:5%;right:2%;width:5%;}
 
 
-.hide{display: none;}
+.hide{opacity:0;}
+.invisible{visibility: hidden;}
 .show{display: block;}
 .baselay{width:100%;}
 .overlay{position:absolute;top:0;left:0;width:100%;}

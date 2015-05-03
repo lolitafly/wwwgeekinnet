@@ -9,19 +9,29 @@ function swiperInitial(){
 		onInit: function(swiper){
 	     	 //Swiper初始化了
 	     	 console.log("init");
+	     	 animate_page1();
 	    },
 		onSlideChangeStart : function(swiper) {
-			console.log(swiper.activeIndex);
-			if (swiper.activeIndex == 1) {
-				$('#btn').addClass('animated fadeInLeft');
-				// alert(123);
-				// mySwiper.lockSwipes();
+			switch(swiper.activeIndex){
+				case 1:animate_page2();break;
+				case 2:animate_page3();break;
+				case 3:animate_page4();break;
+				case 4:animate_page5();break;
+				case 5:animate_page6();break;
+				case 6:animate_page7();break;
+				default:break;
 			}
 		},
 		onTap : function(swiper, e) {
-			// console.log(event);
-			if ($(event.target).attr("id") == "imgBtn") {
-	
+			console.log($(e.target).attr("id"));
+			switch($(e.target).attr("id")){
+				case "p2_tapImg":tap_page2();break;
+				case 2:animate_page3();break;
+				case 3:animate_page4();break;
+				case 4:animate_page5();break;
+				case 5:animate_page6();break;
+				case 6:animate_page7();break;
+				default:break;
 			}
 		},
 		onTouchStart : function(swiper, e) {
@@ -44,7 +54,36 @@ function swiperInitial(){
 	});
 }
 
+function animate_page1(){
+	$("#stageLight").addClass("animated stageLight");
+	$("#heros").addClass("animated2 delayp5 fadeIn");
+	$("#p1_title1").addClass("animated delayp1 fadeInLeftBig");
+	$("#p1_title2").addClass("animated delayp1 fadeInRightBig");
+	
+}
 
+function animate_page2(){
+	$("#p2_slogan").addClass("animated fadeInRightBig");
+	$("#p2_star").addClass("animated infinite delay1 flash");
+}
+
+function tap_page2(){
+	$("#p2_lightSource").addClass("animated5 fadeIn");
+	$("#p2_light").addClass("animated3 delay3 flyout");
+	$("#p2_t1").addClass("animated6 delay4 fadeIn");
+	$("#p2_t2").addClass("animated6 delay4 fadeIn");
+}
+
+function animate_page3(){
+}
+function animate_page4(){
+}
+function animate_page5(){
+}
+function animate_page6(){
+}
+function animate_page7(){
+}
 
 //调整样式
 var w = $(window).width();
