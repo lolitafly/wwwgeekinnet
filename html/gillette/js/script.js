@@ -1,17 +1,31 @@
+var sound1 = document.getElementById('sound1'); 
+var sound2 = document.getElementById('sound2'); 
+var sound3 = document.getElementById('sound3'); 
+var sound4 = document.getElementById('sound4'); 
 // swiper
 var mySwiper;
-function swiperInitial(){
+var page2_flag=0;
+var page3_flag=0;
+var page4_flag=0;
+var page5_flag=0;
+function Initial(){
+	//初始化重力感应
+	if (window.DeviceMotionEvent) {
+		window.addEventListener('devicemotion', deviceMotionHandler, false);
+	}else{
+		console.log("不支持重力感应");
+	}
+	
+	//初始化swiper
 	mySwiper = new Swiper('.swiper-container', {
 		direction : 'vertical',
 		// setWrapperSize : true,
 		updateOnImagesReady : true,
 	
 		onInit: function(swiper){
-	     	 //Swiper初始化了
-	     	 console.log("init");
 	     	 animate_page1();
 	    },
-		onSlideChangeStart : function(swiper) {
+		onSlideChangeEnd : function(swiper) {
 			switch(swiper.activeIndex){
 				case 1:animate_page2();break;
 				case 2:animate_page3();break;
@@ -26,39 +40,36 @@ function swiperInitial(){
 			console.log($(e.target).attr("id"));
 			switch($(e.target).attr("id")){
 				case "p2_tapImg":tap_page2();break;
-				case 2:animate_page3();break;
-				case 3:animate_page4();break;
-				case 4:animate_page5();break;
-				case 5:animate_page6();break;
-				case 6:animate_page7();break;
+				case "p2_hint":tap_page2();break;
+				case "p3_hint":tap_page3();break;
+				case "hint_shake":shake_page4();break;
 				default:break;
 			}
 		},
 		onTouchStart : function(swiper, e) {
-			// console.log(e);
-			if ($(e.target).attr("id") == "move") {
+			if($(e.target).attr("id") == "p3_tapImg"){
+				tap_page3();
+			}
+			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
 			}
 		},
 		onTouchEnd : function(swiper, e) {
-			if ($(e.target).attr("id") == "move") {
-				// alert(123);
+			console.log($(e.target).attr("id"));
+			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
-				$('#btn').addClass('animated fadeInLeft');
-				setTimeout(function() {
-					$('#btn').removeClass('animated fadeInLeft');
-				}, 1100);
-				mySwiper.unlockSwipes();
+				touchMove_page5();
 			}
 		}
 	});
 }
 
 function animate_page1(){
-	$("#stageLight").addClass("animated stageLight");
-	$("#heros").addClass("animated2 delayp5 fadeIn");
-	$("#p1_title1").addClass("animated delayp1 fadeInLeftBig");
-	$("#p1_title2").addClass("animated delayp1 fadeInRightBig");
+	$("#stageLight").addClass("animated2 stageLight");
+	$("#heros").addClass("animated2 delay2 fadeIn");
+	$("#logo").addClass("animated delay2p5 fadeInUp");
+	$("#p1_title1").addClass("animated delay3 fadeInLeftBig");
+	$("#p1_title2").addClass("animated delay3 fadeInRightBig");
 	
 }
 
@@ -68,22 +79,131 @@ function animate_page2(){
 }
 
 function tap_page2(){
-	$("#p2_lightSource").addClass("animated5 fadeIn");
-	$("#p2_light").addClass("animated3 delay3 flyout");
-	$("#p2_t1").addClass("animated6 delay4 fadeIn");
-	$("#p2_t2").addClass("animated6 delay4 fadeIn");
+	if(page2_flag==0){
+		page2_flag=1;
+		$("#p2_lightSource").addClass("animated lightSource");
+		$("#p2_light").addClass("animated2 delay1 flyOutUpRight");
+		$("#p2_t1").addClass("animated2 delay1p5 fadeIn");
+		
+		$("#p2_hint").fadeOut();
+		setTimeout(function(){
+			sound1.play();
+		},1000);
+	}
 }
 
 function animate_page3(){
+	$("#p3_slogan").addClass("animated fadeInDownBig");
+	$("#p3_star").addClass("animated infinite delay1 flash");
 }
+
+function tap_page3(){
+	if(page3_flag==0){
+		page3_flag=1;
+		setTimeout(function(){
+			$("#p3_tapImg").addClass("animated2 fadeOutUp");
+			$("#p3_subject").addClass("animated2 delay1 zoomIn");
+			$("#p3_t").addClass("animated2 delay2 fadeInUp");
+			
+			$("#p3_hint").fadeOut();
+			setTimeout(function(){
+				sound2.play();
+			},1000);
+		},2000);
+	}
+	
+}
+
 function animate_page4(){
+	$("#p4_slogan").addClass("animated fadeInLeftBig");
+	$("#p4_star").addClass("animated infinite delay1 flash");
 }
+
+function shake_page4(){
+	if(page4_flag==0){
+		page4_flag=1;
+		$("#p4_lightSource").addClass("animated3 lightSource");
+		$("#p4_light").addClass("animatedp2 delay3 fadeIn");
+		$("#p4_t1").addClass("animated6 delay4 fadeIn");
+		$("#p4_t2").addClass("animated6 delay4 fadeIn");
+		
+		$("#hint_shake").fadeOut();
+		setTimeout(function(){
+			sound3.play();
+		},3000);
+	}
+}
+
 function animate_page5(){
+	$("#p5_slogan").addClass("animated fadeInRightBig");
+	$("#p5_star").addClass("animated infinite delay1 flash");
+	
 }
+
+function touchMove_page5(){
+	if(page5_flag==0){
+		page5_flag=1;
+		$("#p5_shield").addClass("animated2 flyOutUpLeft");
+		$("#p5_t2").addClass("animated delayp5 fadeInLeftBig");
+		$("#p5_t3").addClass("animated delayp5 fadeInRightBig");
+		
+		$("#p5_hint").fadeOut();
+		touchMove_flag=1;
+		mySwiper.unlockSwipes();
+		
+		setTimeout(function(){
+			sound4.play();
+		},200);
+	}
+}
+
 function animate_page6(){
+	$("#p6_p1").addClass("animated3 fadeInUpLeft");
+	$("#p6_p2").addClass("animated3 fadeInUpRight");
+	$("#p6_p3").addClass("animated3 fadeInDownRight");
+	$("#p6_p4").addClass("animated3 fadeInDownLeft");
+	
+	$("#p6_subject").addClass("animated6 delay2 p6_subject_animate");
+	$("#p6_bg").addClass("animated3 delay5 fadeInDown");
+	$("#p6_intro1").addClass("animated delay5 fadeIn");
+	$("#p6_intro2").addClass("animated delay6 fadeIn");
+	$("#p6_intro3").addClass("animated delay6p5 fadeIn");
+	$("#p6_left").addClass("animated delay8 fadeIn");
+	$("#p6_right").addClass("animated delay9 fadeIn");
+	
 }
+
 function animate_page7(){
 }
+
+var SHAKE_THRESHOLD = 500;
+var last_update = 0;
+var x;
+var y;
+var z;
+var last_x;
+var last_y;
+var last_z;
+var count = 0;
+function deviceMotionHandler(eventData) {
+	var acceleration = eventData.accelerationIncludingGravity; 
+	var curTime = new Date().getTime();
+	var diffTime = curTime -last_update;
+	if (diffTime > 100) {
+		last_update = curTime;
+		x = acceleration.x; 
+		y = acceleration.y;
+		z = acceleration.z;
+		var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000; 
+		if (speed > SHAKE_THRESHOLD &&mySwiper.activeIndex==3) {
+			shake_page4();
+		}
+		last_x = x;
+		last_y = y;
+		last_z = z;
+	}
+}
+
 
 //调整样式
 var w = $(window).width();

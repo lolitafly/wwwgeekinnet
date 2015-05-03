@@ -46,6 +46,7 @@ class UserModel extends Model {
 	public function getRank(){
 		$today=date('Y-m-d',time());
     	$cdt['createDate']=array('egt',$today);
+    	$cdt['score']=array("lt",1980);
 		$list=$this->field('phone,max(score)')->where($cdt)->group('phone')->select();
 		for($i=0;$i<count($list);$i++){
 			$list[$i]['phone']=substr_replace($list[$i]['phone'],'****',3,4);

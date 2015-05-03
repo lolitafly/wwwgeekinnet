@@ -66,7 +66,7 @@
 			
 			        // 主页面开始
 			        $(".swiper-container").fadeIn();
-			        swiperInitial();
+			        Initial();
 			    });
 			
 			    //loading 进度监听
@@ -80,11 +80,15 @@
 			    loader.start();
 			});
 		</script>
+		<audio id="sound1" src="sound/1.mp3"></audio> 
+		<audio id="sound2" src="sound/2.mp3"></audio> 
+		<audio id="sound3" src="sound/3.mp3"></audio> 
+		<audio id="sound4" src="sound/4.mp3"></audio> 
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<!-- page1 -->
 				<div class="swiper-slide" id="page1">
-					<img src="images/music_icon.png" class="music_icon rotateRound"/>
+					<!-- <img src="images/music_icon.png" class="music_icon rotateRound"/> -->
 					<div class="p1_main">
 						<div class="pic">
 							<img src="images/p1_p1.png" class="p1_p1" id="stageLight"/>
@@ -95,7 +99,7 @@
 							<img src="images/p1_t2.png" class="p1_t2" id="p1_title2"/>
 						</div>
 					</div>
-					<img src="images/p1_bottom.png" class="p1_bottom"/>
+					<img src="images/p1_bottom.png" class="p1_bottom" id="logo"/>
 				</div>
 				
 				<!-- page2 -->
@@ -103,15 +107,16 @@
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p2_p2.png" class="p2_p2"/>
 					<div class="p2_slogan">
-						<img src="images/p2_t1.png" class="baselay" id="p2_slogan"/>
-						<img src="images/star.png" class="p2_star" id="p2_star"/>
+						<img src="images/p2_t1.png" class="baselay hide" id="p2_slogan"/>
+						<img src="images/star.png" class="p2_star hide" id="p2_star"/>
 					</div>
 					<div class="p2_main">
 						<img src="images/p2_p4.png" class="baselay" id="p2_tapImg"/>
 						<img src="images/p2_p5.png" class="overlay hide" id="p2_lightSource"/>
+						<img src="images/touch_hint.png" class="p2_hint hint_tap" id="p2_hint"/>
 						<div class="top">
 							<img src="images/p2_t2.png" class="baselay hide" id="p2_t1"/>
-							<img src="images/p2_t3.png" class="overlay hide" id="p2_t2"/>
+							<!-- <img src="images/p2_t3.png" class="overlay hide" id="p2_t2"/> -->
 							<img src="images/p2_p3.png" class="overlay hide" id="p2_light"/>
 						</div>
 					</div>
@@ -123,14 +128,18 @@
 					<div class="p3_top">
 						<img src="images/p3_p1.png" class="p3_p1"/>
 						<div class="p3_slogan">
-							<img src="images/p3_t1.png" class="baselay" />
-							<img src="images/star.png" class="p3_star" />
+							<img src="images/p3_t1.png" class="baselay hide" id="p3_slogan"/>
+							<img src="images/star.png" class="p3_star hide" id="p3_star"/>
 						</div>
-						<img src="images/p3_t2.png" class="p3_t2"/>
+						<img src="images/p3_t2.png" class="p3_t2 hide" id="p3_t"/>
 					</div>
 					<div class="p3_main">
-						<img src="images/p3_p3.png" class="p3_p3"/>
-						<img src="images/p3_p2.png" class="p3_p2"/>
+						<img src="images/p3_p3.png" class="p3_p3 hide" id="p3_subject"/>
+						<div class="p3_p2_block">
+							<img src="images/p3_p2.png" class="p3_p2" id="p3_tapImg"/>
+							<img src="images/touch_hint.png" class="p3_hint hint_tap" id="p3_hint"/>
+							<img src="images/presson.png" class="p3_presson" id="p3_presson"/>
+						</div>
 					</div>
 				</div>
 				
@@ -139,21 +148,21 @@
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p4_p1.png" class="p4_p1" />
 					<div class="p4_slogan">
-						<img src="images/p4_t1.png" class="baselay" />
-						<img src="images/star.png" class="p4_star" />
+						<img src="images/p4_t1.png" class="baselay hide" id="p4_slogan"/>
+						<img src="images/star.png" class="p4_star hide" id="p4_star"/>
 					</div>
 					<div class="p4_top">
-						<img src="images/p4_p4.png" class="baselay"/>
+						<img src="images/p4_p4.png" class="baselay hide" id="p4_light"/>
 						<div class="p4_text">
-							<img src="images/p4_t2.png" class="baselay" />
-							<img src="images/p4_t3.png" class="overlay" />
+							<img src="images/p4_t2.png" class="baselay hide" id="p4_t1"/>
+							<img src="images/p4_t3.png" class="overlay hide" id="p4_t2"/>
 						</div>
 					</div>
 					<div class="p4_main">
-						<img src="images/p4_p2.png" class="baselay"/>
-						<img src="images/p4_p3.png" class="overlay"/>
+						<img src="images/p4_p2.png" class="baselay" />
+						<img src="images/p4_p3.png" class="overlay hide" id="p4_lightSource"/>
 					</div>
-					<img src="images/p4_hint_shake.png" class="hint_shake"/>
+					<img src="images/p4_hint_shake.png" class="hint_shake" id="hint_shake"/>
 				</div>
 				
 				<!-- page5 -->
@@ -161,38 +170,39 @@
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p5_p1.png" class="p5_p1" />
 					<div class="p5_slogan">
-						<img src="images/p5_t1.png" class="baselay" />
-						<img src="images/star.png" class="p5_star" />
+						<img src="images/p5_t1.png" class="baselay hide" id="p5_slogan"/>
+						<img src="images/star.png" class="p5_star hide" id="p5_star"/>
 					</div>
 					<div class="p5_text">
-						<img src="images/p5_t2.png" class="baselay" />
-						<img src="images/p5_t3.png" class="overlay" />
+						<img src="images/p5_t2.png" class="baselay hide" id="p5_t2"/>
+						<img src="images/p5_t3.png" class="overlay hide" id="p5_t3"/>
 					</div>
 					<div class="p5_main">
-						<img src="images/p5_p2.png" class="baselay p5_p2"/>
-						<img src="images/p5_p3.png" class="overlay"/>
+						<img src="images/p5_p2.png" class="baselay p5_p2" id="p5_touchMoveImg"/>
+						<img src="images/p5_p3.png" class="overlay" id="p5_shield"/>
+						<img src="images/touch_hint.png" class="p5_hint hint_touchMove" id="p5_hint"/>
 					</div>
 				</div>
 				
 				<!-- page6 -->
 				<div class="swiper-slide" id="page6">
-					<div class="p6_center hide">
-						<img src="images/p6_p5.png" class="baselay"/>
-						<img src="images/p6_p1.png" class="overlay"/>
-						<img src="images/p6_p2.png" class="overlay"/>
-						<img src="images/p6_p3.png" class="overlay"/>
-						<img src="images/p6_p4.png" class="overlay"/>
+					<div class="p6_center">
+						<img src="images/p6_p5.png" class="baselay hide"/>
+						<img src="images/p6_p1.png" class="overlay hide" id="p6_p1"/>
+						<img src="images/p6_p2.png" class="overlay hide" id="p6_p2"/>
+						<img src="images/p6_p3.png" class="overlay hide" id="p6_p3"/>
+						<img src="images/p6_p4.png" class="overlay hide" id="p6_p4"/>
 					</div>
 					
-					<img src="images/p6_p11.png" class="p6_intro_bg"/>
+					<img src="images/p6_p11.png" class="p6_intro_bg hide" id="p6_bg"/>
 					<div class="p6_intro_main">
-						<img src="images/p6_p8.png" class="p6_intro_img"/>
-						<img src="images/p6_p9.png" class="p6_intro_img"/>
-						<img src="images/p6_p10.png" class="p6_intro_img"/>
+						<img src="images/p6_p8.png" class="p6_intro_img hide" id="p6_intro1"/>
+						<img src="images/p6_p9.png" class="p6_intro_img hide" id="p6_intro2"/>
+						<img src="images/p6_p10.png" class="p6_intro_img hide" id="p6_intro3"/>
 						<div class="p6_subject_block">
-							<img src="images/p6_p5.png" class="p6_subject"/>
-							<img src="images/p6_p6.png" class="p6_subject_left"/>
-							<img src="images/p6_p7.png" class="p6_subject_right"/>
+							<img src="images/p6_p5.png" class="p6_subject hide" id="p6_subject"/>
+							<img src="images/p6_p6.png" class="p6_subject_left hide" id="p6_left"/>
+							<img src="images/p6_p7.png" class="p6_subject_right hide" id="p6_right"/>
 						</div>
 					</div>
 				</div>
