@@ -58,12 +58,18 @@ function Initial(){
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
 			}
+			//屏蔽触控视频后翻页
+			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
+				mySwiper.lockSwipes();
+			}
 		},
 		onTouchEnd : function(swiper, e) {
 			clearTimeout(page3_timer);
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				mySwiper.lockSwipes();
 				touchMove_page5();
+			}else{
+				mySwiper.unlockSwipes();
 			}
 		}
 	});
@@ -142,7 +148,7 @@ function shake_page4(){
 		$("#hint_shake").fadeOut();
 		setTimeout(function(){
 			sound3.play();
-		},1000);
+		},100);
 		setTimeout(function(){
 			$("#page4 img.arrow").show();
 		},4000);
@@ -224,9 +230,6 @@ function deviceMotionHandler(eventData) {
 		last_z = z;
 	}
 }
-
-
-
 
 
 //腾讯视频

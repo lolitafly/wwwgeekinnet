@@ -351,8 +351,8 @@
 @-webkit-keyframes expandUp {
 	0% {
 	opacity: 0;
-	transform-origin:0% 100%;
-	-webkit-transform-origin:0% 100%;
+	transform-origin:0% 120%;
+	-webkit-transform-origin:0% 120%;
 	-webkit-transform: scale3d(1,0,1);
     transform: scale3d(1,0,1);
 	}
@@ -365,8 +365,8 @@
 @keyframes expandUp {
 	0% {
 	opacity: 0;
-	transform-origin:0% 100%;
-	-webkit-transform-origin:0% 100%;
+	transform-origin:0% 120%;
+	-webkit-transform-origin:0% 120%;
 	-webkit-transform: scale3d(1,0,1);
     transform: scale3d(1,0,1);
 	}
