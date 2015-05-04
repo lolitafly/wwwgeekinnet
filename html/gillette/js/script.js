@@ -389,5 +389,42 @@ var  screenHeight = document.documentElement.clientHeight,
 
 $(document).ready(initVideo());
 
+//分享
+var wxshareImg = basePath+'images/thumb.jpg';
+var wxshareUrl = window.location.href.replace(/([&|\?]{1})ticket=[\w\-]+(&?)/, '$1').replace(/\?$/, '');
+// 分享给好友
+function getWxShareData() {
+    return {
+        'img_url': wxshareImg,
+        'title': "每个英雄都有他的专属神器，你的呢？",
+        'desc': "每个英雄都有他的专属神器，你的呢？",
+        'link': wxshareUrl
+    };
+}
+
+// 分享朋友圈
+function getWxShareMomentData() {
+    return {
+        'img_url': wxshareImg,
+        'title': "每个英雄都有他的专属神器，你的呢？",
+        'desc': "每个英雄都有他的专属神器，你的呢？",// 此处两条需保持相同
+        'link': wxshareUrl
+    };
+}
+
+var bindit = function () {
+    // 发送给好友;
+    WeixinJSBridge.on('menu:share:appmessage', function () {
+        WeixinJSBridge.invoke('sendAppMessage', getWxShareData(), function (r) {
+        });
+    });
+    // 分享到朋友圈;
+    WeixinJSBridge.on('menu:share:timeline', function () {
+        WeixinJSBridge.invoke('shareTimeline', getWxShareMomentData(), function (r) {
+        });
+    });
+};
+
+document.addEventListener('WeixinJSBridgeReady', bindit, false);
 
 
