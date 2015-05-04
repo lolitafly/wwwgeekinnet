@@ -15,7 +15,7 @@ html{height:100%;}
 body{height:100%;background-color: #0d060c;}
 .swiper-container {width: 100%;height: 100%;}
 .swiper-slide {height:100%;position:relative;text-align:center;background:url(../images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;overflow:hidden;}
-.music_icon{position:absolute;top:3%;right:5%;width:9%;}
+.music_icon{position:absolute;top:3%;right:5%;width:9%;z-index: 1000;}
 .adv{position:absolute;bottom:5%;right:2%;width:3%;}
 
 
@@ -33,11 +33,11 @@ body{height:100%;background-color: #0d060c;}
 .loading-container{width:100%:height:100%;}
 .loading-wrap{width:70px;height:70px;text-align:center;margin:60% auto 0;position: relative;}
 .loading_icon{position:absolute;top:0;left:0;width:100%;}
-#loading_inner{position:relative;line-height:70px;font-size:20px;z-index: 10;}
+#loading_inner{position:relative;line-height:70px;font-size:14px;z-index: 10;font-family: Arial;font-weight: bold;}
 
 
 /*page1*/
-.p1_bottom{position:absolute;bottom:0;right:0;width:95%;}
+.p1_bottom{position:absolute;bottom:0;left:0;width:100%;}
 .p1_main{position:absolute;top:-10%;left:14%;width:72%;}
 .p1_main div.pic{width:100%;position:relative;}
 .p1_main div.text{width:100%;}
@@ -79,12 +79,12 @@ body{height:100%;background-color: #0d060c;}
 .p4_slogan{position:absolute;top:60%;left:10%;width:40%;}
 .p4_star{position:absolute;top:-70%;left:-35%;width:90%;}
 
-.p4_top{position:absolute;top:0;right:0;width:50%;}
-.p4_p5{position:absolute;bottom:0;left:9%;width:73%;}
+.p4_top{position:absolute;top:0;right:0;width:50%;z-index:1;-webkit-transition:z-index 1;}
+.p4_p5{position:absolute;bottom:0;left:9%;width:73%;z-index: 1;}
 .p4_text{position:absolute;top:12%;left:35%;width:25%;}
-.p4_main{position:absolute;top:45%;right:0;width:46%;}
+.p4_main{position:absolute;top:45%;right:0;width:46%;z-index: 10;-webkit-transition:z-index 10;}
 
-.hint_shake{position:absolute;top:70%;right:27%;width:20%;}
+.hint_shake{position:absolute;top:70%;right:27%;width:20%;z-index: 100;}
 
 /*page5*/
 .p5_p1{position:absolute;bottom:0;left:0;width:80%;}
@@ -101,7 +101,7 @@ body{height:100%;background-color: #0d060c;}
 /*page6*/
 .p6_center{position:absolute;top:30%;left:36%;width:26%;}
 
-.p6_intro_bg{position:absolute;left:0;top:0;width:100%;height:100%;}
+.p6_intro_bg{position:absolute;left:0;top:0;width:100%;height:90%;}
 .p6_intro_main{position:absolute;top:0;left:0;width:100%;}
 .p6_intro_img{width:60%;margin:0 auto;}
 

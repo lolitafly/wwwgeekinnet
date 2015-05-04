@@ -17,12 +17,9 @@
 			var w = $(window).width();
 			var h = $(window).height();
 			$(document).ready(function() {
-				if(h/w<1.45){
-					
-				}
 				
 				// page2
-				$(".p2_main").width(h*0.9/476*220);
+				$(".p2_main").width(h*0.9/476*210);
 				
 				// page4
 				var tempTop=w*0.5/375*706-h*0.45-w*0.46/340*758*0.2;
@@ -32,6 +29,13 @@
 				var p4_text_width=(h*0.45*0.9)/496*98;
 				$(".p4_text").width(p4_text_width);
 				$(".p4_text").css("top",tempTop+h*0.45*0.08+"px");
+				
+				// page6
+				var tempHeight=w*0.6/480*(825+400);
+				if(tempHeight>h){
+					tempHiehgt=h*0.95;
+				}
+				$(".p6_intro_bg").height(tempHeight);
 				
 				// page7
 				bottom_width=(h-w*0.92)/282*342;
@@ -58,6 +62,11 @@
 			    var loader = new PxLoader(),
 				    // 把页面的图片列在这里
 			        fileList = [
+			            'sound/music.mp3',
+			            'sound/1.mp3',
+			            'sound/2.mp3',
+			            'sound/3.mp3',
+			            'sound/4.mp3',
 			            'images/adv.png',
 			            'images/bg.png',
 			            'images/adv.png',
@@ -74,7 +83,6 @@
 			            'images/p2_p5.png',
 			            'images/p2_t1.png',
 			            'images/p2_t2.png',
-			            'images/p2_t3.png',
 			            'images/p3_p1.png',
 			            'images/p3_p2.png',
 			            'images/p3_p3.png',
@@ -145,11 +153,12 @@
 		<audio id="sound2" src="sound/2.mp3"></audio> 
 		<audio id="sound3" src="sound/3.mp3"></audio> 
 		<audio id="sound4" src="sound/4.mp3"></audio> 
+		<audio id="bg_music" src="sound/music.mp3" autoplay="autoplay" loop="loop"></audio>
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<!-- page1 -->
 				<div class="swiper-slide" id="page1">
-					<!-- <img src="images/music_icon.png" class="music_icon rotateRound"/> -->
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<div class="p1_main">
 						<div class="pic">
 							<img src="images/p1_p1.png" class="p1_p1" id="stageLight"/>
@@ -167,6 +176,7 @@
 				
 				<!-- page2 -->
 				<div class="swiper-slide" id="page2">
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p2_p2.png" class="p2_p2"/>
 					<div class="p2_slogan">
@@ -188,6 +198,7 @@
 				
 				<!-- page3 -->
 				<div class="swiper-slide" id="page3">
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
 					<div class="p3_top">
 						<img src="images/p3_p1.png" class="p3_p1"/>
@@ -212,6 +223,7 @@
 				
 				<!-- page4 -->
 				<div class="swiper-slide" id="page4">
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p4_p1.png" class="p4_p1" />
 					<div class="p4_slogan">
@@ -227,7 +239,7 @@
 						</div>
 					</div>
 					<div class="p4_main">
-						<img src="images/p4_p2.png" class="baselay" />
+						<img src="images/p4_p2.png" class="baselay" id="p4_subject"/>
 						<img src="images/p4_p3.png" class="overlay hide" id="p4_lightSource"/>
 					</div>
 					<img src="images/p4_hint_shake.png" class="hint_shake" id="hint_shake"/>
@@ -236,6 +248,7 @@
 				
 				<!-- page5 -->
 				<div class="swiper-slide" id="page5">
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
 					<img src="images/p5_p1.png" class="p5_p1" />
 					<div class="p5_slogan">
@@ -256,6 +269,7 @@
 				
 				<!-- page6 -->
 				<div class="swiper-slide" id="page6">
+					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<div class="p6_center">
 						<img src="images/p6_p5.png" class="baselay hide"/>
 						<img src="images/p6_p1.png" class="overlay hide" id="p6_p1"/>

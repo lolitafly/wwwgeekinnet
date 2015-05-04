@@ -2,12 +2,14 @@ var sound1 = document.getElementById('sound1');
 var sound2 = document.getElementById('sound2'); 
 var sound3 = document.getElementById('sound3'); 
 var sound4 = document.getElementById('sound4'); 
+var bg_music = document.getElementById('bg_music'); 
 // swiper
 var mySwiper;
 var page2_flag=0;
 var page3_flag=0;
 var page4_flag=0;
 var page5_flag=0;
+var page6_flag=0;
 var press_start_time=0;
 var page3_timer;
 function Initial(){
@@ -27,6 +29,8 @@ function Initial(){
 		onInit: function(swiper){
 	     	 animate_page1();
 	    },
+	    onSlideChangeStart : function(swiper) {
+		},
 		onSlideChangeEnd : function(swiper) {
 			switch(swiper.activeIndex){
 				case 1:animate_page2();break;
@@ -39,7 +43,12 @@ function Initial(){
 			}
 		},
 		onTap : function(swiper, e) {
-			console.log($(e.target).attr("id"));
+			console.log(bg_music.paused);
+			console.log($(e.target).attr("name"));
+			//控制音乐
+			if($(e.target).attr("name")=="music_icon"){
+				bg_music.paused?music_play():music_pause();
+			}
 			switch($(e.target).attr("id")){
 				case "p2_tapImg":tap_page2();break;
 				case "p2_hint":tap_page2();break;
@@ -48,31 +57,29 @@ function Initial(){
 			}
 		},
 		onTouchStart : function(swiper, e) {
-			console.log($(e.target).attr("id"));
 			if($(e.target).attr("id") == "press_mask"){
 				press_start_time=new Date().getTime();
 				page3_timer=setTimeout(function(){
 					tap_page3();
 				},1500);
 			}
-			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
-				mySwiper.lockSwipes();
-			}
 			//屏蔽触控视频后翻页
 			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
-				mySwiper.lockSwipes();
+
 			}
 		},
 		onTouchEnd : function(swiper, e) {
 			clearTimeout(page3_timer);
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
-				mySwiper.lockSwipes();
 				touchMove_page5();
-			}else{
-				mySwiper.unlockSwipes();
+			}
+			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
+
 			}
 		}
 	});
+	//初始化后锁屏
+	 mySwiper.lockSwipes();
 }
 
 function animate_page1(){
@@ -83,10 +90,14 @@ function animate_page1(){
 	$("#p1_title2").addClass("animated delay3 fadeInRightBig");
 	setTimeout(function(){
 		$("#page1 img.arrow").show();
+		mySwiper.unlockSwipes();
 	},4000);
 }
 
 function animate_page2(){
+	if(page2_flag==0){
+		mySwiper.lockSwipes();
+	}
 	$("#p2_slogan").addClass("animated fadeInRightBig");
 	$("#p2_star").addClass("animated infinite delay1 flash");
 }
@@ -101,14 +112,18 @@ function tap_page2(){
 		$("#p2_hint").fadeOut();
 		setTimeout(function(){
 			sound1.play();
-		},1000);
+		},700);
 		setTimeout(function(){
 			$("#page2 img.arrow").show();
-		},3500);
+			mySwiper.unlockSwipes();
+		},2500);
 	}
 }
 
 function animate_page3(){
+	if(page3_flag==0){
+		mySwiper.lockSwipes();
+	}
 	$("#p3_slogan").addClass("animated fadeInDownBig");
 	$("#p3_star").addClass("animated infinite delay1 flash");
 }
@@ -127,35 +142,50 @@ function tap_page3(){
 		},1000);
 		setTimeout(function(){
 			$("#page3 img.arrow").show();
+			mySwiper.unlockSwipes();
 		},4000);
 	}
 }
 
 function animate_page4(){
+	if(page4_flag==0){
+		mySwiper.lockSwipes();
+	}
 	$("#p4_slogan").addClass("animated fadeInLeftBig");
 	$("#p4_star").addClass("animated infinite delay1 flash");
 }
 
 function shake_page4(){
 	if(page4_flag==0){
+		mySwiper.lockSwipes();
 		page4_flag=1;
+		$("#p4_subject").addClass("animated9 forSafe");
 		$("#p4_lightSource").addClass("animated lightSource");
 		$("#p4_light_bg").addClass("animated delay1 expandUp");
 		$("#p4_light").addClass("animatedp3 delay2 fadeIn");
 		$("#p4_t1").addClass("animated2 delay2 fadeIn");
 		$("#p4_t2").addClass("animated2 delay2 fadeIn");
 		
+		
 		$("#hint_shake").fadeOut();
 		setTimeout(function(){
 			sound3.play();
-		},100);
+		},2000);
 		setTimeout(function(){
 			$("#page4 img.arrow").show();
+			mySwiper.unlockSwipes();
+			$("#p4_light_bg").removeClass("animated delay1 expandUp hide");
+			$("#p4_lightSource").removeClass("animated lightSource hide");
+			$("#p4_subject").removeClass("animated9 forSafe");
+			$("#p4_light").removeClass("animatedp3 delay2 fadeIn hide");
 		},4000);
 	}
 }
 
 function animate_page5(){
+	if(page5_flag==0){
+		mySwiper.lockSwipes();
+	}
 	$("#p5_slogan").addClass("animated fadeInRightBig");
 	$("#p5_star").addClass("animated infinite delay1 flash");
 	
@@ -163,44 +193,60 @@ function animate_page5(){
 
 function touchMove_page5(){
 	if(page5_flag==0){
+		mySwiper.lockSwipes();
 		page5_flag=1;
-		$("#p5_shield").addClass("animated2 flyOutUpLeft");
+		$("#p5_touchMoveImg").addClass("animated9 forSafe");
+		$("#p5_shield").addClass("animated1p5 flyOutUpLeft");
 		$("#p5_t2").addClass("animated delayp5 fadeInLeftBig");
 		$("#p5_t3").addClass("animated delayp5 fadeInRightBig");
 		
 		$("#p5_hint").fadeOut();
-		touchMove_flag=1;
-		mySwiper.unlockSwipes();
 		
 		setTimeout(function(){
 			sound4.play();
 		},200);
 		setTimeout(function(){
 			$("#page5 img.arrow").show();
+			mySwiper.unlockSwipes();
+			$("#p5_shield").removeClass("animated1p5 flyOutUpLeft");
 		},1500);
 	}
 }
 
 function animate_page6(){
-	$("#p6_p1").addClass("animated3 fadeInUpLeft");
-	$("#p6_p2").addClass("animated3 fadeInUpRight");
-	$("#p6_p3").addClass("animated3 fadeInDownRight");
-	$("#p6_p4").addClass("animated3 fadeInDownLeft");
-	
-	$("#p6_subject").addClass("animated6 delay2 p6_subject_animate");
-	$("#p6_bg").addClass("animated3 delay5 fadeInDown");
-	$("#p6_intro1").addClass("animated delay5 fadeIn");
-	$("#p6_intro2").addClass("animated delay6 fadeIn");
-	$("#p6_intro3").addClass("animated delay6p5 fadeIn");
-	$("#p6_left").addClass("animated delay8 fadeIn");
-	$("#p6_right").addClass("animated delay9 fadeIn");
-	setTimeout(function(){
-		$("#page6 img.arrow").show();
-	},10000);
+	if(page6_flag==0){
+		page6_flag=1;
+		mySwiper.lockSwipes();
+		$("#p6_p1").addClass("animated3 fadeInUpLeft");
+		$("#p6_p2").addClass("animated3 fadeInUpRight");
+		$("#p6_p3").addClass("animated3 fadeInDownRight");
+		$("#p6_p4").addClass("animated3 fadeInDownLeft");
+		
+		$("#p6_subject").addClass("animated6 delay2 p6_subject_animate");
+		$("#p6_bg").addClass("animated3 delay5 fadeInDown");
+		$("#p6_intro1").addClass("animated delay5 fadeIn");
+		$("#p6_intro2").addClass("animated delay6 fadeIn");
+		$("#p6_intro3").addClass("animated delay6p5 fadeIn");
+		$("#p6_left").addClass("animated delay8 fadeIn");
+		$("#p6_right").addClass("animated delay9 fadeIn");
+		setTimeout(function(){
+			$("#page6 img.arrow").show();
+			mySwiper.unlockSwipes();
+		},9000);
+	}
 }
 
-function animate_page7(){
+function music_play(){
+	$(".music_icon").attr("src","images/music_icon.png");
+	bg_music.play();
 }
+
+function music_pause(){
+	$(".music_icon").attr("src","images/music_pause.png");
+	bg_music.pause();
+}
+
+
 
 //page4 摇动触发
 var SHAKE_THRESHOLD = 500;
