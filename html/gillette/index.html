@@ -17,7 +17,11 @@
 			var w = $(window).width();
 			var h = $(window).height();
 			$(document).ready(function() {
-				
+				if(w>h){
+					tempw=h;
+					h=w;
+					w=tempw;
+				}
 				// page2
 				$(".p2_main").width(h*0.9/476*210);
 				

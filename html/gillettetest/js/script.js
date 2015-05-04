@@ -30,18 +30,6 @@ function Initial(){
 			bg_music.play();
 	     	animate_page1();
 	    },
-	    onSlideChangeStart : function(swiper) {
-		},
-		onSlideChangeEnd : function(swiper) {
-			switch(swiper.activeIndex){
-				case 1:animate_page2();break;
-				case 2:animate_page3();break;
-				case 3:animate_page4();break;
-				case 4:animate_page5();break;
-				case 5:animate_page6();break;
-				default:break;
-			}
-		},
 		onTap : function(swiper, e) {
 			switch($(e.target).attr("id")){
 				case "p2_tapImg":tap_page2();break;
@@ -52,29 +40,10 @@ function Initial(){
 		},
 		onTouchStart : function(swiper, e) {
 			
-			//控制音乐
-			if($(e.target).attr("name")=="music_icon"){
-				bg_music.paused?music_play():music_pause();
-			}
-			if($(e.target).attr("id") == "press_mask"){
-				press_start_time=new Date().getTime();
-				page3_timer=setTimeout(function(){
-					tap_page3();
-				},1500);
-			}
-			//屏蔽触控视频后翻页
-			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
-
-			}
+			
 		},
 		onTouchEnd : function(swiper, e) {
-			clearTimeout(page3_timer);
-			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
-				touchMove_page5();
-			}
-			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
-
-			}
+			
 		}
 	});
 	//初始化后锁屏
@@ -376,4 +345,4 @@ var  screenHeight = document.documentElement.clientHeight,
 	 flag,
 	 player;
 
-$(document).ready(initVideo());
+// $(document).ready(initVideo());
