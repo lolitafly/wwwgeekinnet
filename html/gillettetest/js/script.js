@@ -3,7 +3,6 @@ var sound2 = document.getElementById('sound2');
 var sound3 = document.getElementById('sound3'); 
 var sound4 = document.getElementById('sound4'); 
 var bg_music = document.getElementById('bg_music'); 
-var sound_on=true;
 // swiper
 var mySwiper;
 var page2_flag=0;
@@ -28,7 +27,7 @@ function Initial(){
 		updateOnImagesReady : true,
 	
 		onInit: function(swiper){
-			if(isiOS) bg_music.play();
+			bg_music.play();
 	     	animate_page1();
 	    },
 	    onSlideChangeStart : function(swiper) {
@@ -55,7 +54,7 @@ function Initial(){
 			
 			//控制音乐
 			if($(e.target).attr("name")=="music_icon"){
-				sound_on?music_pause():music_play();
+				bg_music.paused?music_play():music_pause();
 			}
 			if($(e.target).attr("id") == "press_mask"){
 				press_start_time=new Date().getTime();
@@ -111,14 +110,12 @@ function tap_page2(){
 	if(page2_flag==0){
 		page2_flag=1;
 		$("#p2_lightSource").addClass("animated lightSource");
-		$("#p2_light").addClass("animated delay1 flyOutUpRight");
+		$("#p2_light").addClass("animatedp5 delay1 flyOutUpRight");
 		$("#p2_t1").addClass("animated2 delay1p5 fadeIn");
 		
 		$("#p2_hint").fadeOut();
 		setTimeout(function(){
-			if(sound_on){
-				sound1.play();
-			} 
+			if(isiOS) sound1.play();
 		},700);
 		setTimeout(function(){
 			$("#page2 img.arrow").show();
@@ -145,9 +142,7 @@ function tap_page3(){
 		$("#p3_hint").fadeOut();
 		$("#p3_presson").fadeOut();
 		setTimeout(function(){
-			if(sound_on){
-				sound2.play();
-			}
+			if(isiOS) sound2.play();
 		},1000);
 		setTimeout(function(){
 			$("#page3 img.arrow").show();
@@ -178,9 +173,7 @@ function shake_page4(){
 		
 		$("#hint_shake").fadeOut();
 		setTimeout(function(){
-			if(sound_on){
-				sound3.play();
-			}
+			if(isiOS) sound3.play();
 		},2000);
 		setTimeout(function(){
 			$("#page4 img.arrow").show();
@@ -207,16 +200,14 @@ function touchMove_page5(){
 		mySwiper.lockSwipes();
 		page5_flag=1;
 		$("#p5_touchMoveImg").addClass("animated9 forSafe");
-		$("#p5_shield").addClass("animated2 flyOutUpLeft");
+		$("#p5_shield").addClass("animated1p5 flyOutUpLeft");
 		$("#p5_t2").addClass("animated delayp5 fadeInLeftBig");
 		$("#p5_t3").addClass("animated delayp5 fadeInRightBig");
 		
 		$("#p5_hint").fadeOut();
 		
 		setTimeout(function(){
-			if(sound_on){
-				sound4.play();
-			}
+			if(isiOS) sound4.play();
 		},200);
 		setTimeout(function(){
 			$("#page5 img.arrow").show();
@@ -251,14 +242,12 @@ function animate_page6(){
 
 function music_play(){
 	$(".music_icon").attr("src","images/music_icon.png");
-	if(isiOS) bg_music.play();
-	sound_on=!sound_on;
+	bg_music.play();
 }
 
 function music_pause(){
 	$(".music_icon").attr("src","images/music_pause.png");
-	if(isiOS) bg_music.pause();
-	sound_on=!sound_on;
+	bg_music.pause();
 }
 
 
