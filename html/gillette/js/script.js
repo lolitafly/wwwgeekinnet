@@ -3,6 +3,7 @@ var sound2 = document.getElementById('sound2');
 var sound3 = document.getElementById('sound3'); 
 var sound4 = document.getElementById('sound4'); 
 var bg_music = document.getElementById('bg_music'); 
+bg_music.volume=0.4;
 var sound_on=true;
 // swiper
 var mySwiper;
@@ -148,7 +149,7 @@ function tap_page3(){
 			if(sound_on){
 				sound2.play();
 			}
-		},1000);
+		},700);
 		setTimeout(function(){
 			$("#page3 img.arrow").show();
 			mySwiper.unlockSwipes();
@@ -172,8 +173,7 @@ function shake_page4(){
 		$("#p4_lightSource").addClass("animated lightSource");
 		$("#p4_light_bg").addClass("animated delay1 expandUp");
 		$("#p4_light").addClass("animatedp3 delay2 fadeIn");
-		$("#p4_t1").addClass("animated2 delay2 fadeIn");
-		$("#p4_t2").addClass("animated2 delay2 fadeIn");
+		$("#p4_t1").addClass("animated2 delay2p5 fadeIn");
 		
 		
 		$("#hint_shake").fadeOut();
@@ -181,7 +181,7 @@ function shake_page4(){
 			if(sound_on){
 				sound3.play();
 			}
-		},2000);
+		},1700);
 		setTimeout(function(){
 			$("#page4 img.arrow").show();
 			mySwiper.unlockSwipes();
@@ -207,7 +207,7 @@ function touchMove_page5(){
 		mySwiper.lockSwipes();
 		page5_flag=1;
 		$("#p5_touchMoveImg").addClass("animated9 forSafe");
-		$("#p5_shield").addClass("animated2 flyOutUpLeft");
+		$("#p5_shield").addClass("animated1p5 flyOutUpLeft");
 		$("#p5_t2").addClass("animated delayp5 fadeInLeftBig");
 		$("#p5_t3").addClass("animated delayp5 fadeInRightBig");
 		
@@ -359,7 +359,7 @@ function initVideo() {
 			if (!a && currentTime && fulltTime && currentTime == fulltTime) {
 				// 执行后面的动画 -> 设备动画小于 iPhone 5c
 				// 注意这种情况下,包括最上方的 onallended , doSomething(),执行了两遍, 有些事件需要先解绑在绑定
-				doSomething();
+				// doSomething();
 			}
 		}
 	});
@@ -388,3 +388,6 @@ var  screenHeight = document.documentElement.clientHeight,
 	 player;
 
 $(document).ready(initVideo());
+
+
+

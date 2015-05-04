@@ -13,6 +13,44 @@
 		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/pxloader-all.min.js"></script>
 		<script>
+			var wxshareImg = 'http://url.cn/img/thumb.jpg';
+			var wxshareUrl = window.location.href.replace(/([&|\?]{1})ticket=[\w\-]+(&?)/, '$1').replace(/\?$/, '');
+			// 分享给好友
+			function getWxShareData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",
+			        'link': wxshareUrl
+			    };
+			}
+			
+			// 分享朋友圈
+			function getWxShareMomentData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",// 此处两条需保持相同
+			        'link': wxshareUrl
+			    };
+			}
+			
+			var bindit = function () {
+			    // 发送给好友;
+			    WeixinJSBridge.on('menu:share:appmessage', function () {
+			        WeixinJSBridge.invoke('sendAppMessage', getWxShareData(), function (r) {
+			        });
+			    });
+			    // 分享到朋友圈;
+			    WeixinJSBridge.on('menu:share:timeline', function () {
+			        WeixinJSBridge.invoke('shareTimeline', getWxShareMomentData(), function (r) {
+			        });
+			    });
+			};
+			
+			document.addEventListener('WeixinJSBridgeReady', bindit, false);
+		
+		
 			//调整样式
 			var w = $(window).width();
 			var h = $(window).height();
@@ -157,7 +195,7 @@
 		<audio id="sound2" src="sound/2.mp3"></audio> 
 		<audio id="sound3" src="sound/3.mp3"></audio> 
 		<audio id="sound4" src="sound/4.mp3"></audio> 
-		<audio id="bg_music" src="sound/music.mp3"  loop="loop"></audio>
+		<audio id="bg_music" src="sound/music.mp3" loop="loop"></audio>
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<!-- page1 -->
@@ -239,7 +277,6 @@
 						<img src="images/p4_p5.png" class="p4_p5 hide" id="p4_light_bg"/>
 						<div class="p4_text">
 							<img src="images/p4_t2.png" class="baselay hide" id="p4_t1"/>
-							<img src="images/p4_t3.png" class="overlay hide" id="p4_t2"/>
 						</div>
 					</div>
 					<div class="p4_main">
