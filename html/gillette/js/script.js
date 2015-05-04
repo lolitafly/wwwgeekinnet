@@ -427,4 +427,65 @@ var bindit = function () {
 
 document.addEventListener('WeixinJSBridgeReady', bindit, false);
 
+//异步加载图片
+function asynLoad(){
+	var loader = new PxLoader(),
+	    // 把页面的图片列在这里
+        fileList = [
+        	'images/p2_p2.png',
+            'images/p2_p3.png',
+            'images/p2_p4.png',
+            'images/p2_p5.png',
+            'images/p2_t1.png',
+            'images/p2_t2.png',
+            'images/presson.png',
+        	'images/p3_p1.png',
+            'images/p3_p2.png',
+            'images/p3_p3.png',
+            'images/p3_t1.png',
+            'images/p3_t2.png',
+            'images/p4_hint_shake.png',
+            'images/p4_p1.png',
+            'images/p4_p2.png',
+            'images/p4_p3.png',
+            'images/p4_p4.png',
+            'images/p4_p5.png',
+            'images/p4_t1.png',
+            'images/p4_t2.png',
+            'images/p5_p1.png',
+            'images/p5_p2.png',
+            'images/p5_p3.png',
+            'images/p5_t1.png',
+            'images/p5_t2.png',
+            'images/p5_t3.png',
+            'images/p6_p1.png',
+            'images/p6_p2.png',
+            'images/p6_p3.png',
+            'images/p6_p4.png',
+            'images/p6_p5.png',
+            'images/p6_p6.png',
+            'images/p6_p7.png',
+            'images/p6_p8.png',
+            'images/p6_p9.png',
+            'images/p6_p10.png',
+            'images/p6_p11.png',
+            'images/p7_btn.png',
+            'images/p7_title.png',
+            'images/video.png'
+        ];
+
+	//把图片载入加载器
+    for(var i = 0; i < fileList.length; i++){
+        var pxImage = new PxLoaderImage(basePath + fileList[i]);
+
+        pxImage.imageNumber = i + 1;
+        loader.add(pxImage);
+    }
+
+    //启动
+    loader.start();
+}
+
+
+
 
