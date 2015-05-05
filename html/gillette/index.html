@@ -12,44 +12,6 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/pxloader-all.min.js"></script>
-		<script>
-			//调整样式
-			var w = $(window).width();
-			var h = $(window).height();
-			$(document).ready(function() {
-				if(w>h){
-					tempw=h;
-					h=w;
-					w=tempw;
-				}
-				// page2
-				$(".p2_main").width(h*0.9/476*210);
-				
-				// page4
-				var tempTop=w*0.5/375*706-h*0.45-w*0.46/340*758*0.2;
-				if(tempTop>0){
-					$(".p4_top").css("top",-tempTop+"px");
-				}
-				var p4_text_width=(h*0.45*0.9)/496*98;
-				$(".p4_text").width(p4_text_width);
-				$(".p4_text").css("top",tempTop+h*0.45*0.08+"px");
-				
-				// page6
-				var tempHeight=w*0.6/480*(825+400);
-				if(tempHeight>h){
-					tempHiehgt=h*0.95;
-				}
-				$(".p6_intro_bg").height(tempHeight);
-				
-				// page7
-				bottom_width=(h-w*0.92)/282*342;
-				$(".p7_block").css("top",w*0.91+"px");
-				if(bottom_width<w*0.6){
-					$(".p7_block").width(bottom_width);
-					$(".p7_block").css("left",(w-bottom_width)/2+"px");
-				}
-			});
-		</script>
 	</head>
 	<body>
 		<div class="loading-container">
@@ -59,6 +21,7 @@
 		    </div>
 		</div>
 		<script>
+			// var basePath="http://192.168.0.106/html/gillette/";
 			var basePath="http://www.geek-in.net/html/gillette/";
 
 			$(document).ready(function(){
@@ -78,7 +41,7 @@
 			            'images/p1_p1.png',
 			            'images/p1_p2.png',
 			            'images/p1_t1.png',
-			            'images/p1_t2.png',
+			            'images/p1_t2.png'
 			        ];
 			
 				//把图片载入加载器
@@ -96,7 +59,7 @@
 			        // 主页面开始
 			        $(".swiper-container").fadeIn();
 			        Initial();
-			        asynLoad();
+			        
 			    });
 			
 			    //loading 进度监听
@@ -109,12 +72,14 @@
 			    //启动
 			    loader.start();
 			});
+			
 		</script>
 		<audio id="sound1" src="sound/1.mp3"></audio> 
 		<audio id="sound2" src="sound/2.mp3"></audio> 
 		<audio id="sound3" src="sound/3.mp3"></audio> 
 		<audio id="sound4" src="sound/4.mp3"></audio> 
-		<audio id="bg_music" src="sound/music.mp3" loop="loop"></audio>
+		<audio id="bg_music" src="sound/music.mp3"  loop="loop"></audio>
+		
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<!-- page1 -->
@@ -139,21 +104,28 @@
 				<div class="swiper-slide" id="page2">
 					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
-					<img src="images/p2_p2.png" class="p2_p2"/>
+					<img data-src="images/p2_p2.png" class="swiper-lazy p2_p2"/>
 					<div class="p2_slogan">
-						<img src="images/p2_t1.png" class="baselay hide" id="p2_slogan"/>
+						<img data-src="images/p2_t1.png" class="swiper-lazy baselay hide" id="p2_slogan"/>
 						<img src="images/star.png" class="p2_star hide" id="p2_star"/>
 					</div>
 					<div class="p2_main">
-						<img src="images/p2_p4.png" class="baselay" id="p2_tapImg"/>
-						<img src="images/p2_p5.png" class="overlay hide" id="p2_lightSource"/>
-						<img src="images/touch_hint.png" class="p2_hint hint_tap" id="p2_hint"/>
+						<img data-src="images/p2_p4.png" class="swiper-lazy baselay" id="p2_tapImg"/>
+						<img data-src="images/p2_p5.png" class="swiper-lazy overlay hide" id="p2_lightSource"/>
+						<img data-src="images/touch_hint.png" class="swiper-lazy p2_hint hint_tap" id="p2_hint"/>
 						<div class="top">
-							<img src="images/p2_t2.png" class="baselay hide" id="p2_t1"/>
-							<img src="images/p2_p3.png" class="overlay hide" id="p2_light"/>
+							<img data-src="images/p2_t2.png" class="swiper-lazy baselay hide" id="p2_t1"/>
+							<img data-src="images/p2_p3.png" class="swiper-lazy overlay hide" id="p2_light"/>
 						</div>
 					</div>
 					<img src="images/arrow.png" class="arrow" />
+					
+					<!-- 当page1呈现时异步加载下列图片 -->
+					<img data-src="images/p3_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p3_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p3_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p3_t1.png" class="swiper-lazy asynLoad"/>
+					
 				</div>
 				
 				<!-- page3 -->
@@ -161,91 +133,127 @@
 					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
 					<div class="p3_top">
-						<img src="images/p3_p1.png" class="p3_p1"/>
+						<img data-src="images/p3_p1.png" class="swiper-lazy p3_p1"/>
 						<div class="p3_slogan">
-							<img src="images/p3_t1.png" class="baselay hide" id="p3_slogan"/>
+							<img data-src="images/p3_t1.png" class="swiper-lazy baselay hide" id="p3_slogan"/>
 							<img src="images/star.png" class="p3_star hide" id="p3_star"/>
 						</div>
 					</div>
 					
 					<div class="p3_main">
-						<img src="images/p3_p3.png" class="p3_p3 hide" id="p3_subject"/>
+						<img data-src="images/p3_p3.png" class="swiper-lazy p3_p3 hide" id="p3_subject"/>
 						<div class="p3_p2_block">
-							<img src="images/p3_t2.png" class="p3_t2 hide" id="p3_t"/>
-							<img src="images/p3_p2.png" class="p3_p2" id="p3_tapImg"/>
-							<img src="images/touch_hint.png" class="p3_hint hint_tap" id="p3_hint"/>
-							<img src="images/presson.png" class="p3_presson" id="p3_presson"/>
+							<img data-src="images/p3_t2.png" class="swiper-lazy p3_t2 hide" id="p3_t"/>
+							<img data-src="images/p3_p2.png" class="swiper-lazy p3_p2" id="p3_tapImg"/>
+							<img data-src="images/touch_hint.png" class="swiper-lazy p3_hint hint_tap" id="p3_hint"/>
+							<img data-src="images/presson.png" class="swiper-lazy p3_presson" id="p3_presson"/>
 							<div class="press_mask" id="press_mask"></div>
 						</div>
 					</div>
 					<img src="images/arrow.png" class="arrow" />
+					
+					<!-- 当page2呈现时异步加载下列图片 -->
+					<img data-src="images/p4_hint_shake.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_p4.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_p5.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_t1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p4_t2.png" class="swiper-lazy asynLoad"/>
+					
 				</div>
 				
 				<!-- page4 -->
 				<div class="swiper-slide" id="page4">
 					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
-					<img src="images/p4_p1.png" class="p4_p1" />
+					<img data-src="images/p4_p1.png" class="swiper-lazy p4_p1" />
 					<div class="p4_slogan">
-						<img src="images/p4_t1.png" class="baselay hide" id="p4_slogan"/>
+						<img data-src="images/p4_t1.png" class="swiper-lazy baselay hide" id="p4_slogan"/>
 						<img src="images/star.png" class="p4_star hide" id="p4_star"/>
 					</div>
 					<div class="p4_top">
-						<img src="images/p4_p4.png" class="baselay hide" id="p4_light"/>
-						<img src="images/p4_p5.png" class="p4_p5 hide" id="p4_light_bg"/>
+						<img data-src="images/p4_p4.png" class="swiper-lazy baselay hide" id="p4_light"/>
+						<img data-src="images/p4_p5.png" class="swiper-lazy p4_p5 hide" id="p4_light_bg"/>
 						<div class="p4_text">
-							<img src="images/p4_t2.png" class="baselay hide" id="p4_t1"/>
+							<img data-src="images/p4_t2.png" class="swiper-lazy baselay hide" id="p4_t1"/>
 						</div>
 					</div>
 					<div class="p4_main">
-						<img src="images/p4_p2.png" class="baselay" id="p4_subject"/>
-						<img src="images/p4_p3.png" class="overlay hide" id="p4_lightSource"/>
+						<img data-src="images/p4_p2.png" class="swiper-lazy baselay" id="p4_subject"/>
+						<img data-src="images/p4_p3.png" class="swiper-lazy overlay hide" id="p4_lightSource"/>
 					</div>
-					<img src="images/p4_hint_shake.png" class="hint_shake" id="hint_shake"/>
+					<img data-src="images/p4_hint_shake.png" class="swiper-lazy hint_shake" id="hint_shake"/>
 					<img src="images/arrow.png" class="arrow" />
+					
+					<!-- 当page3呈现时异步加载下列图片 -->
+					<img data-src="images/p5_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p5_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p5_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p5_t1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p5_t2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p5_t3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p3.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page5 -->
 				<div class="swiper-slide" id="page5">
 					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<img src="images/adv.png" class="adv"/>
-					<img src="images/p5_p1.png" class="p5_p1" />
+					<img data-src="images/p5_p1.png" class="swiper-lazy p5_p1" />
 					<div class="p5_slogan">
-						<img src="images/p5_t1.png" class="baselay hide" id="p5_slogan"/>
+						<img data-src="images/p5_t1.png" class="swiper-lazy baselay hide" id="p5_slogan"/>
 						<img src="images/star.png" class="p5_star hide" id="p5_star"/>
 					</div>
 					<div class="p5_text">
-						<img src="images/p5_t2.png" class="baselay hide" id="p5_t2"/>
-						<img src="images/p5_t3.png" class="overlay hide" id="p5_t3"/>
+						<img data-src="images/p5_t2.png" class="swiper-lazy baselay hide" id="p5_t2"/>
+						<img data-src="images/p5_t3.png" class="swiper-lazy overlay hide" id="p5_t3"/>
 					</div>
 					<div class="p5_main">
-						<img src="images/p5_p2.png" class="baselay p5_p2" id="p5_touchMoveImg"/>
-						<img src="images/p5_p3.png" class="overlay" id="p5_shield"/>
-						<img src="images/touch_hint.png" class="p5_hint hint_touchMove" id="p5_hint"/>
+						<img data-src="images/p5_p2.png" class="swiper-lazy baselay p5_p2" id="p5_touchMoveImg"/>
+						<img data-src="images/p5_p3.png" class="swiper-lazy overlay" id="p5_shield"/>
+						<img data-src="images/touch_hint.png" class="swiper-lazy p5_hint hint_touchMove" id="p5_hint"/>
 					</div>
 					<img src="images/arrow.png" class="arrow" />
+					
+					<!-- 当page4呈现时异步加载下列图片 -->
+					<img data-src="images/p6_p4.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p5.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p6.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p7.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p8.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p9.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p10.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p6_p11.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p7_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p7_btn.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/p7_title.png" class="swiper-lazy asynLoad"/>
+					<img data-src="images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page6 -->
 				<div class="swiper-slide" id="page6">
 					<img src="images/music_icon.png" class="music_icon" name="music_icon"/>
 					<div class="p6_center">
-						<img src="images/p6_p5.png" class="baselay hide"/>
-						<img src="images/p6_p1.png" class="overlay hide" id="p6_p1"/>
-						<img src="images/p6_p2.png" class="overlay hide" id="p6_p2"/>
-						<img src="images/p6_p3.png" class="overlay hide" id="p6_p3"/>
-						<img src="images/p6_p4.png" class="overlay hide" id="p6_p4"/>
+						<img data-src="images/p6_p5.png" class="swiper-lazy baselay hide"/>
+						<img data-src="images/p6_p1.png" class="swiper-lazy overlay hide" id="p6_p1"/>
+						<img data-src="images/p6_p2.png" class="swiper-lazy overlay hide" id="p6_p2"/>
+						<img data-src="images/p6_p3.png" class="swiper-lazy overlay hide" id="p6_p3"/>
+						<img data-src="images/p6_p4.png" class="swiper-lazy overlay hide" id="p6_p4"/>
 					</div>
 					
-					<img src="images/p6_p11.png" class="p6_intro_bg hide" id="p6_bg"/>
+					<img data-src="images/p6_p11.png" class="swiper-lazy p6_intro_bg hide" id="p6_bg"/>
 					<div class="p6_intro_main">
-						<img src="images/p6_p8.png" class="p6_intro_img hide" id="p6_intro1"/>
-						<img src="images/p6_p9.png" class="p6_intro_img hide" id="p6_intro2"/>
-						<img src="images/p6_p10.png" class="p6_intro_img hide" id="p6_intro3"/>
+						<img data-src="images/p6_p8.png" class="swiper-lazy p6_intro_img hide" id="p6_intro1"/>
+						<img data-src="images/p6_p9.png" class="swiper-lazy p6_intro_img hide" id="p6_intro2"/>
+						<img data-src="images/p6_p10.png" class="swiper-lazy p6_intro_img hide" id="p6_intro3"/>
 						<div class="p6_subject_block">
-							<img src="images/p6_p5.png" class="p6_subject hide" id="p6_subject"/>
-							<img src="images/p6_p6.png" class="p6_subject_left hide" id="p6_left"/>
-							<img src="images/p6_p7.png" class="p6_subject_right hide" id="p6_right"/>
+							<img data-src="images/p6_p5.png" class="swiper-lazy p6_subject hide" id="p6_subject"/>
+							<img data-src="images/p6_p6.png" class="swiper-lazy p6_subject_left hide" id="p6_left"/>
+							<img data-src="images/p6_p7.png" class="swiper-lazy p6_subject_right hide" id="p6_right"/>
 						</div>
 					</div>
 					<img src="images/arrow.png" class="arrow" />
@@ -253,30 +261,19 @@
 				
 				<!-- page7 -->
 				<div class="swiper-slide" id="page7">
-					<img src="images/p7_title.png" class="p7_title"/>
+					<img data-src="images/p7_title.png" class="swiper-lazy p7_title"/>
 					<div class="video-wrap" id="video">
 						<div class="video-box" id="mod_player"></div>
 						<div class="video-control" id="controlBtn"></div>
 					</div>
 					<div class="p7_block">
-						<a href="http://sale.jd.com/m/act/svP4W2Dn1tX.html"><img src="images/p7_btn.png" class="btn"/></a>
-						<img src="images/p7_p1.png" class="pic"/>
+						<a href="http://sale.jd.com/m/act/svP4W2Dn1tX.html"><img data-src="images/p7_btn.png" class="swiper-lazy btn"/></a>
+						<img data-src="images/p7_p1.png" class="swiper-lazy pic"/>
 					</div>
 				</div>
 				
 			</div>
 		</div>
-		<script type="text/javascript" src="js/swiper.min.js"></script>
-		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
-		<!-- 数据统计脚本 -->
-		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=42765964" charset="UTF-8"></script>
-		<script src="http://res.wx.qq.com/promotion/res/htmledition/js/stat.js?max_age=31536000"></script>
-		<script>
-			var appid = "wxa1b2c3d4e5f6g7h8"; // 公众号APPID,根据每个广告项目不同
-			WXStat(appid);
-		</script>
-		
 		<style type="text/css">
 		    /* 样式放在结尾，防止 base64 图片造成拥塞 */
 		    @-webkit-keyframes rotation {
@@ -305,5 +302,152 @@
 		        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
 		    </div>
 		</div>
+		
+		<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<!-- 数据统计脚本 -->
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=42765964" charset="UTF-8"></script>
+		<script src="http://res.wx.qq.com/promotion/res/htmledition/js/stat.js?max_age=31536000"></script>
+		<script>
+			var appid = "wxa1b2c3d4e5f6g7h8"; // 公众号APPID,根据每个广告项目不同
+			WXStat(appid);
+		</script>
+		<script>
+			//分享
+			var wxshareImg = basePath+'images/thumb.jpg';
+			var wxshareUrl = window.location.href.replace(/([&|\?]{1})ticket=[\w\-]+(&?)/, '$1').replace(/\?$/, '');
+			// 分享给好友
+			function getWxShareData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",
+			        'link': wxshareUrl
+			    };
+			}
+			
+			// 分享朋友圈
+			function getWxShareMomentData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",// 此处两条需保持相同
+			        'link': wxshareUrl
+			    };
+			}
+			
+			var bindit = function () {
+			    // 发送给好友;
+			    WeixinJSBridge.on('menu:share:appmessage', function () {
+			        WeixinJSBridge.invoke('sendAppMessage', getWxShareData(), function (r) {
+			        });
+			    });
+			    // 分享到朋友圈;
+			    WeixinJSBridge.on('menu:share:timeline', function () {
+			        WeixinJSBridge.invoke('shareTimeline', getWxShareMomentData(), function (r) {
+			        });
+			    });
+			};
+			
+			document.addEventListener('WeixinJSBridgeReady', bindit, false);
+		</script>
+		<script>
+			//腾讯视频
+			function initVideo() {
+				videoWidth = screenWidth - 20;
+				videoHeight = videoWidth * (1080 / 1920);
+				video = new tvp.VideoInfo();
+				index = 0;
+				flag = 0;
+			
+				$(".video-box").css({"width": videoWidth, "height": videoHeight});
+				$(".video-wrap").css("margin-left", -videoWidth / 2);
+			
+				//	设定视频id
+				video.setVid('r0152z1m9rg');
+			
+				player = new tvp.Player();
+				player.create({
+					width: '100%',
+					height: '100%',
+					video: video,
+					modId: "mod_player",
+					isHtml5ControlAlwaysShow: false,
+					isHtml5UseUI: true,
+					html5LiveUIFeature: false,
+					isHtml5UseFakeFullScreen: true,
+					isiPhoneShowPlaysinline: true,
+					vodFlashExtVars: {
+						share: 0, follow: 0, showlogo: 0, clientbar: 0
+					},
+					plugins: {
+						AppBanner: 0,
+						AppRecommend: 0
+					},
+					autoplay: false,
+					onplay: function () {
+						// 开始加载视频资源准备播放
+					},
+					onplaying: function () {
+						// 开始播放视频第一帧
+						music_pause();
+						// 去掉视频缩略图
+						$('#mod_player').addClass('mod_player_off');
+						$(".tvp_shadow").css("display", "none");
+						flag = 1;
+						$(".video-control").css("opacity", "1");
+						
+					},
+					onpause: function () {
+						// 当输出播放器时
+						flag = 0;
+					},
+					onallended: function () {
+						//播放到最后完毕
+						mySwiper.unlockSwipes();
+					},
+					onfullscreen: function (a) {
+						// alert(parseInt(player.getPlayer().currentTime) + 'xx' + parseInt(player.getPlayer().duration))
+						// 用户点击 done 退出全屏的时候 a 为 false
+						// 切当前已播放时长等于视频总时长才触发
+						$(".video-control").css("opacity", "0");
+						var currentTime = parseInt(player.getPlayer().currentTime);
+						var fulltTime = parseInt(player.getPlayer().duration);
+			
+						// 若没放完成，则会返回时长是 0
+						if (!a && currentTime && fulltTime && currentTime == fulltTime) {
+							// 执行后面的动画 -> 设备动画小于 iPhone 5c
+							// 注意这种情况下,包括最上方的 onallended , doSomething(),执行了两遍, 有些事件需要先解绑在绑定
+							// doSomething();
+						}
+					}
+				});
+			
+				$('#controlBtn').on("touchstart", function () {
+					if(flag == 0){
+						mySwiper.lockSwipes();
+						player.getPlayer().play();
+						$(".video-control").removeClass("video-control_play");
+					}
+					else{
+						mySwiper.unlockSwipes();
+						player.getPlayer().pause();
+						$(".video-control").addClass("video-control_play");
+					}
+				});
+			}
+			
+			var  screenHeight = document.documentElement.clientHeight,
+				 screenWidth = document.documentElement.clientWidth,
+				 video,
+				 videoWidth,
+				 videoHeight,
+				 index,
+				 flag,
+				 player;
+			
+			$(document).ready(initVideo());
+		</script>
 	</body>
 </html>

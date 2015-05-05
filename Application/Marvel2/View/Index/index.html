@@ -70,7 +70,7 @@
 			}
 			
 			function isPhone(a){
-				var reg= /^[1][358]\d{9}$/;
+				var reg= /^[1][3578]\d{9}$/;
 				return reg.test(a);
 			}
 			
