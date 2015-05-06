@@ -98,7 +98,7 @@ function animate_page1(){
 			$("#page1 img.arrow").show();
 			mySwiper.unlockSwipes();
 		},4000);
-	},100);
+	},0);
 }
 
 function animate_page2(){
@@ -316,7 +316,6 @@ var w = $(window).width();
 var h = $(window).height();
 $(document).ready(function() {
 	if(isiOS) bg_music.play();
-	
 	if(w>h){
 		tempw=h;
 		h=w;

@@ -10,8 +10,7 @@
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<link rel="stylesheet" href="css/animate.css">
 		<link rel="stylesheet" href="css/style.css">
-		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/pxloader-all.min.js"></script>
+		
 	</head>
 	<body>
 		<div class="loading-container">
@@ -20,60 +19,7 @@
 		    	<span id="loading_inner">0%</span>
 		    </div>
 		</div>
-		<script>
-			// var basePath="http://192.168.0.106/html/gillette/";
-			var basePath="http://www.geek-in.net/html/gillette/";
-
-			$(document).ready(function(){
-			    var loader = new PxLoader(),
-				    // 把页面的图片列在这里
-			        fileList = [
-			            'images/adv.png',
-			            'images/arrow.png',
-			            'images/bg.png',
-			            'images/adv.png',
-			            'images/star.png',
-			            'images/music_icon.png',
-			            'images/music_pause.png',
-			            'images/touch_hint.png',
-			            'images/p1_bg.png',
-			            'images/p1_bottom.png',
-			            'images/p1_p1.png',
-			            'images/p1_p2.png',
-			            'images/p1_t1.png',
-			            'images/p1_t2.png'
-			        ];
-			
-				//把图片载入加载器
-			    for(var i = 0; i < fileList.length; i++){
-			        var pxImage = new PxLoaderImage(basePath + fileList[i]);
-			
-			        pxImage.imageNumber = i + 1;
-			        loader.add(pxImage);
-			    }
-			
-				//当加载完成时
-			    loader.addCompletionListener(function(){
-			        $(".loading-container").css("display", "none");
-			
-			        // 主页面开始
-			        $(".swiper-container").fadeIn();
-			        Initial();
-			        
-			    });
-			
-			    //loading 进度监听
-			    loader.addProgressListener(function(e){
-			        var percent = Math.round( (e.completedCount / e.totalCount) * 100); //正序, 1-100
-			     
-			        $("#loading_inner").text(percent + "%");
-			    });
-			
-			    //启动
-			    loader.start();
-			});
-			
-		</script>
+		
 		<audio id="sound1" src="sound/1.mp3"></audio> 
 		<audio id="sound2" src="sound/2.mp3"></audio> 
 		<audio id="sound3" src="sound/3.mp3"></audio> 
@@ -302,7 +248,75 @@
 		        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
 		    </div>
 		</div>
-		
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/pxloader-all.min.js"></script>
+		<script>
+			// var basePath="http://192.168.0.106/html/gillette/";
+			var basePath="http://www.geek-in.net/html/gillette/";
+
+			$(document).ready(function(){
+			    var loader = new PxLoader(),
+				    // 把页面的图片列在这里
+			        fileList = [
+			        	'sound/1.mp3',
+			            'sound/2.mp3',
+			            'sound/3.mp3',
+			            'sound/4.mp3',
+			            'sound/music.mp3',
+			            'images/adv.png',
+			            'images/arrow.png',
+			            'images/bg.png',
+			            'images/adv.png',
+			            'images/star.png',
+			            'images/music_icon.png',
+			            'images/music_pause.png',
+			            'images/touch_hint.png',
+			            'images/p1_bg.png',
+			            'images/p1_bottom.png',
+			            'images/p1_p1.png',
+			            'images/p1_p2.png',
+			            'images/p1_t1.png',
+			            'images/p1_t2.png',
+			            'images/p2_p2.png',
+			            'images/p2_p3.png',
+			            'images/p2_p4.png',
+			            'images/p2_p5.png',
+			            'images/p2_t1.png',
+			            'images/p2_t2.png',
+			            'images/presson.png'
+			        ];
+			
+				//把图片载入加载器
+			    for(var i = 0; i < fileList.length; i++){
+			        var pxImage = new PxLoaderImage(basePath + fileList[i]);
+			
+			        pxImage.imageNumber = i + 1;
+			        loader.add(pxImage);
+			        console.log(i);
+			    }
+			
+				//当加载完成时
+			    loader.addCompletionListener(function(){
+			    	if(isiOS) bg_music.play();
+			        $(".loading-container").css("display", "none");
+			        // 主页面开始
+			        $(".swiper-container").fadeIn();
+			        Initial();
+			        
+			    });
+			
+			    //loading 进度监听
+			    loader.addProgressListener(function(e){
+			        var percent = Math.round( (e.completedCount / e.totalCount) * 100); //正序, 1-100
+			     
+			        $("#loading_inner").text(percent + "%");
+			    });
+			
+			    //启动
+			    loader.start();
+			});
+			
+		</script>
 		<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
