@@ -69,7 +69,7 @@ function Initial(){
 			}
 		},
 		onTouchEnd : function(swiper, e) {
-			clearTimeout(page3_timer);
+			// clearTimeout(page3_timer);
 			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
 				touchMove_page5();
 			}
