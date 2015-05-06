@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="utf-8">
+		<title>超级英雄连连看游戏排名</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<script src="__PUBLIC__/Marvel2/js/jquery-1.11.2.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("tbody tr").each(function(i){
+					this.style.backgroundColor=['#f3f3f3','#fff'][i%2];
+				});
+			});
+		</script>
+		<style type="text/css">
+			table{width:100%;text-align: center;margin-top:5px;border: none;}
+			table thead th{}
+			table tbody tr td{padding:10px 3px;border:none;}
+			table tfoot td{padding-top:10px;}
+		</style>
+	</head>
+	<body>
+		<empty name="list">
+			<div class="nodata">暂无排名信息</div>
+		</empty>
+		<notempty name="list">
+			<table>
+				<thead>
+					<th>排名</th>
+					<th>得分</th>
+					<th>手机号</th>
+				</thead>
+				<tbody>
+					<volist name="list" id="vo">
+						<tr>
+							<td>{$i}</td>
+							<td>{$vo.max(score)}</td>
+							<td>{$vo.phone}</td>
+						</tr>
+					</volist>
+				</tbody>
+			</table>
+		</notempty>
+	</body>
+</html>
