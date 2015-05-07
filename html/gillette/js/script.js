@@ -95,7 +95,7 @@ function animate_page1(){
 		$("#p1_title1").addClass("animated delay3 fadeInLeftBig");
 		$("#p1_title2").addClass("animated delay3 fadeInRightBig");
 		setTimeout(function(){
-			$("#page1 img.arrow").show();
+			$("#page1 div.arrow").show();
 			mySwiper.unlockSwipes();
 		},4000);
 	},0);
@@ -126,7 +126,7 @@ function tap_page2(){
 			$("#p2_hint").fadeOut();
 			
 			setTimeout(function(){
-				$("#page2 img.arrow").show();
+				$("#page2 div.arrow").show();
 				mySwiper.unlockSwipes();
 			},2700);
 		},100);
@@ -159,7 +159,7 @@ function tap_page3(){
 				}
 			},700);
 			setTimeout(function(){
-				$("#page3 img.arrow").show();
+				$("#page3 div.arrow").show();
 				mySwiper.unlockSwipes();
 			},4000);
 		},100);
@@ -195,7 +195,7 @@ function shake_page4(){
 				}
 			},1700);
 			setTimeout(function(){
-				$("#page4 img.arrow").show();
+				$("#page4 div.arrow").show();
 				mySwiper.unlockSwipes();
 				$("#p4_light_bg").removeClass("animated delay1 expandUp hide");
 				$("#p4_lightSource").removeClass("animated lightSource hide");
@@ -234,7 +234,7 @@ function touchMove_page5(){
 				}
 			},200);
 			setTimeout(function(){
-				$("#page5 img.arrow").show();
+				$("#page5 div.arrow").show();
 				mySwiper.unlockSwipes();
 				$("#p5_shield").removeClass("animated1p5 flyOutUpLeft");
 			},1500);
@@ -260,7 +260,7 @@ function animate_page6(){
 			$("#p6_left").addClass("animated delay8 fadeIn");
 			$("#p6_right").addClass("animated delay9 fadeIn");
 			setTimeout(function(){
-				$("#page6 img.arrow").show();
+				$("#page6 div.arrow").show();
 				mySwiper.unlockSwipes();
 			},9000);
 		},100);
@@ -268,13 +268,13 @@ function animate_page6(){
 }
 
 function music_play(){
-	$(".music_icon").attr("src","images/music_icon.png");
+	$(".music_icon").css("background-position","-88px -0px");
 	if(isiOS) bg_music.play();
 	sound_on=!sound_on;
 }
 
 function music_pause(){
-	$(".music_icon").attr("src","images/music_pause.png");
+	$(".music_icon").css("background-position","-22px -0px");
 	if(isiOS) bg_music.pause();
 	sound_on=!sound_on;
 }
@@ -315,7 +315,11 @@ function deviceMotionHandler(eventData) {
 var w = $(window).width();
 var h = $(window).height();
 $(document).ready(function() {
-	if(isiOS) bg_music.play();
+	if(isiOS){
+		bg_music.play();
+	}else{
+		$("#controlBtn").hide();
+	}
 	if(w>h){
 		tempw=h;
 		h=w;

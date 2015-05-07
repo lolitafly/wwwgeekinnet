@@ -17,7 +17,9 @@ body{height:100%;background-color: #0d060c;}
 .swiper-slide {height:100%;position:relative;text-align:center;background:url(../images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;overflow:hidden;}
 .music_icon{position:absolute;top:6px;right:6px;width:39px;z-index: 1000;}
 .adv{position:absolute;bottom:5%;right:2%;width:3%;}
+audio{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;z-index: -1000;}
 
+.asynLoad{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;z-index: -1000;display:none;}
 
 .hide{opacity:0;}
 .invisible{visibility: hidden;}
@@ -25,7 +27,11 @@ body{height:100%;background-color: #0d060c;}
 .baselay{width:100%;}
 .overlay{position:absolute;top:0;left:0;width:100%;}
 
-audio{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;z-index: -1000;}
+.gopng_p6_p3 {
+background: url(../images/s.png) -0px -0px no-repeat;
+width: 320px;
+height:192px;
+}
 
 /*#page2,#page3,#page4,#page5{display:none;}*/
 .swiper-container{display:none;}

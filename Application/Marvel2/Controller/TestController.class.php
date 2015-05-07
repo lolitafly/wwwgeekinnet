@@ -74,4 +74,27 @@ class TestController extends Controller {
 			echo $data;
 		}
 	}
+	
+	public function test(){
+		echo date('Y-m-d H:i:s',1431006438);
+	}
+	
+	public function show1($p){
+		$today=strtotime(date('2015-5-6 22:00',time()));
+// 		echo date("Y-m-d H:i:s",$today);
+		$cdt['price']=$p;
+		$cdt['sendDate']=array('gt',$today);
+		$out=M('Kuaidiquan')->where($cdt)->find();
+		dump($out);
+	}
+	
+	public function show2($p){
+		$cdt['state']=1;
+		$cdt['price']=$p;
+		$out=M('Kuaidiquan')->where($cdt)->find();
+		dump($out);
+	}
+	
+	
+	
 }

@@ -38,7 +38,7 @@
 					if(score>=minScore&&param.phone!=""){
 						if(check(param)){
 							$.ajax({
-								url:'/marvel2.php/Index/submit',
+								url:'/marvel2.php/index/submit',
 								type:'post',
 								dataType:'json',
 								data:param,
@@ -169,7 +169,7 @@
 			<img src="/Public/Marvel2/images/yihaozhuanche.png" class="logo1"/>
 			<div class="prize-box" style="top:<?php echo ($flag=="1"?"20%":"15%"); ?>">
 				<img src="/Public/Marvel2/images/prize_text<?php echo ($ticket["price"]); ?>.png" class="prize_text">
-				<h1>长按复制编码：<?php echo ($ticket["code"]); ?></h1>
+				<h1>券已发完，我们会尽快补充!</h1>
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="1"?"none":"block"); ?>;"/>
 				<a href="#prize2" data-transition="flip"><img src="/Public/Marvel2/images/share_btn.png" class="share_btn" id="share_btn"/></a>
 			</div>
@@ -189,7 +189,7 @@
 				<img src="/Public/Marvel2/images/usage.png" class="usage" style="display:<?php echo ($flag=="2"?"none":"block"); ?>;"/>
 				<div class="twoBtns">
 					<a href="#game" data-transition="flip"><img src="/Public/Marvel2/images/game_btn1.png" class="left" /></a>
-					<a href="/marvel2.php/Index/rank" data-ajax='false'><img src="/Public/Marvel2/images/rank_btn.png" class="right" /></a>
+					<a href="/marvel2.php/index/rank" data-ajax='false'><img src="/Public/Marvel2/images/rank_btn.png" class="right" /></a>
 				</div>
 			</div>
 		</div>

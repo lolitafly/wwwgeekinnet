@@ -7,7 +7,8 @@ class IndexController extends Controller {
     	//可获奖最低分
     	$this->assign('minScore',D('User')->getScore());
     	//快的打车券
-    	$tickt=D('Kuaidiquan')->getCode();
+    	$tickt=D('Kuaidiquan')->getCode1();
+//     	$tickt['code']="券已发完，我们会尽快补充！";
     	//奖品顺序随机
     	$prize1="恭喜英雄！<br/>获得吉列京东商城优惠券！";
     	$prize2="恭喜英雄！获得一号专车".$tickt['price']."元专车券一张！长按复制编码<br/>编码为：".$tickt['code'];
