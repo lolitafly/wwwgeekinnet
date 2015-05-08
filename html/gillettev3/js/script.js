@@ -105,6 +105,7 @@ function animate_page1(){
 }
 
 function animate_page2(){
+	initVideo();
 	if(page2_flag==0){
 		mySwiper.lockSwipes();
 	}
@@ -315,8 +316,8 @@ function deviceMotionHandler(eventData) {
 
 
 //调整样式
-var w = $(window).width();
-var h = $(window).height();
+var w = document.documentElement.clientHeight;
+var h = document.documentElement.clientWidth;
 $(document).ready(function() {
 	if(isiOS){
 		bg_music.play();
