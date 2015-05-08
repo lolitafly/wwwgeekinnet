@@ -6,8 +6,8 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	    <meta name="format-detection" content="telephone=no">
-		<title>Gillette</title>
-		<link rel="stylesheet" href="css/style.css">
+		<title>每个英雄都有他的专属神器，你的呢？</title>
+		<link rel="stylesheet" href="css/style.min.css">
 		
 	</head>
 	<body>
@@ -50,7 +50,6 @@
 				<div class="swiper-slide" id="page2">
 					<div class="music_icon" name="music_icon"></div>
 					<div class="adv"></div>
-					<!-- <img src="images/adv.png" class="adv"/> -->
 					<img data-src="images/p2_p2.png" class="swiper-lazy p2_p2"/>
 					<div class="p2_slogan">
 						<img data-src="images/p2_t1.png" class="swiper-lazy baselay hide" id="p2_slogan"/>
@@ -190,10 +189,6 @@
 						<div class="p6_p2 hide" id="p6_p2"></div>
 						<div class="p6_p3 hide" id="p6_p3"></div>
 						<div class="p6_p4 hide" id="p6_p4"></div>
-						<!-- <img data-src="images/p6_p1.png" class="swiper-lazy overlay hide" id="p6_p1"/>
-						<img data-src="images/p6_p2.png" class="swiper-lazy overlay hide" id="p6_p2"/>
-						<img data-src="images/p6_p3.png" class="swiper-lazy overlay hide" id="p6_p3"/>
-						<img data-src="images/p6_p4.png" class="swiper-lazy overlay hide" id="p6_p4"/> -->
 					</div>
 					
 					<img data-src="images/p6_p11.png" class="swiper-lazy p6_intro_bg hide" id="p6_bg"/>
@@ -221,7 +216,7 @@
 						<div class="video-control" id="controlBtn"></div>
 					</div>
 					<div class="p7_block">
-						<a href="http://sale.jd.com/m/act/svP4W2Dn1tX.html"><img data-src="images/p7_btn.png" class="swiper-lazy btn"/></a>
+						<a href="http://wqs.jd.com/event/brand/jilie/index.shtml"><img data-src="images/p7_btn.png" class="swiper-lazy btn"/></a>
 					</div>
 				</div>
 				
@@ -257,10 +252,59 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/pxloader-all.min.js"></script>
+		
+		<script type="text/javascript" src="js/script.min.js"></script>
+		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
+		<!-- 数据统计脚本 -->
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=42765964" charset="UTF-8"></script>
+		<script src="http://res.wx.qq.com/promotion/res/htmledition/js/stat.js?max_age=31536000"></script>
+		<script>
+			var appid = "wxa1b2c3d4e5f6g7h8"; // 公众号APPID,根据每个广告项目不同
+			WXStat(appid);
+		</script>
+		<script>
+			var basePath="http://www.geek-in.net/html/gillettev3/";
+			//分享
+			var wxshareImg = basePath+'images/thumb.jpg';
+			var wxshareUrl = window.location.href.replace(/([&|\?]{1})ticket=[\w\-]+(&?)/, '$1').replace(/\?$/, '');
+			// 分享给好友
+			function getWxShareData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",
+			        'link': wxshareUrl
+			    };
+			}
+			
+			// 分享朋友圈
+			function getWxShareMomentData() {
+			    return {
+			        'img_url': wxshareImg,
+			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'desc': "每个英雄都有他的专属神器，你的呢？",// 此处两条需保持相同
+			        'link': wxshareUrl
+			    };
+			}
+			
+			var bindit = function () {
+			    // 发送给好友;
+			    WeixinJSBridge.on('menu:share:appmessage', function () {
+			        WeixinJSBridge.invoke('sendAppMessage', getWxShareData(), function (r) {
+			        });
+			    });
+			    // 分享到朋友圈;
+			    WeixinJSBridge.on('menu:share:timeline', function () {
+			        WeixinJSBridge.invoke('shareTimeline', getWxShareMomentData(), function (r) {
+			        });
+			    });
+			};
+			
+			document.addEventListener('WeixinJSBridgeReady', bindit, false);
+		</script>
 		<script>
 			// var basePath="http://192.168.0.106/html/gillette/";
-			// var basePath="http://www.geek-in.net/html/gillettev3/";
-			var basePath="http://www.geek-in.cn/htmls/gillettev3/";
+			// var basePath="http://www.geek-in.cn/htmls/gillettev3/";
 
 			$(document).ready(function(){
 			    var loader = new PxLoader(),
@@ -319,56 +363,6 @@
 			    loader.start();
 			});
 			
-		</script>
-		<script type="text/javascript" src="js/script.js"></script>
-		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
-		<!-- 数据统计脚本 -->
-		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=42765964" charset="UTF-8"></script>
-		<script src="http://res.wx.qq.com/promotion/res/htmledition/js/stat.js?max_age=31536000"></script>
-		<script>
-			var appid = "wxa1b2c3d4e5f6g7h8"; // 公众号APPID,根据每个广告项目不同
-			WXStat(appid);
-		</script>
-		<script>
-			//分享
-			var wxshareImg = basePath+'images/thumb.jpg';
-			var wxshareUrl = window.location.href.replace(/([&|\?]{1})ticket=[\w\-]+(&?)/, '$1').replace(/\?$/, '');
-			// 分享给好友
-			function getWxShareData() {
-			    return {
-			        'img_url': wxshareImg,
-			        'title': "每个英雄都有他的专属神器，你的呢？",
-			        'desc': "每个英雄都有他的专属神器，你的呢？",
-			        'link': wxshareUrl
-			    };
-			}
-			
-			// 分享朋友圈
-			function getWxShareMomentData() {
-			    return {
-			        'img_url': wxshareImg,
-			        'title': "每个英雄都有他的专属神器，你的呢？",
-			        'desc': "每个英雄都有他的专属神器，你的呢？",// 此处两条需保持相同
-			        'link': wxshareUrl
-			    };
-			}
-			
-			var bindit = function () {
-			    // 发送给好友;
-			    WeixinJSBridge.on('menu:share:appmessage', function () {
-			        WeixinJSBridge.invoke('sendAppMessage', getWxShareData(), function (r) {
-			        });
-			    });
-			    // 分享到朋友圈;
-			    WeixinJSBridge.on('menu:share:timeline', function () {
-			        WeixinJSBridge.invoke('shareTimeline', getWxShareMomentData(), function (r) {
-			        });
-			    });
-			};
-			
-			document.addEventListener('WeixinJSBridgeReady', bindit, false);
-		</script>
-		<script>
 			//腾讯视频
 			function initVideo() {
 				videoWidth = screenWidth - 20;
