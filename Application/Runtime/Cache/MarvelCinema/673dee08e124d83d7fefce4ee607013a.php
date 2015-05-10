@@ -1,0 +1,200 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>复仇者联盟连连看</title>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link rel="stylesheet" href="/Public/MarvelCinema/css/jquery.mobile-1.3.2.min.css">
+		<!-- <link rel="stylesheet" href="css/progressBar.css"> -->
+		<link rel="stylesheet" href="/Public/MarvelCinema/css/style.css">
+		<script src="/Public/MarvelCinema/js/jquery-1.11.2.min.js"></script>
+		<script src="/Public/MarvelCinema/js/jquery.mobile-1.3.2.min.js"></script>
+		<script src="/Public/MarvelCinema/js/script.js"></script>
+		<script type="text/javascript" src="/Public/MarvelCinema/js/hero.js"></script>
+		<script>
+			var phone="";
+			$(document).ready(function() {
+				// $.mobile.changePage("#start", {
+					// transition : "none"
+				// });
+				
+				$("#start_btn2").bind("tap", function() {
+					phone=$("#phone").val();
+					if(check(phone)){
+						setTimeout(function() {
+							$("#form-mask").hide();
+							gogogo();
+						}, 200);
+					}
+				});
+				
+				$.mobile.showPageLoadingMsg('a', "加载中...");
+				preload();
+				$.mobile.hidePageLoadingMsg();
+			});
+			
+			function submit(){
+				$("#loading").show();
+				$("#rank").hide();
+				
+				var param={};
+				param.phone=phone;
+				param.score=score;
+				console.log(param);
+				$.ajax({
+					url:'/MarvelCinema.php/Index/submit',
+					type:'post',
+					dataType:'json',
+					data:param,
+					success:function(r){
+						$("#rank").text(r);
+						$("#loading").hide();
+						$("#rank").show();
+					},
+					error:function(){
+						$("#rank").text("查询错误！");
+						$("#loading").hide();
+						$("#rank").show();
+					}
+				});
+			}
+			
+			function check(p){
+				if(!isPhone(p)){
+					alert("手机格式错误！");
+					return false;
+				}
+				return true;
+			}
+			
+			function isPhone(a){
+				var reg= /^[1][3578]\d{9}$/;
+				return reg.test(a);
+			}
+		</script>
+		<script type="text/javascript">
+            var images = new Array();
+            function preload() {
+                for (i = 0; i < preload.arguments.length; i++) {
+                    images[i] = new Image();
+                    images[i].src = preload.arguments[i];
+                }
+            }
+            preload(
+                "/Public/MarvelCinema/images/1.png",
+                "/Public/MarvelCinema/images/2.png",
+                "/Public/MarvelCinema/images/3.png",
+                "/Public/MarvelCinema/images/4.png",
+                "/Public/MarvelCinema/images/5.png",
+                "/Public/MarvelCinema/images/number/0.png",
+                "/Public/MarvelCinema/images/number/1.png",
+                "/Public/MarvelCinema/images/number/2.png",
+                "/Public/MarvelCinema/images/number/3.png",
+                "/Public/MarvelCinema/images/number/4.png",
+                "/Public/MarvelCinema/images/number/5.png",
+                "/Public/MarvelCinema/images/number/6.png",
+                "/Public/MarvelCinema/images/number/7.png",
+                "/Public/MarvelCinema/images/number/8.png",
+                "/Public/MarvelCinema/images/number/9.png"
+            );
+    	</script>
+	</head>
+	<body>
+		<div data-role="page" id="start">
+			<img src="/Public/MarvelCinema/images/share.jpg" style="width:0px; height:0px; overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;" />
+			<!-- <img src="images/watsons_logo.png" class="logo"/> -->
+			<div class="startBtn-group">
+				<a href="#game" data-transition="flip"><img src="/Public/MarvelCinema/images/start_btn.png" class="start_btn" id="start_btn"/></a>
+				<img src="/Public/MarvelCinema/images/rule_btn.png" class="rule_btn" id="rule_btn"/>
+			</div>
+			<div class="rule-mask">
+				<h1>活动规则</h1>
+				<ol>
+					<li>活动时间：5月1日-5月31日</li>
+					<li>游戏规则：30秒内找相同的盾牌，两个一组消除；</li>
+					<li>游戏结束可获得屈臣氏5元抵扣券及15元一号专车抵用券；</li>
+					<li>同一IP地址下24小时内只能领取一份，请尽量不要使用多人共享WIFI进入游戏。</li>
+				</ol>
+				<img src="/Public/MarvelCinema/images/rule_close_btn.png" id="rule_close_btn"/>
+			</div>
+			
+		</div>
+		
+		<div data-role="page" id="game">
+			<img src="/Public/MarvelCinema/images/game_bg.jpg" class="bg"/>
+			<div class="game_content">
+				<div id="game-head">
+					<div class="top">
+						<span class="time" id="timer">
+							<img src="/Public/MarvelCinema/images/number/2.png" />
+							<img src="/Public/MarvelCinema/images/number/9.png" />
+						</span>
+						<img src="/Public/MarvelCinema/images/number/s.png" class="sec"/>
+						<img src="/Public/MarvelCinema/images/logo.png" class="logo"/>
+					</div>
+					<div class="timeBar">
+						<img src="/Public/MarvelCinema/images/timeBar.png" />
+						<div class="meterBar">
+							<span style="width:50%;"></span>
+						</div>
+					</div>
+				</div>
+				<img src="/Public/MarvelCinema/images/bar.png" class="bar"/>
+				<div id="main"></div>
+				<!-- <img src="images/game_bottom.png" class="bottom"/> -->
+			</div>
+			
+			<div class="result-mask" id="result-mask">
+				<h1 id="scoreText">游戏成绩为0分</h1>
+				<p id="loading">排名查询中。。。</p>
+				<p id="rank">您的当前排名为：11</p>
+				<div class="game-btns">
+					<img src="/Public/MarvelCinema/images/game_btn1.png" class="start_btn2" id="restart_btn"/>
+				</div>
+			</div>
+			
+			<div class="form-mask" id="form-mask">
+				<h1>请输入您的手机号</h1>
+				<div class="inputForm" id="inputForm">
+					<input type="number" id="phone"/>
+				</div>
+				<div class="game-btns">
+					<img src="/Public/MarvelCinema/images/start_btn2.png" class="start_btn2" id="start_btn2"/>
+				</div>
+			</div>
+		</div>
+		
+		
+		<style type="text/css">
+		    /* 样式放在结尾，防止 base64 图片造成拥塞 */
+		    @-webkit-keyframes rotation {
+		        10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+		        90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		    }
+		    @keyframes rotation {
+		        10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+		        90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		        100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+		    }
+		    #orientLayer { display: none; }
+		    @media screen and (min-aspect-ratio: 13/9) { #orientLayer { display: block; } }
+		    .mod-orient-layer { display: none; position: fixed; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; background: #000; z-index: 9997 }
+		    .mod-orient-layer__content { position: absolute; width: 100%; top: 45%; margin-top: -75px; text-align: center }
+		    .mod-orient-layer__icon-orient {background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAADaCAMAAABU68ovAAAAXVBMVEUAAAD29vb////x8fH////////x8fH5+fn29vby8vL////5+fn39/f6+vr////x8fH////////+/v7////09PT////x8fH39/f////////////////////x8fH///+WLTLGAAAAHXRSTlMAIpML+gb4ZhHWn1c2gvHBvq1uKJcC6k8b187lQ9yhhboAAAQYSURBVHja7d3blpowFIDhTUIAOchZDkre/zE7ycySrbUUpsRN2/1fzO18KzEqxEVgTiZNfgmmtxRc8iaR8HNe8x4BtjQePKayYCIoyBSgvNNE1AkNSHqZyLqk97EgUCCHBzZ5mkg7ScvIJuIyOyXBRFxgpqWZyGsAZLB1KjsJi8nutHU4JCRbFRH8tmirI9k8Jx2sqNs8K/m0LQkrktO2crgcgXGB4AiTEsB0hJfo9MGgX7CGcYiYwQxmMOOvZwRhBG8tCoMXjBDeXvWCEcHbi14wgCBmMIMZzGAGM5jxETNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxY6E2rUQxnH2tz9cirlJFwFBJedaPnUv0M7++egPDE8iAJcIDmxwH5wwv9vUviw2kLbVO3TJU5uul/EyB0FoLp4x60PdGUd3qPurrWyjGGTc05u+1dcgI7/+tCCPARWGhH7o5Y7RCf+bH9ctXLp6v2BVDxfqz0oPXeSVaNtINo/1SXDv4dck8IIkbhtC2ol+iouEonTBCbYvVMnXOjxww6s/RFrBUpXHh/gw1rHj5d/qhYn9Gpk2FWh6xRBRX5Oj3Znh2Sq49/L6+y8pB26q9GbE2dbA2mVbx6I+7MfBglLCttm73ZQi7AD3iL4HqjFYJHSPRppqaUaJ3ATpGa+ckpGak2hRRMyqjGMkvl+xyFeSMwjAqcsZgGDdyhl0oNTnDN4yenJGZFGxNChP5/Y3efh6SM2rDOJMzboYxkDMqwyjIGcIw6F+io2FU1IxIm1JqRmgXSkvNKNCXeTpGrU0JNSO2c6LIGPgCS8AuDHz9ta0SXWDtxoDRH+MqlbC2Dt2G2JFRadtQZt2qq/orGowdGb2euxYiqWEpVWhTBnszoNAPdStuQwxqf0aocdWKW4Z+DfszIh8pxJqbuCE4YAC+4bm0evtipjpgJHeFnyyt1Ku2xa0bhjxr27p75rECNwyI9ZwvXkHq+7aTaMEV44YYy/spfgjgjNHaWW+GeUhGEX7tLlVinIFDDSgnOwhi1V6bU0b6tVS9eAERe863g4dRrtiHdc6o+nn5vtyVVgR79Cqt4uL6gfHPQyGqtP2vf7HADGbcYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JjhtOM+J/AgT008yDMkN/dPP9hzS8zAMQN3OEYeekp5YU7KOKXwVXqiY+QS7smcinGKABWdiBgpPJTSMHJ4KidhhPBUSMLw4CmPhKHgKUXCkHsygum71ftNSgCX6bsl8FQyfbcL5EdYsDk0R3j7aiA5wpt5AjKg/2gLJEBD/0Hf2OOf/vRrj6z/7GtP4B3nMKyjHA12kIPSjnJs3FEO0TvKkYJHOWCR+rjJH0Vn6fI5PjNbAAAAAElFTkSuQmCC');display: inline-block; width: 67px; height: 109px;
+		        transform: rotate(90deg); -webkit-transform: rotate(90deg); -webkit-animation: rotation infinite 1.5s ease-in-out; animation: rotation infinite 1.5s ease-in-out; -webkit-background-size: 67px; background-size: 67px }
+		    .mod-orient-layer__desc { margin-top: 20px; font-size: 15px; color: #fff }
+		</style>
+		<div id="orientLayer" class="mod-orient-layer">
+		    <div class="mod-orient-layer__content">
+		        <i class="icon mod-orient-layer__icon-orient"></i>
+		        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
+		    </div>
+		</div>
+		
+	</body>
+</html>
