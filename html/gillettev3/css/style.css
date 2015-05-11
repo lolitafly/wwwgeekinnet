@@ -13,7 +13,7 @@
 .arrow{
 	width:71px;
 	height:66px;
-	background: url(../images/p1_p.png)  no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_p.png)  no-repeat;
 	background-position:-154px -0px;
 	display:none;
 	margin:0 auto;
@@ -25,11 +25,11 @@ img{display:block;-webkit-user-select: none;}
 html{height:100%;}
 body{height:100%;background-color: #0d060c;}
 .swiper-container {width: 100%;height: 100%;}
-.swiper-slide {height:100%;position:relative;text-align:center;background:url(../images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;overflow:hidden;}
+.swiper-slide {height:100%;position:relative;text-align:center;background:url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/bg.png) 50% 0 no-repeat;background-size:cover;background-position:top;overflow:hidden;}
 
 .adv{position:absolute;bottom:5%;right:2%;width:22px;height:91px}
 .adv{
-	background: url(../images/p1_p.png)  no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_p.png)  no-repeat;
 	background-position:0px 0px;
 	transform-origin:100% 100%;
 	-webkit-transform-origin:100% 100%;
@@ -42,7 +42,7 @@ audio{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:ab
 .asynLoad{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:absolute;z-index: -1000;display:none;}
 .music_icon{position:absolute;top:6px;right:6px;width:66px;height:66px;z-index: 1000;overflow: hidden;}
 .music_icon{
-	background: url(../images/p1_p.png)  no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_p.png)  no-repeat;
 	background-position:-88px -0px;
 	/*background-position:-22px -0px;*/
 	transform-origin:100% 0%;
@@ -147,16 +147,16 @@ audio{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:ab
 
 .p6_p1,.p6_p2,.p6_p3,.p6_p4{position: absolute;top:0;left:0;width:108px;height:192px;}
 .p6_p1{
-	background: url(../images/p6_p.png) -324px 0px no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p.png) -324px 0px no-repeat;
 }
 .p6_p2{
-	background: url(../images/p6_p.png) 0px 0px no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p.png) 0px 0px no-repeat;
 }
 .p6_p3{
-	background: url(../images/p6_p.png) -108px 0px no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p.png) -108px 0px no-repeat;
 }
 .p6_p4{
-	background: url(../images/p6_p.png) -216px 0px no-repeat;
+	background: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p.png) -216px 0px no-repeat;
 }
 
 /*page7*/
@@ -1207,12 +1207,12 @@ audio{width:0;height:0;overflow:hidden;z-index: 0;padding:0;margin:0;position:ab
 	border: none!important;
 }
 .tvp_containers,video{
-	background-image: url(../images/video.png)!important;
+	background-image: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png)!important;
 	background-position:center center!important;
 	background-size:cover!important;
 }
 .tvp_shadow{
-	background-image: url(../images/video.png)!important;
+	background-image: url(http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png)!important;
 	background-position:center!important;
 	background-size:cover!important;
 }
