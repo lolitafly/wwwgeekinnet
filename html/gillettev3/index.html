@@ -165,6 +165,7 @@
 						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t3.png" class="swiper-lazy overlay hide" id="p5_t3"/>
 					</div>
 					<div class="p5_main">
+						<div class="press_mask" id="press_mask3"></div>
 						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p2.png" class="swiper-lazy baselay p5_p2" id="p5_touchMoveImg"/>
 						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p3.png" class="swiper-lazy overlay" id="p5_shield"/>
 						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/touch_hint.png" class="swiper-lazy p5_hint hint_touchMove" id="p5_hint"/>
@@ -211,6 +212,7 @@
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page7 -->
@@ -225,6 +227,7 @@
 						<a href="http://wqs.jd.com/event/brand/jilie/index.shtml?ptag=17013.51.1"><img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p7_btn.png" class="swiper-lazy btn" id="shop_btn"/></a>
 						<!-- <img data-src="images/p7_btn.png" class="swiper-lazy btn" id="shop_btn"/> -->
 					</div>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 			</div>
@@ -275,6 +278,7 @@
 			            'images/p1_p2.png',
 			            'images/p1_t1.png',
 			            'images/p1_t2.png',
+			            'images/video.png',
 			        ];
 			
 				//把图片载入加载器
@@ -307,6 +311,7 @@
 			    loader.start();
 			});
 		</script>
+		<!-- <script type="text/javascript" src="js/script.min.js"></script> -->
 		<script type="text/javascript" src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/js/script.min.js"></script>
 		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
 		<!-- 数据统计脚本 -->
@@ -404,7 +409,9 @@
 						// $('#mod_player').addClass('mod_player_off');
 						$(".tvp_shadow").css("display", "none");
 						flag = 1;
-						$(".video-control").css("opacity", "1");
+						if(isiOS){
+							$(".video-control").css("opacity", "1");
+						}
 						$(".video-control").removeClass("video-control_play");
 					},
 					onpause: function () {

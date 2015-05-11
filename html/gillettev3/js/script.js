@@ -74,7 +74,7 @@ function Initial(){
 		},
 		onTouchEnd : function(swiper, e) {
 			// clearTimeout(page3_timer);
-			if ($(e.target).attr("id") == "p5_touchMoveImg" && page5_flag==0) {
+			if ($(e.target).attr("id") == "press_mask3" && page5_flag==0) {
 				touchMove_page5();
 			}
 			if ($(e.target).attr("id") == "tenvideo_video_player_0" ||$(e.target).attr("class")=="tvp_shadow"||$(e.target).attr("id") == "controlBtn") {
@@ -323,7 +323,7 @@ $(document).ready(function() {
 	if(isiOS){
 		bg_music.play();
 	}else{
-		$("#controlBtn").hide();
+		// $("#controlBtn").hide();
 	}
 	if(w>h){
 		tempw=h;
