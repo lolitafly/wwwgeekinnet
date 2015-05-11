@@ -49,7 +49,7 @@ function Initial(){
 		},
 		onTap : function(swiper, e) {
 			switch($(e.target).attr("id")){
-				case "p2_tapImg":tap_page2();break;
+				case "press_mask2":tap_page2();break;
 				case "p2_hint":tap_page2();break;
 				case "hint_shake":shake_page4();break;
 				default:break;
@@ -193,6 +193,7 @@ function shake_page4(){
 			
 			
 			$("#hint_shake").fadeOut();
+			$("#p4_shake").fadeOut();
 			setTimeout(function(){
 				if(sound_on){
 					sound3.play();
