@@ -6,26 +6,20 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	    <meta name="format-detection" content="telephone=no">
-		<title>Gillette</title>
-		<link rel="stylesheet" href="css/swiper.min.css">
-		<link rel="stylesheet" href="css/animate.css">
-		<link rel="stylesheet" href="css/style.css">
-		
-		
+		<title>吉列打造复仇者联盟系列剃须神器</title>
+		<link rel="stylesheet" href="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/css/style.min.css">
+		<script type="text/javascript" src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/js/jquery-1.11.2.min.js"></script>
+		<script src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/js/pxloader-all.min.js"></script>
 	</head>
 	<body>
 		<div class="loading-container">
 		    <div class="loading-wrap">
-		    	<img src="images/loading.png" class="loading_icon rotateRound"/>
+		    	<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/loading.png" class="loading_icon rotateRound"/>
 		    	<span id="loading_inner">0%</span>
 		    </div>
 		</div>
 		
-		<audio id="sound1" src="sound/1.mp3"></audio> 
-		<audio id="sound2" src="sound/2.mp3"></audio> 
-		<audio id="sound3" src="sound/3.mp3"></audio> 
-		<audio id="sound4" src="sound/4.mp3"></audio> 
-		<audio id="bg_music" src="sound/music.mp3"  loop="loop"></audio>
+		
 		
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
@@ -34,49 +28,54 @@
 					<div class="music_icon" name="music_icon"></div>
 					<div class="p1_main">
 						<div class="pic">
-							<img src="images/p1_p1.png" class="p1_p1" id="stageLight"/>
-							<img src="images/p1_p2.png" class="p1_p2" id="heros"/>
+							<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_p1.png" class="p1_p1 hide" id="stageLight"/>
+							<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_p2.png" class="p1_p2 hide" id="heros"/>
 						</div>
 						<div class="text">
-							<img src="images/p1_t1.png" class="p1_t1" id="p1_title1"/>
-							<img src="images/p1_t2.png" class="p1_t2" id="p1_title2"/>
+							<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_t1.png" class="p1_t1 hide" id="p1_title1"/>
+							<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_t2.png" class="p1_t2 hide" id="p1_title2"/>
 						</div>
 					</div>
-					<img src="images/p1_bg.png" class="p1_bottom"/>
-					<img src="images/p1_bottom.png" class="p1_bottom" id="logo"/>
+					<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_bg.png" class="p1_bottom" id="p1_bg"/>
+					<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p1_bottom.png" class="p1_bottom hide" id="logo"/>
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
+					
+					<audio id="bg_music" src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/sound/music.mp3"  loop="loop"></audio>
 				</div>
 				
 				<!-- page2 -->
 				<div class="swiper-slide" id="page2">
+					<audio id="sound1" data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/sound/1.mp3" class="swiper-lazy"></audio> 
 					<div class="music_icon" name="music_icon"></div>
 					<div class="adv"></div>
-					<!-- <img src="images/adv.png" class="adv"/> -->
-					<img data-src="images/p2_p2.png" class="swiper-lazy p2_p2"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_p2.png" class="swiper-lazy p2_p2"/>
 					<div class="p2_slogan">
-						<img data-src="images/p2_t1.png" class="swiper-lazy baselay hide" id="p2_slogan"/>
-						<img src="images/star.png" class="p2_star hide" id="p2_star"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_t1.png" class="swiper-lazy baselay hide" id="p2_slogan"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/star.png" class="swiper-lazy p2_star hide" id="p2_star"/>
 					</div>
 					<div class="p2_main">
-						<img data-src="images/p2_p4.png" class="swiper-lazy baselay" id="p2_tapImg"/>
-						<img data-src="images/p2_p5.png" class="swiper-lazy overlay hide" id="p2_lightSource"/>
-						<img data-src="images/touch_hint.png" class="swiper-lazy p2_hint hint_tap" id="p2_hint"/>
+						<div class="press_mask" id="press_mask2"></div>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_p4.png" class="swiper-lazy baselay" id="p2_tapImg"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_p5.png" class="swiper-lazy overlay hide" id="p2_lightSource"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/touch_hint.png" class="swiper-lazy p2_hint hint_tap" id="p2_hint"/>
 						<div class="top">
-							<img data-src="images/p2_t2.png" class="swiper-lazy baselay hide" id="p2_t1"/>
-							<img data-src="images/p2_p3.png" class="swiper-lazy overlay hide" id="p2_light"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_t2.png" class="swiper-lazy baselay hide" id="p2_t1"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p2_p3.png" class="swiper-lazy overlay hide" id="p2_light"/>
 						</div>
 					</div>
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
 					<!-- 当page1呈现时异步加载下列图片 -->
-					<img data-src="images/p3_p1.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p3_p2.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p3_p3.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p3_t1.png" class="swiper-lazy asynLoad"/>
-					
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_t1.png" class="swiper-lazy asynLoad"/>
+					<audio id="sound2" data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/sound/2.mp3" class="swiper-lazy"></audio> 
+					<audio id="sound3" data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/sound/3.mp3" class="swiper-lazy"></audio> 
+					<audio id="sound4" data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/sound/4.mp3" class="swiper-lazy"></audio> 
 				</div>
 				
 				<!-- page3 -->
@@ -84,20 +83,20 @@
 					<div class="music_icon" name="music_icon"></div>
 					<div class="adv"></div>
 					<div class="p3_top">
-						<img data-src="images/p3_p1.png" class="swiper-lazy p3_p1"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p1.png" class="swiper-lazy p3_p1"/>
 						<div class="p3_slogan">
-							<img data-src="images/p3_t1.png" class="swiper-lazy baselay hide" id="p3_slogan"/>
-							<img src="images/star.png" class="p3_star hide" id="p3_star"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_t1.png" class="swiper-lazy baselay hide" id="p3_slogan"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/star.png" class="swiper-lazy p3_star hide" id="p3_star"/>
 						</div>
 					</div>
 					
 					<div class="p3_main">
-						<img data-src="images/p3_p3.png" class="swiper-lazy p3_p3 hide" id="p3_subject"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p3.png" class="swiper-lazy p3_p3 hide" id="p3_subject"/>
 						<div class="p3_p2_block">
-							<img data-src="images/p3_t2.png" class="swiper-lazy p3_t2 hide" id="p3_t"/>
-							<img data-src="images/p3_p2.png" class="swiper-lazy p3_p2" id="p3_tapImg"/>
-							<img data-src="images/touch_hint.png" class="swiper-lazy p3_hint hint_tap" id="p3_hint"/>
-							<img data-src="images/presson.png" class="swiper-lazy p3_presson" id="p3_presson"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_t2.png" class="swiper-lazy p3_t2 hide" id="p3_t"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p3_p2.png" class="swiper-lazy p3_p2" id="p3_tapImg"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/touch_hint.png" class="swiper-lazy p3_hint hint_tap" id="p3_hint"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/presson.png" class="swiper-lazy p3_presson" id="p3_presson"/>
 							<div class="press_mask" id="press_mask"></div>
 						</div>
 					</div>
@@ -105,14 +104,14 @@
 						<div class="arrow"></div>
 					</div>
 					<!-- 当page2呈现时异步加载下列图片 -->
-					<img data-src="images/p4_hint_shake.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_p1.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_p2.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_p3.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_p4.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_p5.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_t1.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p4_t2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_hint_shake.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p4.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p5.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_t1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_t2.png" class="swiper-lazy asynLoad"/>
 					
 				</div>
 				
@@ -122,110 +121,113 @@
 					<div class="adv"></div>
 					<img data-src="images/p4_p1.png" class="swiper-lazy p4_p1" />
 					<div class="p4_slogan">
-						<img data-src="images/p4_t1.png" class="swiper-lazy baselay hide" id="p4_slogan"/>
-						<img src="images/star.png" class="p4_star hide" id="p4_star"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_t1.png" class="swiper-lazy baselay hide" id="p4_slogan"/>
+						<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/star.png" class="p4_star hide" id="p4_star"/>
 					</div>
 					<div class="p4_top">
-						<img data-src="images/p4_p4.png" class="swiper-lazy baselay hide" id="p4_light"/>
-						<img data-src="images/p4_p5.png" class="swiper-lazy p4_p5 hide" id="p4_light_bg"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p4.png" class="swiper-lazy baselay hide" id="p4_light"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p5.png" class="swiper-lazy p4_p5 hide" id="p4_light_bg"/>
 						<div class="p4_text">
-							<img data-src="images/p4_t2.png" class="swiper-lazy baselay hide" id="p4_t1"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_t2.png" class="swiper-lazy baselay hide" id="p4_t1"/>
 						</div>
 					</div>
 					<div class="p4_main">
-						<img data-src="images/p4_p2.png" class="swiper-lazy baselay" id="p4_subject"/>
-						<img data-src="images/p4_p3.png" class="swiper-lazy overlay hide" id="p4_lightSource"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p2.png" class="swiper-lazy baselay" id="p4_subject"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_p3.png" class="swiper-lazy overlay hide" id="p4_lightSource"/>
 					</div>
-					<img data-src="images/p4_hint_shake.png" class="swiper-lazy hint_shake" id="hint_shake"/>
+					<div class="hint_shake">
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p4_hint_shake.png" class="swiper-lazy baselay shakeImg" id="hint_shake"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/shakeText.png" class="swiper-lazy baselay shakeText" id="p4_shake"/>
+					</div>
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
 					<!-- 当page3呈现时异步加载下列图片 -->
-					<img data-src="images/p5_p1.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p5_p2.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p5_p3.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p5_t1.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p5_t2.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p5_t3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p3.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t1.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t2.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t3.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page5 -->
 				<div class="swiper-slide" id="page5">
 					<div class="music_icon" name="music_icon"></div>
 					<div class="adv"></div>
-					<img data-src="images/p5_p1.png" class="swiper-lazy p5_p1" />
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p1.png" class="swiper-lazy p5_p1" />
 					<div class="p5_slogan">
-						<img data-src="images/p5_t1.png" class="swiper-lazy baselay hide" id="p5_slogan"/>
-						<img src="images/star.png" class="p5_star hide" id="p5_star"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t1.png" class="swiper-lazy baselay hide" id="p5_slogan"/>
+						<img src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/star.png" class="p5_star hide" id="p5_star"/>
 					</div>
 					<div class="p5_text">
-						<img data-src="images/p5_t2.png" class="swiper-lazy baselay hide" id="p5_t2"/>
-						<img data-src="images/p5_t3.png" class="swiper-lazy overlay hide" id="p5_t3"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t2.png" class="swiper-lazy baselay hide" id="p5_t2"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_t3.png" class="swiper-lazy overlay hide" id="p5_t3"/>
 					</div>
 					<div class="p5_main">
-						<img data-src="images/p5_p2.png" class="swiper-lazy baselay p5_p2" id="p5_touchMoveImg"/>
-						<img data-src="images/p5_p3.png" class="swiper-lazy overlay" id="p5_shield"/>
-						<img data-src="images/touch_hint.png" class="swiper-lazy p5_hint hint_touchMove" id="p5_hint"/>
+						<div class="press_mask" id="press_mask3"></div>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p2.png" class="swiper-lazy baselay p5_p2" id="p5_touchMoveImg"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p5_p3.png" class="swiper-lazy overlay" id="p5_shield"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/touch_hint.png" class="swiper-lazy p5_hint hint_touchMove" id="p5_hint"/>
 					</div>
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
 					<!-- 当page4呈现时异步加载下列图片 -->
-					<img data-src="images/p6_p.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p5.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p6.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p7.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p8.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p9.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p10.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p6_p11.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p7_btn.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/p7_title.png" class="swiper-lazy asynLoad"/>
-					<img data-src="images/video.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p5.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p6.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p7.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p8.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p9.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p10.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p11.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p7_btn.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p7_title.png" class="swiper-lazy asynLoad"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page6 -->
 				<div class="swiper-slide" id="page6">
 					<div class="music_icon" name="music_icon"></div>
 					<div class="p6_center">
-						<img data-src="images/p6_p5.png" class="swiper-lazy baselay hide"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p5.png" class="swiper-lazy baselay hide"/>
 						<div class="p6_p1 hide" id="p6_p1"></div>
 						<div class="p6_p2 hide" id="p6_p2"></div>
 						<div class="p6_p3 hide" id="p6_p3"></div>
 						<div class="p6_p4 hide" id="p6_p4"></div>
-						<!-- <img data-src="images/p6_p1.png" class="swiper-lazy overlay hide" id="p6_p1"/>
-						<img data-src="images/p6_p2.png" class="swiper-lazy overlay hide" id="p6_p2"/>
-						<img data-src="images/p6_p3.png" class="swiper-lazy overlay hide" id="p6_p3"/>
-						<img data-src="images/p6_p4.png" class="swiper-lazy overlay hide" id="p6_p4"/> -->
 					</div>
 					
-					<img data-src="images/p6_p11.png" class="swiper-lazy p6_intro_bg hide" id="p6_bg"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p11.png" class="swiper-lazy p6_intro_bg hide" id="p6_bg"/>
 					<div class="p6_intro_main">
-						<img data-src="images/p6_p8.png" class="swiper-lazy p6_intro_img hide" id="p6_intro1"/>
-						<img data-src="images/p6_p9.png" class="swiper-lazy p6_intro_img hide" id="p6_intro2"/>
-						<img data-src="images/p6_p10.png" class="swiper-lazy p6_intro_img hide" id="p6_intro3"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p8.png" class="swiper-lazy p6_intro_img hide" id="p6_intro1"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p9.png" class="swiper-lazy p6_intro_img hide" id="p6_intro2"/>
+						<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p10.png" class="swiper-lazy p6_intro_img hide" id="p6_intro3"/>
 						<div class="p6_subject_block">
-							<img data-src="images/p6_p5.png" class="swiper-lazy p6_subject hide" id="p6_subject"/>
-							<img data-src="images/p6_p6.png" class="swiper-lazy p6_subject_left hide" id="p6_left"/>
-							<img data-src="images/p6_p7.png" class="swiper-lazy p6_subject_right hide" id="p6_right"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p5.png" class="swiper-lazy p6_subject hide" id="p6_subject"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p6.png" class="swiper-lazy p6_subject_left hide" id="p6_left"/>
+							<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p6_p7.png" class="swiper-lazy p6_subject_right hide" id="p6_right"/>
 						</div>
 					</div>
 					<div class="arrow-wrap">
 						<div class="arrow"></div>
 					</div>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 				<!-- page7 -->
 				<div class="swiper-slide" id="page7">
 					<div class="music_icon" name="music_icon"></div>
-					<img data-src="images/p7_title.png" class="swiper-lazy p7_title"/>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p7_title.png" class="swiper-lazy p7_title"/>
 					<div class="video-wrap" id="video">
 						<div class="video-box" id="mod_player"></div>
 						<div class="video-control" id="controlBtn"></div>
 					</div>
 					<div class="p7_block">
-						<a href="http://sale.jd.com/m/act/svP4W2Dn1tX.html"><img data-src="images/p7_btn.png" class="swiper-lazy btn"/></a>
+						<a href="http://wqs.jd.com/event/brand/jilie/index.shtml?ptag=17013.51.1"><img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/p7_btn.png" class="swiper-lazy btn" id="shop_btn"/></a>
+						<!-- <img data-src="images/p7_btn.png" class="swiper-lazy btn" id="shop_btn"/> -->
 					</div>
+					<img data-src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/images/video.png" class="swiper-lazy asynLoad"/>
 				</div>
 				
 			</div>
@@ -258,38 +260,25 @@
 		        <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
 		    </div>
 		</div>
-		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/pxloader-all.min.js"></script>
+		
 		<script>
-			var basePath="http://192.168.0.106/html/gillette/";
-			// var basePath="http://www.geek-in.net/html/gillette/";
-
+			var basePath="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/";
+			
 			$(document).ready(function(){
 			    var loader = new PxLoader(),
 				    // 把页面的图片列在这里
 			        fileList = [
-			        	'sound/1.mp3',
-			            'sound/2.mp3',
-			            'sound/3.mp3',
-			            'sound/4.mp3',
 			            'sound/music.mp3',
 			            'images/p1_p.png',
 			            'images/bg.png',
-			            'images/star.png',
-			            'images/touch_hint.png',
 			            'images/p1_bg.png',
 			            'images/p1_bottom.png',
+			            'sound/1.mp3',
 			            'images/p1_p1.png',
 			            'images/p1_p2.png',
 			            'images/p1_t1.png',
 			            'images/p1_t2.png',
-			            'images/p2_p2.png',
-			            'images/p2_p3.png',
-			            'images/p2_p4.png',
-			            'images/p2_p5.png',
-			            'images/p2_t1.png',
-			            'images/p2_t2.png',
-			            'images/presson.png'
+			            'images/video.png',
 			        ];
 			
 				//把图片载入加载器
@@ -298,11 +287,12 @@
 			
 			        pxImage.imageNumber = i + 1;
 			        loader.add(pxImage);
-			        console.log(i);
+			        // console.log(i);
 			    }
 			
 				//当加载完成时
 			    loader.addCompletionListener(function(){
+			    	
 			    	if(isiOS) bg_music.play();
 			        $(".loading-container").css("display", "none");
 			        // 主页面开始
@@ -314,23 +304,21 @@
 			    //loading 进度监听
 			    loader.addProgressListener(function(e){
 			        var percent = Math.round( (e.completedCount / e.totalCount) * 100); //正序, 1-100
-			     
 			        $("#loading_inner").text(percent + "%");
 			    });
 			
 			    //启动
 			    loader.start();
 			});
-			
 		</script>
-		<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+		<!-- <script type="text/javascript" src="js/script.min.js"></script> -->
+		<script type="text/javascript" src="http://wximg.qq.com/tmt/_events/20150511-promo-gillette/dist/js/script.min.js"></script>
 		<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
 		<!-- 数据统计脚本 -->
 		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=42765964" charset="UTF-8"></script>
 		<script src="http://res.wx.qq.com/promotion/res/htmledition/js/stat.js?max_age=31536000"></script>
 		<script>
-			var appid = "wxa1b2c3d4e5f6g7h8"; // 公众号APPID,根据每个广告项目不同
+			var appid = "wxc493dd25704ca537"; // 公众号APPID,根据每个广告项目不同
 			WXStat(appid);
 		</script>
 		<script>
@@ -341,7 +329,7 @@
 			function getWxShareData() {
 			    return {
 			        'img_url': wxshareImg,
-			        'title': "每个英雄都有他的专属神器，你的呢？",
+			        'title': "吉列打造复仇者联盟系列剃须神器",
 			        'desc': "每个英雄都有他的专属神器，你的呢？",
 			        'link': wxshareUrl
 			    };
@@ -373,6 +361,8 @@
 			document.addEventListener('WeixinJSBridgeReady', bindit, false);
 		</script>
 		<script>
+			
+			
 			//腾讯视频
 			function initVideo() {
 				videoWidth = screenWidth - 20;
@@ -474,7 +464,7 @@
 				 flag,
 				 player;
 			
-			$(document).ready(initVideo());
+			$(document).ready();
 		</script>
 	</body>
 </html>
