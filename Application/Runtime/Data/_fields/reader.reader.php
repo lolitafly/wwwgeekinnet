@@ -1,0 +1,1 @@
+a:9:{i:0;s:3:"rid";i:1;s:8:"username";i:2;s:8:"password";i:3;s:5:"power";i:4;s:8:"nickname";i:5;s:3:"exp";i:6;s:6:"openid";s:3:"_pk";s:3:"rid";s:5:"_type";a:7:{s:3:"rid";s:8:"int(101)";s:8:"username";s:11:"varchar(50)";s:8:"password";s:12:"varchar(500)";s:5:"power";s:7:"int(11)";s:8:"nickname";s:11:"varchar(20)";s:3:"exp";s:8:"int(100)";s:6:"openid";s:12:"varchar(500)";}}

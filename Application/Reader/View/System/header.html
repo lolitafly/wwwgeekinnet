@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>读书狼任务管理系统</title>
+
+		<!-- Bootstrap -->
+		<link href="__PUBLIC__/Oa/css/bootstrap.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Oa/css/bootstrap-switch.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="__PUBLIC__/Oa/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Oa/js/bootstrap-switch.js"></script>
+		
+	</head>
+	<body>
+
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">读书狼任务管理系统</a>
+		    </div>
+		
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="<php>if(ACTION_NAME=='reader') echo('active'); </php>"><a href="{:U('reader')}">主播</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right hidden-xs">
+		        <li><a>你好，{$_SESSION['reader']['reader']['nickname']}</a></li>
+		        <li><a href="{:U('logout')}">登出</a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="list-group hidden-xs">
+						<a href="{:U('reader')}" class="list-group-item <php>if(ACTION_NAME=='reader') echo('active'); </php>">主播</a>
+					</div>
+
+				</div>
+				<div class="col-md-10">
