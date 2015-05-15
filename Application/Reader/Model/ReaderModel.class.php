@@ -11,7 +11,8 @@ class ReaderModel extends Model {
 	);
 	
 	protected $_auto = array (
-			array('password','md5',3,'function') ,
+			array('password','md5',1,'function') ,
+			array('password','',2,'ignore'),
 	);
 	
 	/**
@@ -83,7 +84,7 @@ class ReaderModel extends Model {
 		$cdt['rid']=$data['rid'];
 		unset($data['rid']);
 		$r=$this->where($cdt)->find();
-		if (!$this->field('nickname,power')->create($data)){
+		if (!$this->field('nickname,power')->create($data,2)){
 			return $this->getError();
 		}elseif($data['power']<=session('reader.power')||$r['power']<=session('reader.power')){
 			return "您的权限不够！";
@@ -91,7 +92,45 @@ class ReaderModel extends Model {
 			$this->where($cdt)->save();
 			return 1;
 		}
+	}
+	
+	/**
+	 * 修改密码
+	 * @param object $data：password,newPassword,rePassword
+	 * @return string|number
+	 */
+	public function password_update($data){
+		$update['password']=$data['newPassword'];
 		
+		$cdt['password']=md5($data['password']);
+		$cdt['rid']=session("reader.rid");
+		if(!$this->where($cdt)->find()){
+			return "原密码错误";
+		}elseif($data['newPassword']!=$data['rePassword']){
+			return "两次密码输入不一致！";
+		}elseif(!$this->create($update)){
+			return $this->getError();
+		}else{
+			$this->where($cdt)->save();
+			return 1;
+		}
+	}
+	
+	/**
+	 * 修改昵称
+	 * @param object $data：password,newPassword,rePassword
+	 * @return string|number
+	 */
+	public function nickname_update($data){
+		$cdt['rid']=session("reader.rid");
+		if(!$this->create($data,2)){
+			return $this->getError();
+		}else{
+			$this->where($cdt)->save();
+			$r=$this->where($cdt)->find();
+			session('reader',$r);//重置session
+			return 1;
+		}
 	}
 	
 }

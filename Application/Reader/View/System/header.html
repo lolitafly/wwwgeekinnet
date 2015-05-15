@@ -7,8 +7,8 @@
 		<title>读书狼任务管理系统</title>
 
 		<!-- Bootstrap -->
-		<link href="__PUBLIC__/Oa/css/bootstrap.min.css" rel="stylesheet">
-		<link href="__PUBLIC__/Oa/css/bootstrap-switch.css" rel="stylesheet">
+		<link href="__PUBLIC__/Reader/css/bootstrap.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Reader/css/bootstrap-switch.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,10 +17,11 @@
 		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script> -->
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="__PUBLIC__/Oa/js/bootstrap.min.js"></script>
-		<script src="__PUBLIC__/Oa/js/bootstrap-switch.js"></script>
+		<script src="__PUBLIC__/Reader/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Reader/js/bootstrap-switch.js"></script>
 		
 	</head>
 	<body>
@@ -41,6 +42,9 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="<php>if(ACTION_NAME=='reader') echo('active'); </php>"><a href="{:U('reader')}">主播</a></li>
+		        <li class="<php>if(ACTION_NAME=='book') echo('active'); </php>"><a href="{:U('book')}">朗读内容</a></li>
+		        <li class="<php>if(ACTION_NAME=='plan') echo('active'); </php>"><a href="{:U('plan')}">朗读任务</a></li>
+		        <li class="<php>if(ACTION_NAME=='sys') echo('active'); </php>"><a href="{:U('sys')}">系统</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right hidden-xs">
 		        <li><a>你好，{$_SESSION['reader']['reader']['nickname']}</a></li>
@@ -56,6 +60,9 @@
 				<div class="col-md-2">
 					<div class="list-group hidden-xs">
 						<a href="{:U('reader')}" class="list-group-item <php>if(ACTION_NAME=='reader') echo('active'); </php>">主播</a>
+						<a href="{:U('book')}" class="list-group-item <php>if(ACTION_NAME=='book') echo('active'); </php>">朗读内容</a>
+						<a href="{:U('plan')}" class="list-group-item <php>if(ACTION_NAME=='plan') echo('active'); </php>">朗读任务</a>
+						<a href="{:U('sys')}" class="list-group-item <php>if(ACTION_NAME=='sys') echo('active'); </php>">系统</a>
 					</div>
 
 				</div>

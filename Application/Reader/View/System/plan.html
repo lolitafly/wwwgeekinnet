@@ -1,0 +1,297 @@
+<include file="System/header" />
+<style>
+	.manu{padding:3px;margin:3px;text-align:center;}
+	.manu a{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#036cb4;text-decoration:none;}
+	.manu a:hover{border:#999 1px solid;color:#666;}
+	.manu a:active{border:#999 1px solid;color:#666;}
+	.manu .current{border:#036cb4 1px solid;padding:2px 5px;font-weight:bold;margin:2px;color:#fff;background-color:#036cb4;}
+	.manu .disabled{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#ddd;}
+</style>
+<script>
+	$(document).ready(function() {
+
+		//添加主播表单提交
+		$("form[name='addForm']").submit(function() {
+			var param = {};
+			param.bid = $("#add_bid").val();
+			param.rid = $("#add_rid").val();
+			param.chapter = $("#add_chapter").val();
+			param.startpage = $("#add_startpage").val();
+			param.endpage = $("#add_endpage").val();
+			param.perform = $("#add_perform").val();
+			param.zan = $("#add_zan").val();
+			console.log(param);
+			$.ajax({
+				type : "POST",
+				url : '__URL__/plan_add',
+				data : param,
+				dataType : 'json',
+				async : false,
+				error : function(request) {
+					alert("服务器连接错误！");
+				},
+				success : function(r) {
+					if (r == 1) {
+						location.reload();
+					} else {
+						alert(r);
+					}
+				}
+			});
+			return false;
+		});
+
+		//编辑主播表单提交
+		$("form[name='updateForm']").submit(function() {
+			// $('#tallyModal').modal('hide');
+			var param = {};
+			param.pid = $("#update_pid").val();
+			param.chapter = $("#update_chapter").val();
+			param.startpage = $("#update_startpage").val();
+			param.endpage = $("#update_endpage").val();
+			param.perform = $("#update_perform").val();
+			param.zan = $("#update_zan").val();
+			console.log(param);
+			$.ajax({
+				type : "POST",
+				url : '__URL__/plan_update',
+				data : param,
+				dataType : 'json',
+				async : false,
+				error : function(request) {
+					alert("服务器连接错误！");
+				},
+				success : function(r) {
+					if (r == 1) {
+						location.reload();
+					} else {
+						alert(r);
+					}
+				}
+			});
+			return false;
+		});
+	});
+
+	function deletePlan(pid) {
+		if (confirm("删除后由其发起的朗读内容等均会被删除，确认删除？")) {
+			var param = {};
+			param.pid = pid;
+			$.ajax({
+				type : "POST",
+				url : '__URL__/plan_delete',
+				data : param,
+				dataType : 'json',
+				async : false,
+				error : function(request) {
+					alert("服务器连接错误！");
+				},
+				success : function(r) {
+					if(r==1){
+						location.reload();
+					}else{
+						alert(r);
+					}
+				}
+			});
+		}
+	}
+	
+	function showUpdateModal(e){
+		console.log($(e).parents("tr").find("td[name='nickname']").text());
+		$("#update_pid").val($(e).parents("tr").find("td[name='pid']").text());
+		$("#update_nickname").val($(e).parents("tr").find("td[name='nickname']").text());
+		$("#update_chapter").val($(e).parents("tr").find("td[name='chapter']").text());
+		$("#update_startpage").val($(e).parents("tr").find("td[name='startpage']").text());
+		$("#update_endpage").val($(e).parents("tr").find("td[name='endpage']").text());
+		$("#update_perform").val($(e).parents("tr").find("td[name='perform']").text());
+		$("#update_zan").val($(e).parents("tr").find("td[name='zan']").text());
+	}
+	
+</script>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">朗读任务列表 《{$info.title}》
+			<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#addModal">
+				添加朗读任务
+			</button>
+		</h3>
+	</div>
+	<div class="panel-body">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				选择书名 <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<volist name="booklist" id="vo">
+					<li><a href="__ACTION__/bid/{$vo.bid}">{$vo.title}</a></li>
+				</volist>
+			</ul>
+		</div>
+		
+		<table class="table table-striped table-hover">
+			<thead>
+				<th>昵称</th>
+				<th>章节</th>
+				<th class="hidden-xs">开始页码及句子</th>
+				<th class="hidden-xs">结束页码及句子</th>
+				<th class="hidden-xs">完成情况</th>
+				<th class="hidden-xs">赞数量</th>
+				<th>编辑</th>
+				<th>删除</th>
+				<!-- <th class="hidden-xs">权限</th> -->
+			</thead>
+			<tbody>
+				<volist name="list" id="list">
+					<tr>
+						<!-- 隐藏数据 -->
+						<td name="pid" class="hide">{$list.pid}</td>
+						<td name="perform" class="hide">{$list.perform}</td>
+						
+						<td name="nickname">{$list.nickname}</td>
+						<td name="chapter">{$list.chapter}</td>
+						<td name="startpage" class="hidden-xs">{$list.startpage}</td>
+						<td name="endpage" class="hidden-xs">{$list.endpage}</td>
+						<td class="hidden-xs">{$list.text}</td>
+						<td name="zan" class="hidden-xs">{$list.zan}</td>
+						<td>
+							<button <php>if($list['perform']=="6") echo('disabled');</php> type="button" class="btn btn-info btn-xs " data-toggle="modal" data-target="#updateModal" onclick="showUpdateModal(this)">
+								编辑
+							</button>
+						</td>
+						<td><a class="btn btn-danger btn-xs " onclick="deletePlan({$list.pid})">删除</a></td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+		<nav class="text-center">
+			<div class="manu">
+				{$page}
+			</div>
+		</nav>
+	</div>
+</div>
+
+<!-- 添加弹出框 -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">添加朗读任务</h4>
+			</div>
+			<form name="addForm">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="add_title" class="control-label">朗读内容:</label>
+						<input type="text" class="form-control" id="add_title" placeholder="必须" value="{$info.title}" disabled="disabled">
+						<input type="text" class="form-control hide" id="add_bid" placeholder="必须" value="{$info.bid}" disabled="disabled">
+					</div>
+					<div class="form-group">
+						<label for="add_rid" class="control-label">主播:</label>
+						<select class="form-control" id="add_rid">
+							<volist name="readerlist" id="vo2">
+								<option value="{$vo2.rid}">{$vo2.nickname}</option>
+							</volist>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add_chapter" class="control-label">章节:</label>
+						<input type="text" class="form-control" id="add_chapter" placeholder="必须">
+					</div>
+					<div class="form-group">
+						<label for="add_startpage" class="control-label">开始页码及句子:</label>
+						<input type="text" class="form-control" id="add_startpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="add_endpage" class="control-label">结束页码及句子:</label>
+						<input type="text" class="form-control" id="add_endpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="add_perform" class="control-label">完成情况:</label>
+						<select class="form-control" id="add_perform">
+							<volist name="performlist" id="vo3">
+								<option value="{$vo3.value}">{$vo3.text}</option>
+							</volist>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add_zan" class="control-label">赞数量:</label>
+						<input type="number" class="form-control" id="add_zan" value="0">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭
+					</button>
+					<button type="submit" class="btn btn-primary">
+						确认提交
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- 编辑弹出框 -->
+<div class="modal fade" id="updateModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">编辑朗读任务</h4>
+			</div>
+			<form name="updateForm">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="update_title" class="control-label">朗读内容:</label>
+						<input type="text" class="form-control" id="update_title" value="{$info.title}" disabled="disabled">
+						<input type="text" class="form-control hide" id="update_pid" disabled="disabled">
+					</div>
+					<div class="form-group">
+						<label for="update_nickname" class="control-label">主播:</label>
+						<input type="text" class="form-control" id="update_nickname" disabled="disabled">
+					</div>
+					<div class="form-group">
+						<label for="update_chapter" class="control-label">章节:</label>
+						<input type="text" class="form-control" id="update_chapter" placeholder="必须">
+					</div>
+					<div class="form-group">
+						<label for="add_starupdate_startpagetpage" class="control-label">开始页码及句子:</label>
+						<input type="text" class="form-control" id="update_startpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="update_endpage" class="control-label">结束页码及句子:</label>
+						<input type="text" class="form-control" id="update_endpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="update_perform" class="control-label">完成情况:</label>
+						<select class="form-control" id="update_perform">
+							<volist name="performlist" id="vo4">
+								<option value="{$vo4.value}">{$vo4.text}</option>
+							</volist>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="update_zan" class="control-label">赞数量:</label>
+						<input type="number" class="form-control" id="update_zan">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭
+					</button>
+					<button type="submit" class="btn btn-primary">
+						确认提交
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<include file="System/footer" />

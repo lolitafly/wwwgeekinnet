@@ -1,0 +1,1 @@
+a:6:{i:0;s:3:"fid";i:1;s:6:"detail";i:2;s:8:"createBy";i:3;s:10:"createDate";s:3:"_pk";s:3:"fid";s:5:"_type";a:4:{s:3:"fid";s:8:"int(101)";s:6:"detail";s:4:"text";s:8:"createBy";s:11:"varchar(20)";s:10:"createDate";s:9:"timestamp";}}

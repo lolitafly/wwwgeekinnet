@@ -78,20 +78,20 @@
 <script>
 	$(document).ready(function() {
 
-		$('#addModal').on('shown.bs.modal', function() {
-			$('#add_username').focus();
-		});
-
 		//添加主播表单提交
 		$("form[name='addForm']").submit(function() {
 			var param = {};
-			param.username = $("#add_username").val();
-			param.nickname = $("#add_nickname").val();
-			param.power = $("#add_power").val();
+			param.bid = $("#add_bid").val();
+			param.rid = $("#add_rid").val();
+			param.chapter = $("#add_chapter").val();
+			param.startpage = $("#add_startpage").val();
+			param.endpage = $("#add_endpage").val();
+			param.perform = $("#add_perform").val();
+			param.zan = $("#add_zan").val();
 			console.log(param);
 			$.ajax({
 				type : "POST",
-				url : '/reader.php/System/reader_add',
+				url : '/reader.php/System/plan_add',
 				data : param,
 				dataType : 'json',
 				async : false,
@@ -113,13 +113,16 @@
 		$("form[name='updateForm']").submit(function() {
 			// $('#tallyModal').modal('hide');
 			var param = {};
-			param.rid = $("#update_rid").val();
-			param.nickname = $("#update_nickname").val();
-			param.power = $("#update_power").val();
+			param.pid = $("#update_pid").val();
+			param.chapter = $("#update_chapter").val();
+			param.startpage = $("#update_startpage").val();
+			param.endpage = $("#update_endpage").val();
+			param.perform = $("#update_perform").val();
+			param.zan = $("#update_zan").val();
 			console.log(param);
 			$.ajax({
 				type : "POST",
-				url : '/reader.php/System/reader_update',
+				url : '/reader.php/System/plan_update',
 				data : param,
 				dataType : 'json',
 				async : false,
@@ -138,13 +141,13 @@
 		});
 	});
 
-	function deleteReader(rid) {
+	function deletePlan(pid) {
 		if (confirm("删除后由其发起的朗读内容等均会被删除，确认删除？")) {
 			var param = {};
-			param.rid = rid;
+			param.pid = pid;
 			$.ajax({
 				type : "POST",
-				url : '/reader.php/System/reader_delete',
+				url : '/reader.php/System/plan_delete',
 				data : param,
 				dataType : 'json',
 				async : false,
@@ -163,27 +166,43 @@
 	}
 	
 	function showUpdateModal(e){
-		$("#update_rid").val($(e).parents("tr").find("td[name='rid']").text());
-		$("#update_username").val($(e).parents("tr").find("td[name='username']").text());
+		console.log($(e).parents("tr").find("td[name='nickname']").text());
+		$("#update_pid").val($(e).parents("tr").find("td[name='pid']").text());
 		$("#update_nickname").val($(e).parents("tr").find("td[name='nickname']").text());
-		$("#update_power").val($(e).parents("tr").find("td[name='power']").text());
+		$("#update_chapter").val($(e).parents("tr").find("td[name='chapter']").text());
+		$("#update_startpage").val($(e).parents("tr").find("td[name='startpage']").text());
+		$("#update_endpage").val($(e).parents("tr").find("td[name='endpage']").text());
+		$("#update_perform").val($(e).parents("tr").find("td[name='perform']").text());
+		$("#update_zan").val($(e).parents("tr").find("td[name='zan']").text());
 	}
 	
 </script>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">主播列表
+		<h3 class="panel-title">朗读任务列表 《<?php echo ($info["title"]); ?>》
 			<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#addModal">
-				添加主播
+				添加朗读任务
 			</button>
 		</h3>
 	</div>
 	<div class="panel-body">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				选择书名 <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<?php if(is_array($booklist)): $i = 0; $__LIST__ = $booklist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="/reader.php/System/plan/bid/<?php echo ($vo["bid"]); ?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+			</ul>
+		</div>
+		
 		<table class="table table-striped table-hover">
 			<thead>
 				<th>昵称</th>
-				<th class="hidden-xs">权限</th>
-				<th>EXP</th>
+				<th>章节</th>
+				<th class="hidden-xs">开始页码及句子</th>
+				<th class="hidden-xs">结束页码及句子</th>
+				<th class="hidden-xs">完成情况</th>
+				<th class="hidden-xs">赞数量</th>
 				<th>编辑</th>
 				<th>删除</th>
 				<!-- <th class="hidden-xs">权限</th> -->
@@ -191,19 +210,21 @@
 			<tbody>
 				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$list): $mod = ($i % 2 );++$i;?><tr>
 						<!-- 隐藏数据 -->
-						<td name="rid" class="hide"><?php echo ($list["rid"]); ?></td>
-						<td name="username" class="hide"><?php echo ($list["username"]); ?></td>
-						<td name="power" class="hide"><?php echo ($list["power"]); ?></td>
+						<td name="pid" class="hide"><?php echo ($list["pid"]); ?></td>
+						<td name="perform" class="hide"><?php echo ($list["perform"]); ?></td>
 						
 						<td name="nickname"><?php echo ($list["nickname"]); ?></td>
-						<td  class="hidden-xs"><?php echo ($list["text"]); ?></td>
-						<td><?php echo ($list["exp"]); ?></td>
+						<td name="chapter"><?php echo ($list["chapter"]); ?></td>
+						<td name="startpage" class="hidden-xs"><?php echo ($list["startpage"]); ?></td>
+						<td name="endpage" class="hidden-xs"><?php echo ($list["endpage"]); ?></td>
+						<td class="hidden-xs"><?php echo ($list["text"]); ?></td>
+						<td name="zan" class="hidden-xs"><?php echo ($list["zan"]); ?></td>
 						<td>
-							<button type="button" class="btn btn-info btn-xs " data-toggle="modal" data-target="#updateModal" onclick="showUpdateModal(this)">
+							<button <?php if($list['perform']=="6") echo('disabled'); ?> type="button" class="btn btn-info btn-xs " data-toggle="modal" data-target="#updateModal" onclick="showUpdateModal(this)">
 								编辑
 							</button>
 						</td>
-						<td><a class="btn btn-danger btn-xs " onclick="deleteReader(<?php echo ($list["rid"]); ?>)">删除</a></td>
+						<td><a class="btn btn-danger btn-xs " onclick="deletePlan(<?php echo ($list["pid"]); ?>)">删除</a></td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 			</tbody>
 		</table>
@@ -223,27 +244,43 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="exampleModalLabel">添加主播</h4>
+				<h4 class="modal-title" id="exampleModalLabel">添加朗读任务</h4>
 			</div>
 			<form name="addForm">
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="add_username" class="control-label">用户名:</label>
-						<input type="text" class="form-control" id="add_username" placeholder="建议采用昵称拼音，并注意唯一性">
+						<label for="add_title" class="control-label">朗读内容:</label>
+						<input type="text" class="form-control" id="add_title" placeholder="必须" value="<?php echo ($info["title"]); ?>" disabled="disabled">
+						<input type="text" class="form-control hide" id="add_bid" placeholder="必须" value="<?php echo ($info["bid"]); ?>" disabled="disabled">
 					</div>
 					<div class="form-group">
-						<label for="add_nickname" class="control-label">昵称:</label>
-						<input type="text" class="form-control" id="add_nickname" placeholder="建议采用姓名">
-					</div>
-					<div class="form-group">
-						<label for="add_power" class="control-label">权限:</label>
-						<select class="form-control" id="add_power">
-							<?php if(is_array($powerlist)): $i = 0; $__LIST__ = $powerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["value"]); ?>"><?php echo ($vo["text"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						<label for="add_rid" class="control-label">主播:</label>
+						<select class="form-control" id="add_rid">
+							<?php if(is_array($readerlist)): $i = 0; $__LIST__ = $readerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo2["rid"]); ?>"><?php echo ($vo2["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
-					<p>
-						注：账号添加后，默认密码为111111，且仅有权限为管理员及信息维护员可登陆该系统。
-					</p>
+					<div class="form-group">
+						<label for="add_chapter" class="control-label">章节:</label>
+						<input type="text" class="form-control" id="add_chapter" placeholder="必须">
+					</div>
+					<div class="form-group">
+						<label for="add_startpage" class="control-label">开始页码及句子:</label>
+						<input type="text" class="form-control" id="add_startpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="add_endpage" class="control-label">结束页码及句子:</label>
+						<input type="text" class="form-control" id="add_endpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="add_perform" class="control-label">完成情况:</label>
+						<select class="form-control" id="add_perform">
+							<?php if(is_array($performlist)): $i = 0; $__LIST__ = $performlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo3): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo3["value"]); ?>"><?php echo ($vo3["text"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add_zan" class="control-label">赞数量:</label>
+						<input type="number" class="form-control" id="add_zan" value="0">
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">
@@ -266,25 +303,40 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">编辑主播</h4>
+				<h4 class="modal-title">编辑朗读任务</h4>
 			</div>
 			<form name="updateForm">
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="update_username" class="control-label">用户名:</label>
-						<input type="text" class="form-control" id="update_username" disabled="disabled">
-						<input type="text" class="form-control hide" id="update_rid" disabled="disabled">
+						<label for="update_title" class="control-label">朗读内容:</label>
+						<input type="text" class="form-control" id="update_title" value="<?php echo ($info["title"]); ?>" disabled="disabled">
+						<input type="text" class="form-control hide" id="update_pid" disabled="disabled">
 					</div>
 					<div class="form-group">
-						<label for="update_nickname" class="control-label">昵称:</label>
-						<input type="text" class="form-control" id="update_nickname" placeholder="建议采用姓名">
+						<label for="update_nickname" class="control-label">主播:</label>
+						<input type="text" class="form-control" id="update_nickname" disabled="disabled">
 					</div>
 					<div class="form-group">
-						<label for="update_power" class="control-label">权限:</label>
-						
-						<select class="form-control" id="update_power">
-							<?php if(is_array($powerlist)): $i = 0; $__LIST__ = $powerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo1): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo1["value"]); ?>"><?php echo ($vo1["text"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						<label for="update_chapter" class="control-label">章节:</label>
+						<input type="text" class="form-control" id="update_chapter" placeholder="必须">
+					</div>
+					<div class="form-group">
+						<label for="add_starupdate_startpagetpage" class="control-label">开始页码及句子:</label>
+						<input type="text" class="form-control" id="update_startpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="update_endpage" class="control-label">结束页码及句子:</label>
+						<input type="text" class="form-control" id="update_endpage" placeholder="可选">
+					</div>
+					<div class="form-group">
+						<label for="update_perform" class="control-label">完成情况:</label>
+						<select class="form-control" id="update_perform">
+							<?php if(is_array($performlist)): $i = 0; $__LIST__ = $performlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo4): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo4["value"]); ?>"><?php echo ($vo4["text"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
+					</div>
+					<div class="form-group">
+						<label for="update_zan" class="control-label">赞数量:</label>
+						<input type="number" class="form-control" id="update_zan">
 					</div>
 				</div>
 				<div class="modal-footer">

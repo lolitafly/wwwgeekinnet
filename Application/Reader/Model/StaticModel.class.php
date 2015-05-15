@@ -14,7 +14,7 @@ class StaticModel extends Model {
 			array("value"=>3,"text"=>"成员"),
 	);
 	
-	private $perform=array(
+	public $perform=array(
 			array("value"=>1,"text"=>"提前交工","exp"=>10),
 			array("value"=>2,"text"=>"按时交工","exp"=>5),
 			array("value"=>3,"text"=>"延期交工","exp"=>2),
@@ -23,6 +23,9 @@ class StaticModel extends Model {
 			array("value"=>6,"text"=>"项目经理","exp"=>10),
 	);
 	
+	/**
+	 * 在静态数据表中添加权限
+	 */
 	public function AddPower(){
 		$data['type']="power";
 		$arr=$this->power;
@@ -33,6 +36,9 @@ class StaticModel extends Model {
 		}
 	}
 	
+	/**
+	 * 在静态数据表中添加完成情况
+	 */
 	public function AddPerform(){
 		$data['type']="perform";
 		$arr=$this->perform;
@@ -43,12 +49,18 @@ class StaticModel extends Model {
 		}
 	}
 	
+	/**
+	 * 获取权限数组
+	 */
 	public function GetPower(){
-		return $this->where("type='power'")->select();
+		return $this->where("type='power'")->order("value desc")->select();
 	}
 	
+	/**
+	 * 获取完成情况数组
+	 */
 	public function GetPerform(){
-		
+		return $this->where("type='perform'")->limit(5)->select();
 	}
 
 }

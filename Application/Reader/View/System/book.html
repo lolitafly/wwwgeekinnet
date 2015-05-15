@@ -1,0 +1,143 @@
+<include file="System/header" />
+<style>
+	.manu{padding:3px;margin:3px;text-align:center;}
+	.manu a{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#036cb4;text-decoration:none;}
+	.manu a:hover{border:#999 1px solid;color:#666;}
+	.manu a:active{border:#999 1px solid;color:#666;}
+	.manu .current{border:#036cb4 1px solid;padding:2px 5px;font-weight:bold;margin:2px;color:#fff;background-color:#036cb4;}
+	.manu .disabled{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#ddd;}
+</style>
+<script>
+	$(document).ready(function() {
+
+		$('#addModal').on('shown.bs.modal', function() {
+			$('#add_title').focus();
+		});
+
+		//添加主播表单提交
+		$("form[name='addForm']").submit(function() {
+			var param = {};
+			param.title = $("#add_title").val();
+			param.rid = $("#add_rid").val();
+			console.log(param);
+			$.ajax({
+				type : "POST",
+				url : '__URL__/book_add',
+				data : param,
+				dataType : 'json',
+				async : false,
+				error : function(request) {
+					alert("服务器连接错误！");
+				},
+				success : function(r) {
+					if (r == 1) {
+						location.reload();
+					} else {
+						alert(r);
+					}
+				}
+			});
+			return false;
+		});
+
+	});
+
+	function deleteReader(bid) {
+		if (confirm("删除后相关的朗读任务均会被删除，确认删除？")) {
+			var param = {};
+			param.bid = bid;
+			$.ajax({
+				type : "POST",
+				url : '__URL__/book_delete',
+				data : param,
+				dataType : 'json',
+				async : false,
+				error : function(request) {
+					alert("服务器连接错误！");
+				},
+				success : function(r) {
+					if(r==1){
+						location.reload();
+					}else{
+						alert(r);
+					}
+				}
+			});
+		}
+	}
+	
+</script>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">朗读内容列表
+			<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#addModal">
+				添加朗读任务
+			</button>
+		</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped table-hover">
+			<thead>
+				<th>书名</th>
+				<th>发起人/项目经理</th>
+				<th>删除</th>
+				<!-- <th class="hidden-xs">权限</th> -->
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+					<tr>
+						<td>{$vo.title}</td>
+						<td>{$vo.nickname}</td>
+						<td><a class="btn btn-danger btn-xs " onclick="deleteReader({$vo.bid})">删除</a></td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+		<nav class="text-center">
+			<div class="manu">
+				{$page}
+			</div>
+		</nav>
+	</div>
+</div>
+
+<!-- 添加弹出框 -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">添加朗读任务</h4>
+			</div>
+			<form name="addForm">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="add_title" class="control-label">书名:</label>
+						<input type="text" class="form-control" id="add_title" placeholder="必须">
+					</div>
+					<div class="form-group">
+						<label for="add_rid" class="control-label">发起人/项目经理:</label>
+						<select class="form-control" id="add_rid">
+							<volist name="readerlist" id="vo1">
+								<option value="{$vo1.rid}">{$vo1.nickname}</option>
+							</volist>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭
+					</button>
+					<button type="submit" class="btn btn-primary">
+						确认提交
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<include file="System/footer" />

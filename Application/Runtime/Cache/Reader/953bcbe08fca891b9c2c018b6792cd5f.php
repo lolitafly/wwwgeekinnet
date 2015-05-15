@@ -17,7 +17,8 @@
 		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script> -->
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="/Public/Oa/js/bootstrap.min.js"></script>
 		<script src="/Public/Oa/js/bootstrap-switch.js"></script>
@@ -40,7 +41,10 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li class="<?php if(ACTION_NAME=='index') echo('active'); ?>"><a href="<?php echo U('index');?>">主播</a></li>
+		        <li class="<?php if(ACTION_NAME=='reader') echo('active'); ?>"><a href="<?php echo U('reader');?>">主播</a></li>
+		        <li class="<?php if(ACTION_NAME=='book') echo('active'); ?>"><a href="<?php echo U('book');?>">朗读内容</a></li>
+		        <li class="<?php if(ACTION_NAME=='plan') echo('active'); ?>"><a href="<?php echo U('plan');?>">朗读任务</a></li>
+		        <li class="<?php if(ACTION_NAME=='sys') echo('active'); ?>"><a href="<?php echo U('sys');?>">系统</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right hidden-xs">
 		        <li><a>你好，<?php echo ($_SESSION['reader']['reader']['nickname']); ?></a></li>
@@ -55,7 +59,10 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="list-group hidden-xs">
-						<a href="<?php echo U('index');?>" class="list-group-item <?php if(ACTION_NAME=='index') echo('active'); ?>">主播</a>
+						<a href="<?php echo U('reader');?>" class="list-group-item <?php if(ACTION_NAME=='reader') echo('active'); ?>">主播</a>
+						<a href="<?php echo U('book');?>" class="list-group-item <?php if(ACTION_NAME=='book') echo('active'); ?>">朗读内容</a>
+						<a href="<?php echo U('plan');?>" class="list-group-item <?php if(ACTION_NAME=='plan') echo('active'); ?>">朗读任务</a>
+						<a href="<?php echo U('sys');?>" class="list-group-item <?php if(ACTION_NAME=='sys') echo('active'); ?>">系统</a>
 					</div>
 
 				</div>
@@ -72,19 +79,18 @@
 	$(document).ready(function() {
 
 		$('#addModal').on('shown.bs.modal', function() {
-			$('#add_username').focus();
+			$('#add_title').focus();
 		});
 
 		//添加主播表单提交
 		$("form[name='addForm']").submit(function() {
 			var param = {};
-			param.username = $("#add_username").val();
-			param.nickname = $("#add_nickname").val();
-			param.power = $("#add_power").val();
+			param.title = $("#add_title").val();
+			param.rid = $("#add_rid").val();
 			console.log(param);
 			$.ajax({
 				type : "POST",
-				url : '/reader.php/System/index_add',
+				url : '/reader.php/System/book_add',
 				data : param,
 				dataType : 'json',
 				async : false,
@@ -102,84 +108,54 @@
 			return false;
 		});
 
-		//项目记录表单提交
-		$("form[name='tallyForm']").submit(function() {
-			// $('#tallyModal').modal('hide');
-			var param = {};
-			param.pid = "<?php echo ($_GET['pid']); ?>";
-			param.moneyin = $("#moneyin").val();
-			param.moneyout = $("#moneyout").val();
-			param.detail = $("#detail").val();
-			console.log(param);
-			if (param.moneyin == "" && param.moneyout == "" && param.detail == "") {
-				alert("不能全部为空");
-			} else {
-				$.ajax({
-					type : "POST",
-					url : '/reader.php/System/addTally',
-					data : param,
-					dataType : 'json',
-					async : false,
-					error : function(request) {
-						alert("服务器连接错误！");
-					},
-					success : function(r) {
-						if (r == 1) {
-							location.reload();
-						} else {
-							alert(r);
-						}
-					}
-				});
-			}
-			return false;
-		});
 	});
 
-	function deleteTally(tid) {
-		if (confirm("确认删除？")) {
+	function deleteReader(bid) {
+		if (confirm("删除后相关的朗读任务均会被删除，确认删除？")) {
 			var param = {};
-			param.tid = tid;
+			param.bid = bid;
 			$.ajax({
 				type : "POST",
-				url : '/reader.php/System/deleteTally',
+				url : '/reader.php/System/book_delete',
 				data : param,
 				dataType : 'json',
 				async : false,
 				error : function(request) {
 					alert("服务器连接错误！");
 				},
-				success : function() {
-					location.reload();
+				success : function(r) {
+					if(r==1){
+						location.reload();
+					}else{
+						alert(r);
+					}
 				}
 			});
 		}
 	}
+	
 </script>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">主播列表
-		<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#addModal">
-			添加主播
-		</button></h3>
+		<h3 class="panel-title">朗读内容列表
+			<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#addModal">
+				添加朗读任务
+			</button>
+		</h3>
 	</div>
 	<div class="panel-body">
 		<table class="table table-striped table-hover">
 			<thead>
-				<th>昵称</th>
-				<th>权限</th>
-				<th>EXP</th>
-				<th>编辑</th>
+				<th>书名</th>
+				<th>发起人/项目经理</th>
 				<th>删除</th>
 				<!-- <th class="hidden-xs">权限</th> -->
 			</thead>
 			<tbody>
-				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$list): $mod = ($i % 2 );++$i;?><tr>
-						<td><?php echo ($list["nickname"]); ?></td>
-						<td><?php echo ($list["text"]); ?></td>
-						<td><?php echo ($list["exp"]); ?></td>
-						<td>编辑</td>
-						<td><a onclick="deleteTally(<?php echo ($tallylist["tid"]); ?>)" style="cursor: pointer;">删除</a></td>
+				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+						<td><?php echo ($vo["title"]); ?></td>
+						<td><?php echo ($vo["nickname"]); ?></td>
+						<td><a class="btn btn-danger btn-xs " onclick="deleteReader(<?php echo ($vo["bid"]); ?>)">删除</a></td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 			</tbody>
 		</table>
@@ -191,6 +167,7 @@
 	</div>
 </div>
 
+<!-- 添加弹出框 -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -198,27 +175,20 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="exampleModalLabel">添加主播</h4>
+				<h4 class="modal-title" id="exampleModalLabel">添加朗读任务</h4>
 			</div>
 			<form name="addForm">
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="name" class="control-label">用户名:</label>
-						<input type="text" class="form-control" id="add_username" placeholder="建议采用昵称拼音，并注意唯一性">
+						<label for="add_title" class="control-label">书名:</label>
+						<input type="text" class="form-control" id="add_title" placeholder="必须">
 					</div>
 					<div class="form-group">
-						<label for="type" class="control-label">昵称:</label>
-						<input type="text" class="form-control" id="add_nickname" placeholder="建议采用姓名">
-					</div>
-					<div class="form-group">
-						<label for="add_power" class="control-label">权限:</label>
-						<select class="form-control" id="add_power">
-							<?php if(is_array($powerlist)): $i = 0; $__LIST__ = $powerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$powerlist): $mod = ($i % 2 );++$i;?><option value="<?php echo ($powerlist["value"]); ?>"><?php echo ($powerlist["text"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						<label for="add_rid" class="control-label">发起人/项目经理:</label>
+						<select class="form-control" id="add_rid">
+							<?php if(is_array($readerlist)): $i = 0; $__LIST__ = $readerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo1): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo1["rid"]); ?>"><?php echo ($vo1["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
-					<p>
-						注：账号添加后，默认密码为111111，且仅有权限为管理员及信息维护员可登陆该系统。
-					</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">
@@ -232,6 +202,7 @@
 		</div>
 	</div>
 </div>
+
 
 					<p>(c) Copyright 2015 上海格映科技有限公司. All Rights Reserved.</p>
 				</div>
