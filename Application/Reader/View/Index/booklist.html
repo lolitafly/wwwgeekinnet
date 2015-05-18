@@ -1,0 +1,36 @@
+<include file="Index/header" />
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">朗读内容列表 </h3>
+			</div>
+			<ul class="list-group">
+				<volist name="list" id="vo">
+					<a href="__URL__/bookdetail/bid/{$vo.bid}" class="list-group-item">
+					<div class="row">
+						<div class="col-xs-5">
+							《{$vo.title}》
+						</div>
+						<div class="col-xs-5">
+							发起人:{$vo.nickname}
+						</div>
+						<div class="col-xs-2">
+							<span class="glyphicon glyphicon glyphicon-chevron-right pull-right" aria-hidden="true">
+						</div>
+					</div> </a>
+				</volist>
+			</ul>
+
+		</div>
+		<nav class="text-center">
+			<div class="manu">
+				{$page}
+			</div>
+		</nav>
+	</div>
+</div>
+
+<include file="Index/footer" />
+

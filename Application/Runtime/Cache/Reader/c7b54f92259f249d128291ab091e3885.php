@@ -7,8 +7,8 @@
 		<title>读书狼任务管理系统</title>
 
 		<!-- Bootstrap -->
-		<link href="/Public/Oa/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/Public/Oa/css/bootstrap-switch.css" rel="stylesheet">
+		<link href="/Public/Reader/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/Public/Reader/css/bootstrap-switch.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,8 +20,8 @@
 		<!-- <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script> -->
 		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="/Public/Oa/js/bootstrap.min.js"></script>
-		<script src="/Public/Oa/js/bootstrap-switch.js"></script>
+		<script src="/Public/Reader/js/bootstrap.min.js"></script>
+		<script src="/Public/Reader/js/bootstrap-switch.js"></script>
 		
 	</head>
 	<body>
@@ -220,7 +220,7 @@
 						<td class="hidden-xs"><?php echo ($list["text"]); ?></td>
 						<td name="zan" class="hidden-xs"><?php echo ($list["zan"]); ?></td>
 						<td>
-							<button <?php if($list['perform']=="6") echo('disabled'); ?> type="button" class="btn btn-info btn-xs " data-toggle="modal" data-target="#updateModal" onclick="showUpdateModal(this)">
+							<button type="button" class="btn btn-info btn-xs <?php if($list['perform']=='6'){echo 'disabled';} ?> " data-toggle="modal" data-target="#updateModal" onclick="showUpdateModal(this)" >
 								编辑
 							</button>
 						</td>
