@@ -1,12 +1,136 @@
-				<include file="Index/header" />	
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">数据统计</h3>
-				  </div>
-				  <div class="panel-body">
-				  	
-				  	
-				  </div>
+<include file="Index/header" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">数据统计</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					总计
 				</div>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>总金额：{$info['amount']/10000}万</td>
+							<td>总成本：{$info['cost']/10000}万</td>
+						</tr>
+						<tr>
+							<td>已收款：{$info['moneyin']/10000}万</td>
+							<td>已付款：{$info['moneyout']/10000}万</td>
+						</tr>
+						<tr>
+							<td>总利润：{$info['profit']/10000}万</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			
-		<include file="Index/footer" />	
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					项目状态统计
+				</div>
+				<table class="table">
+					<thead>
+						<th>状态</th>
+						<th>利润</th>
+						<th>总金额</th>
+						<th>总成本</th>
+					</thead>
+					<tbody>
+						<volist name="statuslist" id="vo1">
+							<tr>
+								<td><a href="__URL__/plist/status/{$vo1.status}">{$vo1.status}</a></td>
+								<td>{$vo1['sum(amount)']/10000-$vo1['sum(cost)']/10000}万</td>
+								<td>{$vo1['sum(amount)']/10000}万</td>
+								<td>{$vo1['sum(cost)']/10000}万</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					项目类型统计
+				</div>
+				<table class="table">
+					<thead>
+						<th>类型</th>
+						<th>利润</th>
+						<th>总金额</th>
+						<th>总成本</th>
+					</thead>
+					<tbody>
+						<volist name="typelist" id="vo2">
+							<tr>
+								<td><a href="__URL__/plist/type/{$vo2.type}">{$vo2.type}</a></td>
+								<td>{$vo2['sum(amount)']/10000-$vo2['sum(cost)']/10000}万</td>
+								<td>{$vo2['sum(amount)']/10000}万</td>
+								<td>{$vo2['sum(cost)']/10000}万</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					项目来源统计
+				</div>
+				<table class="table">
+					<thead>
+						<th>来源</th>
+						<th>利润</th>
+						<th>总金额</th>
+						<th>总成本</th>
+					</thead>
+					<tbody>
+						<volist name="pfromlist" id="vo">
+							<tr>
+								<td><a href="__URL__/plist/pfrom/{$vo.pfrom}">{$vo.pfrom}</a></td>
+								<td>{$vo['sum(amount)']/10000-$vo['sum(cost)']/10000}万</td>
+								<td>{$vo['sum(amount)']/10000}万</td>
+								<td>{$vo['sum(cost)']/10000}万</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					项目执行统计
+				</div>
+				<table class="table">
+					<thead>
+						<th>执行人</th>
+						<th>利润</th>
+						<th>总金额</th>
+						<th>总成本</th>
+					</thead>
+					<tbody>
+						<volist name="executelist" id="vo3">
+							<tr>
+								<td><a href="__URL__/plist/execute/{$vo3.execute}">{$vo3.execute}</a></td>
+								<td>{$vo3['sum(amount)']/10000-$vo3['sum(cost)']/10000}万</td>
+								<td>{$vo3['sum(amount)']/10000}万</td>
+								<td>{$vo3['sum(cost)']/10000}万</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<include file="Index/footer" />

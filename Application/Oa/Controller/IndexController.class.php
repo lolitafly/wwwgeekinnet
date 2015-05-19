@@ -1,12 +1,24 @@
 <?php
 namespace Oa\Controller;
 use Think\Controller;
+use Com\WechatCorp;
 header("Content-type: text/html; charset=utf-8");
 class IndexController extends Controller {
     public function index(){
-    	echo C('MIX');
+    	if($_GET['code']){
+    		$corp=new WechatCorp(C('CorpID'), C('CorpSecret'));
+    		$access_token=$corp->getAccessToken();
+    		$user=$corp->getUserInfo($access_token, $_GET['code'],1);
+    		dump($access_token);
+    		dump($user);
+    	}else{
+	    	$this->redirect('login');
+    	}
     }
     
+    /**
+     * 登陆页
+     */
     public function login(){
     	if(cookie('oa_username')){
     		$returninfo=D('user')->checkLogin(cookie('oa_username'),cookie('oa_password'),true);
@@ -17,6 +29,9 @@ class IndexController extends Controller {
     	$this->display();
     }
     
+    /**
+     * 登陆提交
+     */
     public function submit(){
     	$returninfo=D('user')->checkLogin($_POST['username'],$_POST['password'],false);
     	
@@ -27,6 +42,9 @@ class IndexController extends Controller {
     	$this->ajaxReturn($returninfo,'json');
     }
     
+    /**
+     * 登出
+     */
     public function logout(){
     	session('oa_user',null);
     	cookie('oa_username',null);
@@ -35,10 +53,15 @@ class IndexController extends Controller {
     }
     
     
+    
+    
+    /**
+     * temp functions
+     */
     public function adduser(){
-    	$data['username']="shenli";
-    	$data['password']=md5(C('MIX')."sun123");
-    	$data['nickname']="沈笠";
+    	$data['username']="sunzhenlong";
+    	$data['password']=md5(C('SECRET_KEY')."sun123");
+    	$data['nickname']="孙振龙";
     	M('user')->add($data);
     }
     

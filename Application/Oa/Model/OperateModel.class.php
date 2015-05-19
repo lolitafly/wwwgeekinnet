@@ -3,6 +3,11 @@ namespace Oa\Model;
 use Think\Model;
 class OperateModel extends Model {
 	
+	/**
+	 * 添加项目操作记录
+	 * @param int $pid
+	 * @param string $operate
+	 */
 	public function addOperate($pid,$operate){
 		$data['pid']=$pid;
 		$data['operate']=$operate;
