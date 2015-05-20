@@ -1,7 +1,6 @@
 <?php
 namespace Oa\Controller;
 use Think\Controller;
-header("Content-type: text/html; charset=utf-8");
 class ProjectController extends Controller {
 	
 	/**
@@ -12,7 +11,9 @@ class ProjectController extends Controller {
 		if(!session('oa_user')) $this->redirect('Index/login');
 	}
 	
-	
+	/**
+	 * 数据统计页
+	 */
     public function index(){
     	$cdt['state']=1;
     	

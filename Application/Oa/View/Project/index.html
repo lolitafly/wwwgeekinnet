@@ -43,7 +43,7 @@
 					<tbody>
 						<volist name="statuslist" id="vo1">
 							<tr>
-								<td><a href="__URL__/plist/status/{$vo1.status}">{$vo1.status}</a></td>
+								<td><a href="__URL__/plist/?status={$vo1.status}">{$vo1.status}</a></td>
 								<td>{$vo1['sum(amount)']/10000-$vo1['sum(cost)']/10000}万</td>
 								<td>{$vo1['sum(amount)']/10000}万</td>
 								<td>{$vo1['sum(cost)']/10000}万</td>
@@ -68,7 +68,7 @@
 					<tbody>
 						<volist name="typelist" id="vo2">
 							<tr>
-								<td><a href="__URL__/plist/type/{$vo2.type}">{$vo2.type}</a></td>
+								<td><a href="__URL__/plist/?type={$vo2.type}">{$vo2.type}</a></td>
 								<td>{$vo2['sum(amount)']/10000-$vo2['sum(cost)']/10000}万</td>
 								<td>{$vo2['sum(amount)']/10000}万</td>
 								<td>{$vo2['sum(cost)']/10000}万</td>
@@ -95,7 +95,7 @@
 					<tbody>
 						<volist name="pfromlist" id="vo">
 							<tr>
-								<td><a href="__URL__/plist/pfrom/{$vo.pfrom}">{$vo.pfrom}</a></td>
+								<td><a href="__URL__/plist/?pfrom={$vo.pfrom}">{$vo.pfrom}</a></td>
 								<td>{$vo['sum(amount)']/10000-$vo['sum(cost)']/10000}万</td>
 								<td>{$vo['sum(amount)']/10000}万</td>
 								<td>{$vo['sum(cost)']/10000}万</td>
@@ -119,7 +119,7 @@
 					<tbody>
 						<volist name="executelist" id="vo3">
 							<tr>
-								<td><a href="__URL__/plist/execute/{$vo3.execute}">{$vo3.execute}</a></td>
+								<td><a href="__URL__/plist/?execute={$vo3.execute}">{$vo3.execute}</a></td>
 								<td>{$vo3['sum(amount)']/10000-$vo3['sum(cost)']/10000}万</td>
 								<td>{$vo3['sum(amount)']/10000}万</td>
 								<td>{$vo3['sum(cost)']/10000}万</td>
