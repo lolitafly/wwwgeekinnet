@@ -119,12 +119,12 @@
 			var pfrom=$("#search_pfrom").val();
 			var status=$("#search_status").val();
 			var execute=$("#search_execute").val();
-			if(name!="")url+="/?name="+encodeURIComponent(name);
-			if(type!=hint_str)url+="/?type="+encodeURIComponent(type);
-			if(pfrom!=hint_str)url+="/?pfrom="+encodeURIComponent(pfrom);
-			if(status!=hint_str)url+="/?status="+encodeURIComponent(status);
-			if(execute!=hint_str)url+="?execute="+encodeURIComponent(execute);
-			console.log(url);
+			url+="/?";
+			if(name!="")url+="name="+name+"&";
+			if(type!=hint_str)url+="type="+type+"&";
+			if(pfrom!=hint_str)url+="pfrom="+pfrom+"&";
+			if(status!=hint_str)url+="status="+status+"&";
+			if(execute!=hint_str)url+="execute="+execute+"&";
 			window.location.href=url;
 			return false;
 		});

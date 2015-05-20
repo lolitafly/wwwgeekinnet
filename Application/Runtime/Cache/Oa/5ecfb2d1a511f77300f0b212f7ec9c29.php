@@ -107,7 +107,7 @@
 					</thead>
 					<tbody>
 						<?php if(is_array($statuslist)): $i = 0; $__LIST__ = $statuslist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo1): $mod = ($i % 2 );++$i;?><tr>
-								<td><a href="/oa.php/Project/plist/status/<?php echo ($vo1["status"]); ?>"><?php echo ($vo1["status"]); ?></a></td>
+								<td><a href="/oa.php/Project/plist/?status=<?php echo ($vo1["status"]); ?>"><?php echo ($vo1["status"]); ?></a></td>
 								<td><?php echo ($vo1['sum(amount)']/10000-$vo1['sum(cost)']/10000); ?>万</td>
 								<td><?php echo ($vo1['sum(amount)']/10000); ?>万</td>
 								<td><?php echo ($vo1['sum(cost)']/10000); ?>万</td>
@@ -130,7 +130,7 @@
 					</thead>
 					<tbody>
 						<?php if(is_array($typelist)): $i = 0; $__LIST__ = $typelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><tr>
-								<td><a href="/oa.php/Project/plist/type/<?php echo ($vo2["type"]); ?>"><?php echo ($vo2["type"]); ?></a></td>
+								<td><a href="/oa.php/Project/plist/?type=<?php echo ($vo2["type"]); ?>"><?php echo ($vo2["type"]); ?></a></td>
 								<td><?php echo ($vo2['sum(amount)']/10000-$vo2['sum(cost)']/10000); ?>万</td>
 								<td><?php echo ($vo2['sum(amount)']/10000); ?>万</td>
 								<td><?php echo ($vo2['sum(cost)']/10000); ?>万</td>
@@ -155,7 +155,7 @@
 					</thead>
 					<tbody>
 						<?php if(is_array($pfromlist)): $i = 0; $__LIST__ = $pfromlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-								<td><a href="/oa.php/Project/plist/pfrom/<?php echo ($vo["pfrom"]); ?>"><?php echo ($vo["pfrom"]); ?></a></td>
+								<td><a href="/oa.php/Project/plist/?pfrom=<?php echo ($vo["pfrom"]); ?>"><?php echo ($vo["pfrom"]); ?></a></td>
 								<td><?php echo ($vo['sum(amount)']/10000-$vo['sum(cost)']/10000); ?>万</td>
 								<td><?php echo ($vo['sum(amount)']/10000); ?>万</td>
 								<td><?php echo ($vo['sum(cost)']/10000); ?>万</td>
@@ -177,7 +177,7 @@
 					</thead>
 					<tbody>
 						<?php if(is_array($executelist)): $i = 0; $__LIST__ = $executelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo3): $mod = ($i % 2 );++$i;?><tr>
-								<td><a href="/oa.php/Project/plist/execute/<?php echo ($vo3["execute"]); ?>"><?php echo ($vo3["execute"]); ?></a></td>
+								<td><a href="/oa.php/Project/plist/?execute=<?php echo ($vo3["execute"]); ?>"><?php echo ($vo3["execute"]); ?></a></td>
 								<td><?php echo ($vo3['sum(amount)']/10000-$vo3['sum(cost)']/10000); ?>万</td>
 								<td><?php echo ($vo3['sum(amount)']/10000); ?>万</td>
 								<td><?php echo ($vo3['sum(cost)']/10000); ?>万</td>

@@ -9,6 +9,16 @@ class TestController extends Controller {
 		dump($result);
 	}
 	
+	public function showData(){
+		$user=M('user');
+		$arr['total']=$user->count();
+		$list=$user->field('phone,max(score)')->group('phone')->select();
+		$arr['phone_count']=count($list);
+		$list2=$user->field('phone,max(score)')->group('ip')->select();
+		$arr['ip_count']=count($list2);
+		dump($arr);
+	}
+	
 	public function stat($start,$end,$day){
 		if($day&&$start&&$end){
 			$today=date('Y-m-d',time());
