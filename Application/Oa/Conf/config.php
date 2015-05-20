@@ -19,6 +19,8 @@ return array(
 		
 		'DATA_CACHE_PREFIX'		=>"oa",//数据缓存前缀
 		
+		'url_model'				=>'0',
+		
 		'SECRET_KEY'=>'x3mz',//密码混合
 		
 		'CorpID'=>'wxe07312ac5473ebec',

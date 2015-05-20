@@ -1,0 +1,1 @@
+a:5:{i:0;s:3:"bid";i:1;s:5:"title";i:2;s:3:"rid";s:3:"_pk";s:3:"bid";s:5:"_type";a:3:{s:3:"bid";s:8:"int(101)";s:5:"title";s:11:"varchar(50)";s:3:"rid";s:7:"int(11)";}}
