@@ -4,27 +4,24 @@ use Think\Controller;
 class IndexController extends Controller {
 	
 	public function index(){
+		$this->assign('logo',$this->get_banner($_GET['i']));
 		$this->assign('list',$this->get_demo());
 		$this->display();
 	}
 	
+	private function get_banner($i){
+		$logo=array(
+				'geekin.jpg',
+				'myn.jpg'
+		);
+		if(isset($i)&&$i>=0&&$i<count($logo)){
+			return $logo[$i];
+		}else{
+			return $logo[0];
+		}
+	}
+	
     private function get_demo(){
-//     	$demo[0]['img']='0.jpg';
-//     	$demo[0]['title']='吉列微信推广';
-//     	$demo[0]['desc']='吉列购买的微信推广业务中的h5详情页面';
-    	
-//     	$demo[1]['img']='1.jpg';
-//     	$demo[1]['title']='吉列超级英雄连连看';
-//     	$demo[1]['desc']='与漫威合作，以复仇者联盟英雄为元素，制作的营销推广游戏';
-    	
-//     	$demo[2]['img']='2.jpg';
-//     	$demo[2]['title']='你就是我们的珍藏';
-//     	$demo[2]['desc']='2015年赛诺菲肿瘤事业部春季校园招聘H5';
-    	
-//     	$demo[3]['img']='2.jpg';
-//     	$demo[3]['title']='你就是我们的珍藏';
-//     	$demo[3]['desc']='2015年赛诺菲肿瘤事业部春季校园招聘H5';
-    	
     	$demo=array(
     			array(
     				'img'=>'0.jpg',		
@@ -56,8 +53,19 @@ class IndexController extends Controller {
     				'title'=>'MITEK产品手册',		
     				'desc'=>'强生MITEK产品手册，用于现场活动二维码查看'		
     			),
+    			array(
+    				'img'=>'5.jpg',	
+    				'url'=>	'http://www.geek-in.net/html/guaguaka/index.html',
+    				'title'=>'刮刮卡',		
+    				'desc'=>'通过触屏显示图片或文字内容，增加用户交互趣味性'		
+    			),
+    			array(
+    				'img'=>'6.jpg',	
+    				'url'=>	'http://www.geek-in.net/html/laohuji/index.html',
+    				'title'=>'老虎机',		
+    				'desc'=>'老虎机形式的抽奖解决方案'		
+    			),
     	);
-    	
     	
     	return $demo;
     }
