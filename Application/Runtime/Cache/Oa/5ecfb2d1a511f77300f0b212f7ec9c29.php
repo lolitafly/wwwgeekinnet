@@ -43,6 +43,7 @@
 		        <li class="<?php if(ACTION_NAME=='index') echo('active'); ?>"><a href="<?php echo U('Project/index');?>">数据统计</a></li>
 		        <li class="<?php if(ACTION_NAME=='plist') echo('active'); ?>"><a href="<?php echo U('Project/plist');?>">项目列表</a></li>
 		        <li class="<?php if(ACTION_NAME=='addProject') echo('active'); ?>"><a href="<?php echo U('Project/addProject');?>">新增项目</a></li>
+		        <li class="<?php if(ACTION_NAME=='account') echo('active'); ?>"><a href="<?php echo U('Project/account');?>">公司账目</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right hidden-xs">
 		        <li><a>你好，<?php echo ($_SESSION['oa_user']['nickname']); ?></a></li>
@@ -60,6 +61,7 @@
 						<a href="<?php echo U('Project/index');?>" class="list-group-item <?php if(ACTION_NAME=='index') echo('active'); ?>">数据统计</a>
 						<a href="<?php echo U('Project/plist');?>" class="list-group-item <?php if(ACTION_NAME=='plist') echo('active'); ?>">项目列表</a>
 						<a href="<?php echo U('Project/addProject');?>" class="list-group-item <?php if(ACTION_NAME=='addProject') echo('active'); ?>">新增项目</a>
+						<a href="<?php echo U('Project/account');?>" class="list-group-item <?php if(ACTION_NAME=='account') echo('active'); ?>">公司账目</a>
 					</div>
 
 				</div>
@@ -185,6 +187,57 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					最近项目属性操作记录
+				</div>
+				<table class="table">
+					<thead>
+						<th>项目名称</th>
+						<th>操作</th>
+						<th>操作人</th>
+						<th>日期</th>
+					</thead>
+					<tbody>
+						<?php if(is_array($operatelist)): $i = 0; $__LIST__ = $operatelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo4): $mod = ($i % 2 );++$i;?><tr>
+								<td><a href="/oa.php/Project/detail/pid/<?php echo ($vo4["pid"]); ?>"><?php echo ($vo4["name"]); ?></a></td>
+								<td><?php echo ($vo4["operate"]); ?></td>
+								<td><?php echo ($vo4["createBy"]); ?></td>
+								<td><?php echo ($vo4["createDate"]); ?></td>
+							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					最近项目操作记录
+				</div>
+				<table class="table">
+					<thead>
+						<th>项目名称</th>
+						<th>进账</th>
+						<th>出账</th>
+						<th>详情</th>
+						<th>操作人</th>
+						<th>日期</th>
+					</thead>
+					<tbody>
+						<?php if(is_array($tallyoperatelist)): $i = 0; $__LIST__ = $tallyoperatelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo5): $mod = ($i % 2 );++$i;?><tr>
+								<td><a href="/oa.php/Project/detail/pid/<?php echo ($vo5["pid"]); ?>"><?php echo ($vo5["name"]); ?></a></td>
+								<td><?php echo ($vo5["moneyin"]); ?></td>
+								<td><?php echo ($vo5["moneyout"]); ?></td>
+								<td><?php echo ($vo5["detail"]); ?></td>
+								<td><?php echo ($vo5["createBy"]); ?></td>
+								<td><?php echo ($vo5["createDate"]); ?></td>
+							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+					</tbody>
+				</table>
+			</div>
+			
 		</div>
 
 	</div>

@@ -1,0 +1,1 @@
+a:9:{i:0;s:3:"aid";i:1;s:7:"moneyin";i:2;s:8:"moneyout";i:3;s:6:"detail";i:4;s:8:"createBy";i:5;s:10:"createDate";i:6;s:5:"state";s:3:"_pk";s:3:"aid";s:5:"_type";a:7:{s:3:"aid";s:8:"int(101)";s:7:"moneyin";s:6:"double";s:8:"moneyout";s:6:"double";s:6:"detail";s:4:"text";s:8:"createBy";s:11:"varchar(10)";s:10:"createDate";s:9:"timestamp";s:5:"state";s:7:"int(11)";}}
