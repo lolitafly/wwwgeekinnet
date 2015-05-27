@@ -82,25 +82,25 @@ class IndexController extends Controller {
     /**
      * temp functions
      */
-    public function adduser(){
-    	$data['username']="sunzhenlong";
-    	$data['password']=md5(C('SECRET_KEY')."sun123");
-    	$data['nickname']="孙振龙";
-    	M('user')->add($data);
-    }
+//     public function adduser(){
+//     	$data['username']="sunzhenlong";
+//     	$data['password']=md5(C('SECRET_KEY')."sun123");
+//     	$data['nickname']="孙振龙";
+//     	M('user')->add($data);
+//     }
     
-    public function getc(){
-    	echo cookie('oa_password');
-    }
+//     public function getc(){
+//     	echo cookie('oa_password');
+//     }
     
-    public function putc(){
-    	cookie('name','321',15);
-    	cookie('pwd','321',15);
-    	echo "put cookie";
-    }
+//     public function putc(){
+//     	cookie('name','321',15);
+//     	cookie('pwd','321',15);
+//     	echo "put cookie";
+//     }
     
-    public function test(){
-    	if($this->userId)echo 1;
-    }
+//     public function test(){
+//     	if($this->userId)echo 1;
+//     }
     
 }

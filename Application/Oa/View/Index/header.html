@@ -43,6 +43,7 @@
 		        <li class="<php>if(ACTION_NAME=='index') echo('active'); </php>"><a href="{:U('Project/index')}">数据统计</a></li>
 		        <li class="<php>if(ACTION_NAME=='plist') echo('active'); </php>"><a href="{:U('Project/plist')}">项目列表</a></li>
 		        <li class="<php>if(ACTION_NAME=='addProject') echo('active'); </php>"><a href="{:U('Project/addProject')}">新增项目</a></li>
+		        <li class="<php>if(ACTION_NAME=='account') echo('active'); </php>"><a href="{:U('Project/account')}">公司账目</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right hidden-xs">
 		        <li><a>你好，{$Think.session.oa_user.nickname}</a></li>
@@ -60,6 +61,7 @@
 						<a href="{:U('Project/index')}" class="list-group-item <php>if(ACTION_NAME=='index') echo('active'); </php>">数据统计</a>
 						<a href="{:U('Project/plist')}" class="list-group-item <php>if(ACTION_NAME=='plist') echo('active'); </php>">项目列表</a>
 						<a href="{:U('Project/addProject')}" class="list-group-item <php>if(ACTION_NAME=='addProject') echo('active'); </php>">新增项目</a>
+						<a href="{:U('Project/account')}" class="list-group-item <php>if(ACTION_NAME=='account') echo('active'); </php>">公司账目</a>
 					</div>
 
 				</div>

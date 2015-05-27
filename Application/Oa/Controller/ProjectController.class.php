@@ -35,6 +35,12 @@ class ProjectController extends Controller {
     	$this->assign('typelist',$type);
     	$this->assign('executelist',$execute);
     	
+    	$operate=M('Operate')->field('name,operate.*')->join("Project On operate.pid=project.pid")->order('oid desc')->limit(10)->select();
+    	$tallyoperate=M('Tally')->field('name,Tally.*')->join("Project On tally.pid=project.pid")->order('tid desc')->limit(10)->select();
+    	
+    	$this->assign('operatelist',$operate);
+    	$this->assign('tallyoperatelist',$tallyoperate);
+    	
     	$this->display();
     }
     
@@ -172,5 +178,43 @@ class ProjectController extends Controller {
     	}
     }
     
+    /**
+     * 公司账目
+     */
+    public function account(){
+    	$info['in']=M('Account')->where('state=1')->sum('moneyin');
+    	$info['out']=M('Account')->where('state=1')->sum('moneyout');
+    	$info['remain']=$info['in']-$info['out'];
+    	$this->assign('info',$info);
+    	
+    	$accountlist=M('Account')->where("state=1")->order('aid desc')->select();
+    	$this->assign('accountlist',$accountlist);//公司账目记录数据加载
+    	
+    	$this->display();
+    }
+    
+    /**
+     * 添加公司账目记录
+     */
+    public function addAccount(){
+    	$Account=D('Account');
+    	if (!$Account->create()){
+    		$this->ajaxReturn($Account->getError());
+    	}else{
+    		$Account->add();
+    		echo 1;
+    	}
+    }
+    
+    /**
+     * 删除公司账目记录
+     */
+    public function deleteAccount(){
+    	if($_POST['aid']){
+    		$data['state']=0;
+    		M('Account')->where('aid='.$_POST['aid'])->save($data);
+    		echo 1;
+    	}
+    }
     
 }

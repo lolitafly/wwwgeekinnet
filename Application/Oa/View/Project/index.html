@@ -128,6 +128,61 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					最近项目属性操作记录
+				</div>
+				<table class="table">
+					<thead>
+						<th>项目名称</th>
+						<th>操作</th>
+						<th>操作人</th>
+						<th>日期</th>
+					</thead>
+					<tbody>
+						<volist name="operatelist" id="vo4">
+							<tr>
+								<td><a href="__URL__/detail/pid/{$vo4.pid}">{$vo4.name}</a></td>
+								<td>{$vo4.operate}</td>
+								<td>{$vo4.createBy}</td>
+								<td>{$vo4.createDate}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					最近项目操作记录
+				</div>
+				<table class="table">
+					<thead>
+						<th>项目名称</th>
+						<th>进账</th>
+						<th>出账</th>
+						<th>详情</th>
+						<th>操作人</th>
+						<th>日期</th>
+					</thead>
+					<tbody>
+						<volist name="tallyoperatelist" id="vo5">
+							<tr>
+								<td><a href="__URL__/detail/pid/{$vo5.pid}">{$vo5.name}</a></td>
+								<td>{$vo5.moneyin}</td>
+								<td>{$vo5.moneyout}</td>
+								<td>{$vo5.detail}</td>
+								<td>{$vo5.createBy}</td>
+								<td>{$vo5.createDate}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			
 		</div>
 
 	</div>

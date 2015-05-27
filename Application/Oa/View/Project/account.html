@@ -1,0 +1,166 @@
+<include file="Index/header" />
+<script>
+	$(document).ready(function(){
+		
+		$('#accountModal').on('shown.bs.modal', function () {
+		  $('#moneyin').focus();
+		});
+		
+		//项目记录表单提交
+		$("form[name='accountForm']").submit(function (){
+			// $('#tallyModal').modal('hide');
+			var param={};
+			param.moneyin=$("#moneyin").val();
+			param.moneyout=$("#moneyout").val();
+			param.detail=$("#detail").val();
+			if(param.moneyin==""&&param.moneyout==""&&param.detail==""){
+				alert("不能全部为空");
+			}else{
+				$.ajax({
+	                type: "POST",
+	                url:'__URL__/addAccount',
+	                data:param,
+	                dataType:'json',
+	                async: false,
+	                error: function(request){
+	                    alert("服务器连接错误！");
+	                },
+	                success: function(r) {
+	                	if(r==1){
+	                		location.reload();
+	                	}else{
+		                	alert(r);
+	                	}
+	                }
+	            });
+			}
+			return false;
+		});
+	});
+	
+	function deleteAccount(aid){
+		 if (confirm("确认删除？"))  {
+		 	var param={};
+		 	param.aid=aid;
+		 	$.ajax({
+                type: "POST",
+                url:'__URL__/deleteAccount',
+                data:param,
+                dataType:'json',
+                async: false,
+                error: function(request){
+                    alert("服务器连接错误！");
+                },
+                success: function() {
+                	location.reload();
+                }
+            });
+		 }
+	}
+</script>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">公司账目</h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					总计
+				</div>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>总进账：{$info['in']/10000}万</td>
+							<td>总出账：{$info['out']/10000}万</td>
+						</tr>
+						<tr>
+							<td colspan="2">余额：{$info['remain']/10000}万</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			
+			
+			
+		</div>
+		
+		<div class="col-md-6 hidden-xs">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					进出账记录
+					<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#accountModal">
+						添加
+					</button>
+				</div>
+				<!-- Table -->
+				<table class="table">
+					<thead>
+						<th>进账</th>
+						<th>出账</th>
+						<th>详情</th>
+						<th class="hidden-xs">日期</th>
+						<th class="hidden-xs">添加人</th>
+						<th class="hidden-xs">删除</th>
+					</thead>
+					<tbody>
+						<volist name="accountlist" id="vo">
+							<tr>
+								<td>{$vo.moneyin}元</td>
+								<td>{$vo.moneyout}元</td>
+								<td>{$vo.detail}</td>
+								<td class="hidden-xs">{$vo.createDate}</td>
+								<td class="hidden-xs">{$vo.createBy}</td>
+								<td class="hidden-xs"><a onclick="deleteAccount({$vo.aid})" class="btn btn-danger btn-xs">删除</a></td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			
+			<!--添加记录弹出框-->
+			<div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="exampleModalLabel">添加项目记录</h4>
+						</div>
+						<form name="accountForm">
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="moneyin" class="control-label">进账:</label>
+									<input type="number" class="form-control" id="moneyin">
+								</div>
+								<div class="form-group">
+									<label for="moneyout" class="control-label">出账:</label>
+									<input type="number" class="form-control" id="moneyout">
+								</div>
+								<div class="form-group">
+									<label for="detail" class="control-label">详情:</label>
+									<textarea class="form-control" id="detail"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									关闭
+								</button>
+								<button type="submit" class="btn btn-primary">
+									确认提交
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<include file="Index/footer" />
