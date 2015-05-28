@@ -65,6 +65,12 @@ class IndexController extends Controller {
     				'title'=>'老虎机',		
     				'desc'=>'老虎机形式的抽奖解决方案'		
     			),
+    			array(
+    				'img'=>'7.png',	
+    				'url'=>	'http://www.geek-in.net/html/pingtu/index.html',
+    				'title'=>'拼图游戏',		
+    				'desc'=>'触屏拼图游戏示例'		
+    			),
     	);
     	
     	return $demo;
