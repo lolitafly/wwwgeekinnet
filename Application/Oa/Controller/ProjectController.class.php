@@ -1,6 +1,7 @@
 <?php
 namespace Oa\Controller;
 use Think\Controller;
+header("Content-type: text/html; charset=utf-8");
 class ProjectController extends Controller {
 	
 	/**
@@ -23,6 +24,13 @@ class ProjectController extends Controller {
     	
     	$info['moneyin']=M('Tally')->where($cdt)->sum("moneyin");
     	$info['moneyout']=M('Tally')->where($cdt)->sum("moneyout");
+    	
+    	$temp1=M('project')->where("state=1 and status='待收款'")->sum('amount');
+    	$temp2=M('project')->where("state=1 and status='待收款'")->sum('cost');
+    	$temp3=M('Project')->where("project.state=1 and project.status='待收款'")->join('LEFT JOIN Tally ON tally.pid=project.pid')->sum('moneyin');
+    	$temp4=M('Project')->where("project.state=1 and project.status='待收款'")->join('LEFT JOIN Tally ON tally.pid=project.pid')->sum('moneyout');
+    	$info['canIn']=$temp1-$temp3;
+    	$info['needOut']=$temp2-$temp4;
     	
     	$pfrom=M('project')->field('pfrom,sum(amount),sum(cost)')->where($cdt)->group('pfrom')->order('sum(amount)-sum(cost) desc')->select();
     	$execute=M('project')->field('execute,sum(amount),sum(cost)')->where($cdt)->group('execute')->order('sum(amount)-sum(cost) desc')->select();
